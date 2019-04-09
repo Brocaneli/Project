@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ListsComponent } from './lists/lists.component';
-import { ListDetailsComponent } from './list-details/list-details.component';
-import { CardComponent } from './card/card.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
@@ -10,9 +9,8 @@ const routes: Routes = [
     redirectTo: 'lists',
     pathMatch: 'full'
   },
-  {path: 'lists', component: ListsComponent},
-  {path: 'listdetails/:id', component: ListDetailsComponent},
-  {path: 'card/:id', component: CardComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent}
 ];
 
 @NgModule({
