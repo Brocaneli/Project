@@ -1,0 +1,27 @@
+<div class="jumbotron">
+    <h2 class="col-sm-6 offset-sm-5">Criar nova turma</h2>
+  <div class="container">
+    <h3 class="col-sm-6 offset-sm-5">Turma</h3>
+    <hr class="my-4">
+
+    <div class="row" >
+        <div class="col-sm-6 offset-sm-5">
+            <button type="button" class="btn btn-circle btn-xl"><i class="glyphicon glyphicon-plus"></i></button>
+        </div>
+    </div>
+
+   <form [formGroup]="turmaForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <input type="text" class="form-control" formControlName="turma" id="turmaName" aria-describedby="emailHelp" placeholder="Nome da turma">
+        <small id="nameHelp" for="turma" class="form-text text-muted">Digite o nome da turma.</small>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" [disabled]="!turmaForm.valid" class="btn btn-primary">Criar</button>
+     </div>
+      
+    </form>
+        
+    
+  </div>
+</div>

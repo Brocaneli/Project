@@ -1,0 +1,36 @@
+<div class="jumbotron">
+    <h2 class="col-sm-6 offset-sm-5">Nosso Lar App</h2>
+  <div class="container">
+    <h3 class="col-sm-6 offset-sm-5">Turmas</h3>
+    <hr class="my-4">
+
+    <div id="accordion" class="col-sm-6 offset-sm-5" *ngFor="let turns of turmas">
+        <div class="card">
+          <div class="card-header" id="headings">
+            <h5 class="mb-0">
+              <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseControl" aria-expanded="true" aria-controls="collapseControl">
+                {{turns.name}}
+              </button>
+            </h5>
+          </div>
+      
+          <div id="collapseControl" class="collapse show" aria-labelledby="headings" data-parent="#accordion">
+            <div class="card-body">
+              {{turns.curso}}
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <div class="row" >
+        <div class="col-sm-6 offset-sm-5">
+            <button [routerLink]="['/nturma']" type="button" class="btn btn-circle btn-xl"><i class="glyphicon glyphicon-plus"></i></button>
+        </div>
+    </div>
+  </div>
+
+  
+
+    
+
+</div>
