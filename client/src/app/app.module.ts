@@ -10,6 +10,8 @@ import { RegisterComponent } from './register/register.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { TurmasPageComponent } from './turmas-page/turmas-page.component';
 import { NovaTurmaPageComponent } from './nova-turma-page/nova-turma-page.component';
+import { PermissionsComponent } from './permissions/permissions.component';
+import { PermissionsDetailComponent } from './permissions-detail/permissions-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { NovaTurmaPageComponent } from './nova-turma-page/nova-turma-page.compon
     AdminPageComponent,
     TurmasPageComponent,
     NovaTurmaPageComponent,
+    PermissionsComponent,
+    PermissionsDetailComponent
   ],
   imports: [
     BrowserModule,
