@@ -1,0 +1,23 @@
+<h2>{{ name }}</h2>
+<h4>Cursos matriculados</h4>
+<div class="list-group">
+  <li class="list-group-item">Ciclo Básico 1 - Domingo</li>
+</div>
+<h4>Permissões</h4>
+<div class="input-group mb-3">
+  <select class="custom-select" id="inputGroupSelect01">
+    <option selected>Aluno</option>
+    <option value="2">Colaborador</option>
+    <option value="3">Administrador</option>
+  </select>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+          <button [routerLink]="['/users']" type="button" class="btn btn-danger">Cancelar</button>
+        </div>
+        <div class="col">
+          <button [routerLink]="['/users']" type="button" class="btn btn-success">Salvar</button>
+        </div>
+      </div>
+</div>
