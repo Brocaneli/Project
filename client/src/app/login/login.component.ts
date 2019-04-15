@@ -8,7 +8,11 @@ export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     loading = false;
     submitted = false;
-    returnUrl: string;
+    returnUrl = {
+        "admin": "admin",
+        "collaborator": "collaborator",
+        "student": "student"
+    };
 
     constructor(
         private formBuilder: FormBuilder,
@@ -35,5 +39,7 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
+
+        this.router.navigate([this.returnUrl[this.loginForm.controls.email.value]]);
     }
 }

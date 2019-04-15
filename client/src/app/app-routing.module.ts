@@ -11,7 +11,7 @@ import { PermissionsDetailComponent } from './permissions-detail/permissions-det
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'lists',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
 
