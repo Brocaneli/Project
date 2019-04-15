@@ -18,10 +18,11 @@ export class StudentsPageComponent implements OnInit {
   ]
 
   avisos = [
-    {name : "Aviso 1"},
-    {name : "Aviso 2"},
-    {name : "Aviso 3"},
-    {name : "Aviso 4"}
+    {name : "Aviso 1", date: "12/01/18", user: "julia", comment: "hello world!"},
+    {name : "Aviso 2", date: "12/01/18", user: "julia", comment: "hello world!"},
+    {name : "Aviso 3", date: "12/01/18", user: "julia", comment: "hello world!"},
+    {name : "Aviso 4", date: "12/01/18", user: "julia", comment: "hello world!"},
+
   ]
 
   constructor() { }
