@@ -1,0 +1,8 @@
+<h1>Nosso Lar App</h1>
+  <h2>Cursos Matriculados</h2>
+
+    <li *ngFor= "let curso of cursos">{{curso.name}}</li>
+
+  <button (click)="add_class()" class="btn btn-primary">+</button>
+
+    <li *ngFor= "let aviso of avisos">{{aviso.name}}</li>
