@@ -13,8 +13,6 @@ import { NovaTurmaPageComponent } from './nova-turma-page/nova-turma-page.compon
 import { PermissionsComponent } from './permissions/permissions.component';
 import { PermissionsDetailComponent } from './permissions-detail/permissions-detail.component';
 
-import { StudentPageComponent } from './student-page/student-page.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,8 +22,7 @@ import { StudentPageComponent } from './student-page/student-page.component';
     TurmasPageComponent,
     NovaTurmaPageComponent,
     PermissionsComponent,
-    PermissionsDetailComponent,
-    StudentPageComponent
+    PermissionsDetailComponent
   ],
   imports: [
     BrowserModule,
