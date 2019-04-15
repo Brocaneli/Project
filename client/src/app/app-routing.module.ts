@@ -7,6 +7,7 @@ import { TurmasPageComponent } from './turmas-page/turmas-page.component';
 import { NovaTurmaPageComponent } from './nova-turma-page/nova-turma-page.component';
 import { PermissionsComponent } from './permissions/permissions.component';
 import { PermissionsDetailComponent } from './permissions-detail/permissions-detail.component';
+import { ColaboratorPageComponent } from './colaborator-page/colaborator-page.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'turmas', component: TurmasPageComponent},
   {path: 'nturma', component: NovaTurmaPageComponent},
   {path: 'users', component: PermissionsComponent},
-  {path: 'permission/:id/:name', component: PermissionsDetailComponent}
+  {path: 'permission/:id/:name', component: PermissionsDetailComponent},
+  {path: 'colaborators', component: ColaboratorPageComponent}
 ];
 
 @NgModule({

@@ -10,8 +10,8 @@ export class LoginComponent implements OnInit {
     submitted = false;
     returnUrl = {
         "admin": "admin",
-        "collaborator": "collaborator",
-        "student": "student"
+        "colaborator": "colaborators",
+        "student": "students"
     };
 
     constructor(

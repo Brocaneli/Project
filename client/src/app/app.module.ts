@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,10 @@ import { TurmasPageComponent } from './turmas-page/turmas-page.component';
 import { NovaTurmaPageComponent } from './nova-turma-page/nova-turma-page.component';
 import { PermissionsComponent } from './permissions/permissions.component';
 import { PermissionsDetailComponent } from './permissions-detail/permissions-detail.component';
+import { ColaboratorPageComponent } from './colaborator-page/colaborator-page.component';
+import { MatExpansionModule, MatInputModule, MatButtonModule, MatExpansionPanel } from '@angular/material'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -22,15 +26,21 @@ import { PermissionsDetailComponent } from './permissions-detail/permissions-det
     TurmasPageComponent,
     NovaTurmaPageComponent,
     PermissionsComponent,
-    PermissionsDetailComponent
+    PermissionsDetailComponent,
+    ColaboratorPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatExpansionModule,
+    MatInputModule,
+    MatButtonModule,
+    BrowserAnimationsModule
   ],
   providers: [HttpClient],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
