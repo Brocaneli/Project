@@ -15,6 +15,7 @@ import { PermissionsDetailComponent } from './permissions-detail/permissions-det
 import { ColaboratorPageComponent } from './colaborator-page/colaborator-page.component';
 import { MatExpansionModule, MatInputModule, MatButtonModule, MatExpansionPanel } from '@angular/material'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StudentsPageComponent } from './students-page/students-page.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NovaTurmaPageComponent,
     PermissionsComponent,
     PermissionsDetailComponent,
-    ColaboratorPageComponent
+    ColaboratorPageComponent,
+    StudentsPageComponent
   ],
   imports: [
     BrowserModule,
