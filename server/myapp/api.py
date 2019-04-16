@@ -2,24 +2,27 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView
 
 from django_filters.rest_framework import DjangoFilterBackend
 
-from .serializers import ListSerializer, CardSerializer
-from .models import List, Card
+from .serializers import CicloSerializer, TurmaSerializer, UserSerializer, AvisoSerializer
+from .models import Ciclo, Turma, User, Aviso
 
-class ListApi(ListAPIView):
-    queryset = List.objects.all()
-    serializer_class = ListSerializer
+class CicloApi(ListAPIView):
+    queryset = Ciclo.objects.all()
+    serializer_class = CicloSerializer
 
-class CardApi(ListAPIView):
-    queryset = Card.objects.all()
-    serializer_class = CardSerializer
+class TurmaApi(ListAPIView):
+    queryset = Turma.objects.all()
+    serializer_class = TurmaSerializer
 
-class ListDetailApi(ListAPIView):
-    queryset = Card.objects.all()
-    serializer_class = CardSerializer
+class UserApi(ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    
+class AvisoApi(ListAPIView):
+    queryset = Aviso.objects.all()
+    serializer_class = AvisoSerializer
+
+class TurmaSearchApi(ListAPIView):
+    queryset = Turma.objects.all()
+    serializer_class = TurmaSerializer
     filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ('list',)
-
-
-class CardDetailApi(RetrieveAPIView):
-    queryset = Card.objects.all()
-    serializer_class = CardSerializer
+    filterset_fields = ('ciclo',)

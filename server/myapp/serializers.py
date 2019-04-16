@@ -1,13 +1,23 @@
 from rest_framework import serializers
 
-from .models import List, Card
+from .models import Ciclo, Turma, User, Aviso
 
-class ListSerializer(serializers.ModelSerializer):
+class CicloSerializer(serializers.ModelSerializer):
     class Meta:
-        model = List
+        model = Ciclo
         fields = '__all__'
 
-class CardSerializer(serializers.ModelSerializer):
+class TurmaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Card
+        model = Turma
+        fields = '__all__'
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'
+
+class AvisoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Aviso
         fields = '__all__'

@@ -1,8 +1,10 @@
 from django.conf.urls import url
-from .api import ListApi, CardApi, ListDetailApi
+from .api import CicloApi, TurmaApi, TurmaSearchApi, UserApi, AvisoApi
 
 urlpatterns = [
-    url(r'^lists$', ListApi.as_view()),
-    url(r'^cards$', CardApi.as_view()),
-    url(r'^list-detail$', ListDetailApi.as_view())
+    url(r'^ciclos$', CicloApi.as_view()),
+    url(r'^turmas$', TurmaApi.as_view()),
+    url(r'^users$', UserApi.as_view()),
+    url(r'^avisos$', AvisoApi.as_view()),
+    url(r'^turma$', TurmaSearchApi.as_view())
 ]
