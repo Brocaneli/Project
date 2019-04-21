@@ -1,10 +1,8 @@
 <h4 class="text"> Turmas Ministradas </h4>
 
 <div class="container">
-    <div class="list-group" *ngFor="let curso of cursos">
   <mat-accordion class="example-headers-align">
-
-    <mat-expansion-panel class="list-group-item list-group-item-action flex-column align-items-start"> 
+    <mat-expansion-panel class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let curso of cursos"> 
       <mat-expansion-panel-header > 
         <mat-panel-title class="cursoTitle"> 
           {{curso.name}}
@@ -14,11 +12,10 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
         <p> Próxima aula: {{curso.nextClass}}</p>
-        <br> <button class="btn btn-primary buttons" type="submit"> Aulas Cadastradas</button> 
-        <button class="btn btn-primary buttons" type="submit"> Lista de Alunos</button>
-        <br> <button class="btn btn-primary buttonChamada"  type="submit"> Realizar Chamada</button>
+        <button class="btn btn-primary but" type="submit"> Aulas Cadastradas</button> 
+        <button class="btn btn-primary but" type="submit"> Lista de Alunos</button>
+        <button class="btn btn-primary but"  type="submit"> Realizar Chamada</button>
     </mat-expansion-panel>
-
   </mat-accordion>
 </div>
 
@@ -27,20 +24,14 @@
 <h4 class="text"> Avisos </h4>
 
 <div class="container">
-
-<div class="list-group" *ngFor="let aviso of avisos">
-
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">{{aviso.title}}</h5>
-      <small class="text-muted">3 days ago</small>
-    </div>
-    <p class="mb-1">{{aviso.description}}</p>
-    <small class="text-muted">{{aviso.author}}</small>
-  </a>
-
+  <div class="list-group" *ngFor="let aviso of avisos">
+    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{aviso.title}}</h5>
+        <small class="text-muted">3 days ago</small>
+      </div>
+      <p class="mb-1">{{aviso.description}}</p>
+      <small class="text-muted">{{aviso.author}}</small>
+    </a>
   </div>
-
-
-
-
+</div>

@@ -16,16 +16,13 @@
   padding-top: 20px;
 }
 
-.buttons{
-  margin: 5px;
-}
-
-.buttonChamada{
+.but{
   align-content: center;
   margin: auto;
   display: flex;
   margin-top: 10px;
 }
+
 
 .example-headers-align .mat-expansion-panel-header-title,
 .example-headers-align .mat-expansion-panel-header-description {
