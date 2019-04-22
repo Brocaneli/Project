@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Ciclo, Turma, User, Aviso, Aula, Presenca, Colaborador, Matricula
+from .models import Ciclo, Turma, User, Aviso, Aula, Presenca, Colaborador, Matricula, Aluno
 
 admin.site.register(Ciclo)
 admin.site.register(Turma)
