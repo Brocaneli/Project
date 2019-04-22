@@ -1,28 +1,42 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView
-
+from rest_framework import viewsets
 from django_filters.rest_framework import DjangoFilterBackend
 
-from .serializers import CicloSerializer, TurmaSerializer, UserSerializer, AvisoSerializer
-from .models import Ciclo, Turma, User, Aviso
+from .serializers import CicloSerializer, TurmaSerializer, UserSerializer, AvisoSerializer, AulaSerializer, PresencaSerializer, AlunoSerializer, ColaboradorSerializer, MatriculaSerializer
+from .models import Ciclo, Turma, User, Aviso, Aula, Presenca, Colaborador, Matricula, Aluno
 
-class CicloApi(ListAPIView):
+class CicloApi(viewsets.ModelViewSet):
     queryset = Ciclo.objects.all()
     serializer_class = CicloSerializer
 
-class TurmaApi(ListAPIView):
+class TurmaApi(viewsets.ModelViewSet):
     queryset = Turma.objects.all()
     serializer_class = TurmaSerializer
 
-class UserApi(ListAPIView):
+class UserApi(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     
-class AvisoApi(ListAPIView):
+class AvisoApi(viewsets.ModelViewSet):
     queryset = Aviso.objects.all()
     serializer_class = AvisoSerializer
 
-class TurmaSearchApi(ListAPIView):
-    queryset = Turma.objects.all()
-    serializer_class = TurmaSerializer
-    filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ('ciclo',)
+class AulaApi(viewsets.ModelViewSet):
+    queryset = Aula.objects.all()
+    serializer_class = AulaSerializer
+
+class PresencaApi(viewsets.ModelViewSet):
+    queryset = Presenca.objects.all()
+    serializer_class = PresencaSerializer
+
+class ColaboradorApi(viewsets.ModelViewSet):
+    queryset = Colaborador.objects.all()
+    serializer_class = ColaboradorSerializer
+
+class AlunoApi(viewsets.ModelViewSet):
+    queryset = Aluno.objects.all()
+    serializer_class = AlunoSerializer
+
+class MatriculaApi(viewsets.ModelViewSet):
+    queryset = Matricula.objects.all()
+    serializer_class = MatriculaSerializer
