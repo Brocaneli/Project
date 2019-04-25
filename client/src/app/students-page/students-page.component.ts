@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-student-page',
-  templateUrl: './student-page.component.html',
-  styleUrls: ['./student-page.component.css']
+  selector: 'app-students-page',
+  templateUrl: './students-page.component.html',
+  styleUrls: ['./students-page.component.css']
 })
-export class StudentPageComponent implements OnInit {
+export class StudentsPageComponent implements OnInit {
 
   add_class(){
   }

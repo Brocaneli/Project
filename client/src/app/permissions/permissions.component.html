@@ -1,7 +1,10 @@
-<h2>Usuários</h2>
-<div class="input-group mb-3">
-  <input id="search" type="text" class="form-control" placeholder="Buscar pessoa">
-</div>
-<div class="list-group">
-  <button [routerLink]="['/permission', person.id, person.name]" type="button" class="list-group-item list-group-item-action" *ngFor="let person of people">{{person.name}}</button>
+<div class="container">
+  <h2>Usuários</h2>
+  <div class="input-group mb-3">
+    <input id="search" type="text" class="form-control" placeholder="Buscar pessoa">
+  </div>
+  <div class="list-group">
+    <button [routerLink]="['/permission', person.id, person.name]" type="button"
+      class="list-group-item list-group-item-action" *ngFor="let person of people">{{person.name}}</button>
+  </div>
 </div>
