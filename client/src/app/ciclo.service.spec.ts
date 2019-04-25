@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ListApiService } from './list-api.service';
+import { CicloService } from './ciclo.service';
 
-describe('ListApiService', () => {
+describe('CicloService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: ListApiService = TestBed.get(ListApiService);
+    const service: CicloService = TestBed.get(CicloService);
     expect(service).toBeTruthy();
   });
 });
