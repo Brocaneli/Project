@@ -1,0 +1,29 @@
+<div class="container">
+  <h3 class="col-sm-6 offset-sm-5">Ciclos</h3>
+  <hr class="my-4">
+
+  <div id="accordion" class="col-sm-6 offset-sm-5" *ngFor="let ciclo of ciclos">
+    <div class="card">
+      <div class="card-header">
+        <button type="button" class="btn btn-link">
+          <h4 class="mb-0">{{ciclo.name}}</h4>
+        </button>
+      </div>
+
+      <div class="card-body">
+        Criado em: {{ciclo.created_at | date: "dd/MM/yyyy"}}
+
+        <a (click)="deleteCiclo(ciclo.id)"><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button></a>
+      </div>
+
+    </div>
+    <br>
+  </div>
+
+  <div class="row">
+    <div class="btn-circle-div">
+      <button [routerLink]="['/nciclo']" type="button" class="btn btn-circle btn-xl"><i
+          class="glyphicon glyphicon-plus"></i></button>
+    </div>
+  </div>
+</div>

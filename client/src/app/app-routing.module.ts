@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
-import { TurmasPageComponent } from './turmas-page/turmas-page.component';
-import { NovaTurmaPageComponent } from './nova-turma-page/nova-turma-page.component';
+import { CiclosPageComponent } from './ciclos-page/ciclos-page.component';
+import { NovoCicloPageComponent } from './novo-ciclo-page/novo-ciclo-page.component';
 import { PermissionsComponent } from './permissions/permissions.component';
 import { PermissionsDetailComponent } from './permissions-detail/permissions-detail.component';
 import { ColaboratorPageComponent } from './colaborator-page/colaborator-page.component';
@@ -20,8 +20,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'admin', component: AdminPageComponent},
-  {path: 'turmas', component: TurmasPageComponent},
-  {path: 'nturma', component: NovaTurmaPageComponent},
+  {path: 'ciclos', component: CiclosPageComponent},
+  {path: 'nciclo', component: NovoCicloPageComponent},
   {path: 'users', component: PermissionsComponent},
   {path: 'permission/:id/:name', component: PermissionsDetailComponent},
   {path: 'colaborators', component: ColaboratorPageComponent},

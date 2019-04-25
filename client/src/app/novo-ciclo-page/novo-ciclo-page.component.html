@@ -1,14 +1,14 @@
 <div class="container">
-  <h3>Criar nova turma</h3>
+  <h3>Criar novo ciclo</h3>
   <hr class="my-4">
 
-  <form [formGroup]="turmaForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="cicloForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <label for="name">Nome da Turma</label>
+      <label for="name">Nome da Ciclo</label>
       <input type="text" formControlName="name" class="form-control"
         [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
       <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-        <div *ngIf="f.name.errors.required">O nome da turma é obrigatório</div>
+        <div *ngIf="f.name.errors.required">O nome da ciclo é obrigatório</div>
       </div>
     </div>
 

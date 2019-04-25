@@ -8,8 +8,8 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
-import { TurmasPageComponent } from './turmas-page/turmas-page.component';
-import { NovaTurmaPageComponent } from './nova-turma-page/nova-turma-page.component';
+import { CiclosPageComponent } from './ciclos-page/ciclos-page.component';
+import { NovoCicloPageComponent } from './novo-ciclo-page/novo-ciclo-page.component';
 import { PermissionsComponent } from './permissions/permissions.component';
 import { PermissionsDetailComponent } from './permissions-detail/permissions-detail.component';
 import { ColaboratorPageComponent } from './colaborator-page/colaborator-page.component';
@@ -24,8 +24,8 @@ import { StudentsPageComponent } from './students-page/students-page.component';
     LoginComponent,
     RegisterComponent,
     AdminPageComponent,
-    TurmasPageComponent,
-    NovaTurmaPageComponent,
+    CiclosPageComponent,
+    NovoCicloPageComponent,
     PermissionsComponent,
     PermissionsDetailComponent,
     ColaboratorPageComponent,
