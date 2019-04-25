@@ -16,6 +16,7 @@ import { ColaboratorPageComponent } from './colaborator-page/colaborator-page.co
 import { MatExpansionModule, MatInputModule, MatButtonModule, MatExpansionPanel } from '@angular/material'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentsPageComponent } from './students-page/students-page.component';
+import { CursosComponent } from './cursos/cursos.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { StudentsPageComponent } from './students-page/students-page.component';
     PermissionsComponent,
     PermissionsDetailComponent,
     ColaboratorPageComponent,
-    StudentsPageComponent
+    StudentsPageComponent,
+    CursosComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,7 @@ import { StudentsPageComponent } from './students-page/students-page.component';
     MatExpansionModule,
     MatInputModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent],

@@ -9,6 +9,7 @@ import { PermissionsComponent } from './permissions/permissions.component';
 import { PermissionsDetailComponent } from './permissions-detail/permissions-detail.component';
 import { ColaboratorPageComponent } from './colaborator-page/colaborator-page.component';
 import { StudentsPageComponent } from './students-page/students-page.component';
+import { CursosComponent } from './cursos/cursos.component';
 
 const routes: Routes = [
   {
@@ -25,7 +26,8 @@ const routes: Routes = [
   {path: 'users', component: PermissionsComponent},
   {path: 'permission/:id/:name', component: PermissionsDetailComponent},
   {path: 'colaborators', component: ColaboratorPageComponent},
-  {path: 'students', component: StudentsPageComponent}
+  {path: 'students', component: StudentsPageComponent},
+  {path: 'cursos', component: CursosComponent}
 ];
 
 @NgModule({
