@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TurmasComponent implements OnInit {
 
-  cursos = [{nome: "Ciclo 01", desc1: "01 - Radiações e Vibrações"},
+  turmas = [{nome: "Ciclo 01", desc1: "01 - Radiações e Vibrações"},
 {nome: "Ciclo 2"},
 {nome: "Ciclo 3"},
 {nome: "Assistência Espiritual"},
