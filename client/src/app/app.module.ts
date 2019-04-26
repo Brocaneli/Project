@@ -16,7 +16,7 @@ import { ColaboratorPageComponent } from './colaborator-page/colaborator-page.co
 import { MatExpansionModule, MatInputModule, MatButtonModule, MatExpansionPanel } from '@angular/material'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentsPageComponent } from './students-page/students-page.component';
-import { CursosComponent } from './cursos/cursos.component';
+import { TurmasComponent } from './turmas/turmas.component';
 
 
 @NgModule({
@@ -31,7 +31,7 @@ import { CursosComponent } from './cursos/cursos.component';
     PermissionsDetailComponent,
     ColaboratorPageComponent,
     StudentsPageComponent,
-    CursosComponent,
+    TurmasComponent,
   ],
   imports: [
     BrowserModule,
