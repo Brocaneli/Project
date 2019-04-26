@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-cursos',
+  selector: 'app-turmas',
   templateUrl: './turmas.component.html',
   styleUrls: ['./turmas.component.css']
 })
