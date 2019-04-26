@@ -1,6 +1,6 @@
 <div class="container">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <h3 class="col-sm-6 offset-sm-5">Cursos</h3>
+    <h3 class="col-sm-6 offset-sm-5">Turmas</h3>
     <hr class="my-4">
   
     <div id="accordion"  class="col-sm-6 offset-sm-5" *ngFor="let course of cursos">
@@ -26,12 +26,28 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Adicionando novo Curso</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Adicionando nova Turma</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
+            <div class="form-group">
+             <label for="exampleFormControlInput1">Nome da Turma</label>
+             <input type="input" class="form-control" id="exampleFormControlInput1" placeholder="Turma 1">
+            </div>
+
+           <div class="input-group mb-3">
+             <div class="input-group-prepend">
+               <label class="input-group-text" for="inputGroupSelect01">Ciclos</label>
+               </div>
+             <select class="custom-select" id="inputGroupSelect01">
+               <option selected>Test</option>
+               <option value="1">One</option>
+               <option value="2">Two</option>
+               <option value="3">Three</option>
+             </select>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
