@@ -27,7 +27,7 @@ const routes: Routes = [
   {path: 'permission/:id/:name', component: PermissionsDetailComponent},
   {path: 'colaborators', component: ColaboratorPageComponent},
   {path: 'students', component: StudentsPageComponent},
-  {path: 'cursos', component: TurmasComponent}
+  {path: 'turmas', component: TurmasComponent}
 ];
 
 @NgModule({
