@@ -66,8 +66,18 @@ class Colaborador(models.Model):
     def __str__(self):
         return "Colaborador: User={}, Turma={}".format(self.user_id, self.turma_id)
 
+class Aluno(models.Model):
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    turma_id = models.ForeignKey(Turma, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "Aluno: User={}, Turma={}".format(self.user_id, self.turma_id)
+
 class Matricula(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     turma_id = models.ForeignKey(Turma, on_delete=models.CASCADE)
     nota = models.IntegerField()
     approved = models.BooleanField(default=False)
+
+    def __str__(self):
+        return "Matricula: User={}, Turma={}, Nota={}, Approved={}".format(self.user_id, self.turma_id, self.nota, self.approved)

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TurmasPageComponent } from './turmas-page.component';
+import { NovoCicloPageComponent } from './novo-ciclo-page.component';
 
-describe('TurmasPageComponent', () => {
-  let component: TurmasPageComponent;
-  let fixture: ComponentFixture<TurmasPageComponent>;
+describe('NovoCicloPageComponent', () => {
+  let component: NovoCicloPageComponent;
+  let fixture: ComponentFixture<NovoCicloPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TurmasPageComponent ]
+      declarations: [ NovoCicloPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TurmasPageComponent);
+    fixture = TestBed.createComponent(NovoCicloPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

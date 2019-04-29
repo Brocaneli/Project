@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NovaTurmaPageComponent } from './nova-turma-page.component';
+import { CiclosPageComponent } from './ciclos-page.component';
 
-describe('NovaTurmaPageComponent', () => {
-  let component: NovaTurmaPageComponent;
-  let fixture: ComponentFixture<NovaTurmaPageComponent>;
+describe('CiclosPageComponent', () => {
+  let component: CiclosPageComponent;
+  let fixture: ComponentFixture<CiclosPageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NovaTurmaPageComponent ]
+      declarations: [ CiclosPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NovaTurmaPageComponent);
+    fixture = TestBed.createComponent(CiclosPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

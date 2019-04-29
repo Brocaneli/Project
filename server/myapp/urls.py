@@ -1,10 +1,18 @@
-from django.conf.urls import url
-from .api import CicloApi, TurmaApi, TurmaSearchApi, UserApi, AvisoApi
+from django.urls import include, path
+from .api import CicloApi, TurmaApi, UserApi, AvisoApi, AulaApi, PresencaApi, ColaboradorApi, AlunoApi, MatriculaApi
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'ciclos', CicloApi),
+router.register(r'turmas', TurmaApi),
+router.register(r'users', UserApi),
+router.register(r'avisos', AvisoApi),
+router.register(r'aulas', AulaApi),
+router.register(r'presencas', PresencaApi),
+router.register(r'colaboradores', ColaboradorApi),
+router.register(r'alunos', AlunoApi),
+router.register(r'matriculas', MatriculaApi)
 
 urlpatterns = [
-    url(r'^ciclos$', CicloApi.as_view()),
-    url(r'^turmas$', TurmaApi.as_view()),
-    url(r'^users$', UserApi.as_view()),
-    url(r'^avisos$', AvisoApi.as_view()),
-    url(r'^turma$', TurmaSearchApi.as_view())
+    path('', include(router.urls))
 ]
