@@ -1,19 +1,21 @@
-<h3>Cursos</h3>
- <ul class="list-group list-group-flush">
-  <li *ngFor= "let curso of cursos">
-    <a class="list-group-item">{{curso.name}}</a>
-  </li>
- </ul>
-<button (click)="add_class()" class="btn btn-primary">+</button>
+<div class="container">
+  <h3>Turmas</h3>
+  <ul class="list-group list-group-flush">
+    <li *ngFor="let turma of turmas">
+      <a class="list-group-item">{{turma.name}}</a>
+    </li>
+  </ul>
+  <br />
   <h3>Avisos</h3>
   <div class="Avisos"></div>
-    <div *ngFor= "let aviso of avisos">
-        <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1">{{aviso.name}}</h5>
-              <small class="text-muted">{{aviso.date}}</small>
-            </div>
-            <p class="mb-1">{{aviso.comment}}</p>
-            <small class="text-muted">{{aviso.user}}</small>
-        </a>
-      </div> 
+  <div *ngFor="let aviso of avisos">
+    <a href="#" class="list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{aviso.title}}</h5>
+        <small class="text-muted">{{aviso.created_at | date: "dd/MM/yyyy"}}</small>
+      </div>
+      <p class="mb-1">{{aviso.description}}</p>
+      <small class="text-muted">Responsável: {{aviso.user.name}}</small>
+    </a>
+  </div>
+</div>

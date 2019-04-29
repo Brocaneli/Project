@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AvisoServiceService } from '../aviso-service.service';
 
 @Component({
   selector: 'app-students-page',
@@ -7,16 +8,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class StudentsPageComponent implements OnInit {
 
-  private avisos = [
-    { name: "Aviso 1", date: "12/01/18", user: "julia", comment: "hello world!" },
-    { name: "Aviso 2", date: "12/01/18", user: "julia", comment: "hello world!" },
-    { name: "Aviso 3", date: "12/01/18", user: "julia", comment: "hello world!" },
-    { name: "Aviso 4", date: "12/01/18", user: "julia", comment: "hello world!" }
-  ]
+  private avisos: any;
 
-  constructor() { }
+  constructor(private avisoService: AvisoServiceService) { }
 
   ngOnInit() {
+    this.avisoService.getAvisos().subscribe(data => {
+      this.avisos = data;
+    });
   }
 
 }
