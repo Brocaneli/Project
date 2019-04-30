@@ -28,10 +28,10 @@
   <h2>Permissões</h2>
   <div class="input-group mb-3">
     <select class="form-control">
-      <option *ngIf="user.role == 'STUDENT'" selected>Aluno</option>
-      <option *ngIf="user.role != 'STUDENT'" value="1">Aluno</option>
-      <option *ngIf="user.role == 'COLLABORATOR'" selected>Colaborador</option>
-      <option *ngIf="user.role != 'COLLABORATOR'" value="2">Colaborador</option>
+      <option *ngIf="user.role == 'ALUNO'" selected>Aluno</option>
+      <option *ngIf="user.role != 'ALUNO'" value="1">Aluno</option>
+      <option *ngIf="user.role == 'COLAB'" selected>Colaborador</option>
+      <option *ngIf="user.role != 'COLAB'" value="2">Colaborador</option>
       <option *ngIf="user.role == 'ADMIN'" selected>Administrador</option>
       <option *ngIf="user.role != 'ADMIN'" value="3">Administrador</option>
     </select>
