@@ -32,8 +32,8 @@ class User(models.Model):
 class Aviso(models.Model):
     title = models.CharField(max_length=30)
     description = models.CharField(max_length=100)
-    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
-    turma_id = models.ForeignKey(Turma, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
     created_at = models.DateTimeField(default=datetime.datetime.today)
 
     def __str__(self):

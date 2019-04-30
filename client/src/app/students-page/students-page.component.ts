@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AvisoServiceService } from '../aviso-service.service';
 
 @Component({
   selector: 'app-students-page',
@@ -7,26 +8,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class StudentsPageComponent implements OnInit {
 
-  add_class(){
-  }
+  private avisos: any;
 
-  cursos = [
-    {name : "Aula 1"},
-    {name : "Aula 2"},
-    {name : "Aula 3"},
-    {name : "Aula 4"}
-  ]
-
-  avisos = [
-    {name : "Aviso 1"},
-    {name : "Aviso 2"},
-    {name : "Aviso 3"},
-    {name : "Aviso 4"}
-  ]
-
-  constructor() { }
+  constructor(private avisoService: AvisoServiceService) { }
 
   ngOnInit() {
+    this.avisoService.getAvisos().subscribe(data => {
+      this.avisos = data;
+    });
   }
 
 }
