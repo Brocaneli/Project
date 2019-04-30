@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: 'ciclos', component: CiclosPageComponent},
   {path: 'nciclo', component: NovoCicloPageComponent},
   {path: 'users', component: PermissionsComponent},
-  {path: 'permission/:id/:name', component: PermissionsDetailComponent},
+  {path: 'users/:id', component: PermissionsDetailComponent},
   {path: 'colaborators', component: ColaboratorPageComponent},
   {path: 'students', component: StudentsPageComponent},
   {path: 'attendance', component: AttendanceComponent}

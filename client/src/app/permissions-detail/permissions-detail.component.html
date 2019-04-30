@@ -1,15 +1,39 @@
 <div class="container">
-  <h2>{{ name }}</h2>
-  <h4>Cursos matriculados</h4>
+
+  <h1>{{ user.name }}</h1>
+  <h4>{{ user.email }}</h4>
+  <h4>{{ user.phone }}</h4>
+
+
+
+  <!-- TO DO - get all courses, registration and responsible classes from Database -->
+
+  <h2>Cursos matriculados</h2>
   <div class="list-group">
     <li class="list-group-item">Ciclo Básico 1 - Domingo</li>
   </div>
-  <h4>Permissões</h4>
+
+  <h2>Matrículas Pendentes</h2>
+  <div class="list-group">
+      <li class="list-group-item">Ciclo Básico 1 - Domingo</li>
+    </div>
+
+
+  <h2>Turmas ministradas</h2>
+  <div class="list-group">
+      <li class="list-group-item">Ciclo Básico 1 - Domingo</li>
+    </div>
+
+
+  <h2>Permissões</h2>
   <div class="input-group mb-3">
     <select class="form-control">
-      <option selected>Aluno</option>
-      <option value="2">Colaborador</option>
-      <option value="3">Administrador</option>
+      <option *ngIf="user.role == 'STUDENT'" selected>Aluno</option>
+      <option *ngIf="user.role != 'STUDENT'" value="1">Aluno</option>
+      <option *ngIf="user.role == 'COLLABORATOR'" selected>Colaborador</option>
+      <option *ngIf="user.role != 'COLLABORATOR'" value="2">Colaborador</option>
+      <option *ngIf="user.role == 'ADMIN'" selected>Administrador</option>
+      <option *ngIf="user.role != 'ADMIN'" value="3">Administrador</option>
     </select>
   </div>
   <div class="row">
