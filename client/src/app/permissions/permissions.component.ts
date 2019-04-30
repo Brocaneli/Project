@@ -1,4 +1,5 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-permissions',
@@ -7,17 +8,16 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 })
 export class PermissionsComponent implements OnInit, OnChanges {
 
-  people = [{id:1, name: "Marcus"},
-             {id:2, name: "Julia"}, 
-             {id:3, name: "Marilia"}, 
-             {id:4, name: "Matheus"}, 
-             {id:5, name: "Pedro"}]
+  private users: any;
 
 
-  constructor() { }
+  constructor(private usersService: UsersService) { }
 
   ngOnInit() {
-    this.people.sort((a, b) => (a.name > b.name) ? 1 : -1)
+    this.usersService.getAllUsers().subscribe((data) => {
+      this.users = data;
+      this.users.sort((a, b) => (a.name > b.name) ? 1 : -1);
+    });
   }
 
   ngOnChanges() {
