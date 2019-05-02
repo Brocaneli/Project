@@ -4,7 +4,7 @@
     <input id="search" type="text" class="form-control" placeholder="Buscar pessoa">
   </div>
   <div class="list-group">
-    <button [routerLink]="['/permission', person.id, person.name]" type="button"
-      class="list-group-item list-group-item-action" *ngFor="let person of people">{{person.name}}</button>
+    <button [routerLink]="['/users', user.id]" type="button"
+      class="list-group-item list-group-item-action" *ngFor="let user of users">{{user.name}}</button>
   </div>
 </div>
