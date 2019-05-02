@@ -9,16 +9,18 @@ import { UsersService } from '../users.service';
 })
 export class PermissionsDetailComponent implements OnInit {
 
-  id: any;
-  user: any;
+  private id: any;
+  private user: any;
 
-  constructor(private _Activatedroute:ActivatedRoute, private usersService: UsersService) { }
+  constructor(private activatedRoute: ActivatedRoute, private usersService: UsersService) { }
 
   ngOnInit() {
-    this._Activatedroute.params.subscribe(params => { this.id = params['id']; })
+    this.activatedRoute.params.subscribe(params => { 
+      this.id = params['id'];
+    })
+
     this.usersService.getUser(this.id).subscribe((data) => {
       this.user = data;
-      console.log(this.user)
     });
   }
 

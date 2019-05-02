@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Md5} from 'ts-md5/dist/md5';
-import { UserService } from '../user.service';
+import { UsersService } from '../users.service';
 
 @Component({templateUrl: 'register.component.html'})
 export class RegisterComponent implements OnInit {
@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
-        private userService: UserService
+        private usersService: UsersService
     ) { }
 
     ngOnInit() {
@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
         this.f.password.setValue(Md5.hashStr(this.f.password.value).toString());
 
         this.loading = true;
-        this.userService.createUser(this.registerForm.getRawValue()).subscribe(
+        this.usersService.createUser(this.registerForm.getRawValue()).subscribe(
             (data) => {
                 this.router.navigate(['login']);
             }, 

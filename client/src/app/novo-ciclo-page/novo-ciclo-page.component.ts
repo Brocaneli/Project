@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Route } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CicloService } from '../ciclo.service';
+import { CiclosService } from '../ciclos.service';
 
 @Component({
   selector: 'app-novo-ciclo-page',
@@ -15,7 +15,7 @@ export class NovoCicloPageComponent implements OnInit {
   loading = false;
   submitted = false;
 
-  constructor(private fb: FormBuilder, private router: Router, private cicloService: CicloService) { }
+  constructor(private fb: FormBuilder, private router: Router, private ciclosService: CiclosService) { }
 
   ngOnInit() {
     this.cicloForm = this.fb.group({
@@ -35,7 +35,7 @@ export class NovoCicloPageComponent implements OnInit {
       return;
     }
 
-    this.cicloService.createCiclo(this.cicloForm.getRawValue()).subscribe(data => {
+    this.ciclosService.createCiclo(this.cicloForm.getRawValue()).subscribe(data => {
       this.router.navigate(['ciclos']);
     });
   }

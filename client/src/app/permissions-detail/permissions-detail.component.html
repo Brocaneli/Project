@@ -1,29 +1,27 @@
-<div class="container">
+<div *ngIf="user" class="container">
 
   <h1>{{ user.name }}</h1>
   <h4>{{ user.email }}</h4>
   <h4>{{ user.phone }}</h4>
 
-
-
   <!-- TO DO - get all courses, registration and responsible classes from Database -->
 
-  <h2>Cursos matriculados</h2>
+  <h2>Turmas matriculados</h2>
   <div class="list-group">
     <li class="list-group-item">Ciclo Básico 1 - Domingo</li>
   </div>
 
   <h2>Matrículas Pendentes</h2>
   <div class="list-group">
+    <li class="list-group-item">Ciclo Básico 1 - Domingo</li>
+  </div>
+
+  <div *ngIf="user.role != 'ALUNO'">
+    <h2>Turmas ministradas</h2>
+    <div class="list-group">
       <li class="list-group-item">Ciclo Básico 1 - Domingo</li>
     </div>
-
-
-  <h2>Turmas ministradas</h2>
-  <div class="list-group">
-      <li class="list-group-item">Ciclo Básico 1 - Domingo</li>
-    </div>
-
+  </div>
 
   <h2>Permissões</h2>
   <div class="input-group mb-3">

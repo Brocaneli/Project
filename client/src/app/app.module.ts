@@ -13,7 +13,7 @@ import { NovoCicloPageComponent } from './novo-ciclo-page/novo-ciclo-page.compon
 import { PermissionsComponent } from './permissions/permissions.component';
 import { PermissionsDetailComponent } from './permissions-detail/permissions-detail.component';
 import { ColaboratorPageComponent } from './colaborator-page/colaborator-page.component';
-import { MatExpansionModule, MatInputModule, MatButtonModule, MatExpansionPanel } from '@angular/material'
+import { MatExpansionModule, MatInputModule, MatButtonModule } from '@angular/material'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentsPageComponent } from './students-page/students-page.component';
 import { AttendanceComponent } from './attendance/attendance.component';
