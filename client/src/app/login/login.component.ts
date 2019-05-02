@@ -1,24 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { AuthenticationService } from '../authentication.service';
+import { ConstService } from '../const.service';
 
-@Component({templateUrl: 'login.component.html'})
+@Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     loading = false;
     submitted = false;
-    returnUrl = {
-        "admin": "admin",
-        "colaborator": "colaborators",
-        "student": "students"
-    };
+    loginError = false;
 
     constructor(
         private formBuilder: FormBuilder,
-        private route: ActivatedRoute,
-        private router: Router
-    ) { }
+        private constService: ConstService,
+        private router: Router,
+        private authenticationService: AuthenticationService
+    ) { 
+        // redirect to home if already logged in
+        let user = this.authenticationService.currentUserValue;
+        if (user) { 
+            this.router.navigate([this.constService.returnUrl[user.role]]);
+        }
+    }
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
@@ -40,6 +44,15 @@ export class LoginComponent implements OnInit {
 
         this.loading = true;
 
-        this.router.navigate([this.returnUrl[this.loginForm.controls.email.value]]);
+        this.authenticationService.login(this.f.email.value, this.f.password.value).then(
+            data => {
+                if (data) {
+                    let user: any = data;
+                    this.router.navigate([this.constService.returnUrl[user.role]]);
+                } else {
+                    this.loginError = true;
+                    this.loading = false;
+                }   
+            });
     }
 }

@@ -11,12 +11,12 @@ import { CicloService } from '../ciclo.service';
 })
 export class NovoCicloPageComponent implements OnInit {
 
-  cicloForm: FormGroup;    
+  cicloForm: FormGroup;
   loading = false;
   submitted = false;
 
   constructor(private fb: FormBuilder, private router: Router, private cicloService: CicloService) { }
-  
+
   ngOnInit() {
     this.cicloForm = this.fb.group({
       name: ['', Validators.required]
@@ -35,11 +35,8 @@ export class NovoCicloPageComponent implements OnInit {
       return;
     }
 
-    console.log(this.cicloForm.getRawValue());
     this.cicloService.createCiclo(this.cicloForm.getRawValue()).subscribe(data => {
-      // ciclo created
+      this.router.navigate(['ciclos']);
     });
-
-    this.router.navigate(['ciclos']);
   }
 }
