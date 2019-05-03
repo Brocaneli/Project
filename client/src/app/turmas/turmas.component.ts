@@ -6,7 +6,7 @@ import { TurmasService } from '../turmas.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-cursos',
+  selector: 'app-turmas',
   templateUrl: './turmas.component.html',
   styleUrls: ['./turmas.component.css']
 })
@@ -15,14 +15,6 @@ export class TurmasComponent implements OnInit {
   turmaForm: FormGroup;
   private turmas: any;
   private ciclos: any;
-
-
-
-  cursos = [{ nome: "Ciclo 01", desc1: "01 - Radiações e Vibrações" },
-  { nome: "Ciclo 2" },
-  { nome: "Ciclo 3" },
-  { nome: "Assistência Espiritual" },
-  { nome: "Mocidade Espírita" }];
 
   constructor(private router: Router, private cicloService: CiclosService, private fb: FormBuilder, private turmaService: TurmasService) { }
 

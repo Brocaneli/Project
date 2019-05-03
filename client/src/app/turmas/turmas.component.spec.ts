@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TurmasComponent } from './turmas.component';
 
-describe('CursosComponent', () => {
+describe('TurmasComponent', () => {
   let component: TurmasComponent;
   let fixture: ComponentFixture<TurmasComponent>;
 
