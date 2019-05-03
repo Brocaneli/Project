@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router, ActivatedRoute } from '@angular/router';
-import { CicloService } from '../ciclo.service';
+import { CiclosService } from '../ciclos.service'
 import { TurmasService } from '../turmas.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -24,7 +24,7 @@ export class TurmasComponent implements OnInit {
   { nome: "Assistência Espiritual" },
   { nome: "Mocidade Espírita" }];
 
-  constructor(private router: Router, private cicloService: CicloService, private fb: FormBuilder, private turmaService: TurmasService) { }
+  constructor(private router: Router, private cicloService: CiclosService, private fb: FormBuilder, private turmaService: TurmasService) { }
 
   ngOnInit() {
 

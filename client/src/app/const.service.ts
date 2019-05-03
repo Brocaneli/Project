@@ -6,6 +6,12 @@ import { Injectable } from '@angular/core';
 export class ConstService {
 
   API_URI = 'api';
-  
+
+  returnUrl = {
+    "ADMIN": "admin",
+    "COLAB": "colaborators",
+    "ALUNO": "students"
+  };
+
   constructor() { }
 }

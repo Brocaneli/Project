@@ -1,15 +1,37 @@
-<div class="container">
-  <h2>{{ name }}</h2>
-  <h4>Cursos matriculados</h4>
+<div *ngIf="user" class="container">
+
+  <h1>{{ user.name }}</h1>
+  <h4>{{ user.email }}</h4>
+  <h4>{{ user.phone }}</h4>
+
+  <!-- TO DO - get all courses, registration and responsible classes from Database -->
+
+  <h2>Turmas matriculados</h2>
   <div class="list-group">
     <li class="list-group-item">Ciclo Básico 1 - Domingo</li>
   </div>
-  <h4>Permissões</h4>
+
+  <h2>Matrículas Pendentes</h2>
+  <div class="list-group">
+    <li class="list-group-item">Ciclo Básico 1 - Domingo</li>
+  </div>
+
+  <div *ngIf="user.role != 'ALUNO'">
+    <h2>Turmas ministradas</h2>
+    <div class="list-group">
+      <li class="list-group-item">Ciclo Básico 1 - Domingo</li>
+    </div>
+  </div>
+
+  <h2>Permissões</h2>
   <div class="input-group mb-3">
     <select class="form-control">
-      <option selected>Aluno</option>
-      <option value="2">Colaborador</option>
-      <option value="3">Administrador</option>
+      <option *ngIf="user.role == 'ALUNO'" selected>Aluno</option>
+      <option *ngIf="user.role != 'ALUNO'" value="1">Aluno</option>
+      <option *ngIf="user.role == 'COLAB'" selected>Colaborador</option>
+      <option *ngIf="user.role != 'COLAB'" value="2">Colaborador</option>
+      <option *ngIf="user.role == 'ADMIN'" selected>Administrador</option>
+      <option *ngIf="user.role != 'ADMIN'" value="3">Administrador</option>
     </select>
   </div>
   <div class="row">

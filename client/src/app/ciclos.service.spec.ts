@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CicloService } from './ciclo.service';
+import { CiclosService } from './ciclos.service';
 
-describe('CicloService', () => {
+describe('CiclosService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: CicloService = TestBed.get(CicloService);
+    const service: CiclosService = TestBed.get(CiclosService);
     expect(service).toBeTruthy();
   });
 });

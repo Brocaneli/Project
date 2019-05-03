@@ -5,7 +5,7 @@ import { ConstService } from './const.service';
 @Injectable({
   providedIn: 'root'
 })
-export class CicloService {
+export class CiclosService {
 
   private postOptions = {
     headers: new HttpHeaders({
