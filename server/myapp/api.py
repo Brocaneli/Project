@@ -13,7 +13,7 @@ class TurmaApi(viewsets.ModelViewSet):
     queryset = Turma.objects.all()
     serializer_class = TurmaSerializer
     filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ('ciclo_id', )
+    filterset_fields = ('ciclo', )
 
 class UserApi(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -35,22 +35,22 @@ class PresencaApi(viewsets.ModelViewSet):
     queryset = Presenca.objects.all()
     serializer_class = PresencaSerializer
     filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ('user_id', 'aula_id', )
+    filterset_fields = ('user', 'aula')
 
 class ColaboradorApi(viewsets.ModelViewSet):
     queryset = Colaborador.objects.all()
     serializer_class = ColaboradorSerializer
     filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ('user_id', 'turma_id', )
+    filterset_fields = ('user', 'turma')
 
 class AlunoApi(viewsets.ModelViewSet):
     queryset = Aluno.objects.all()
     serializer_class = AlunoSerializer
     filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ('user_id', 'turma_id', )
+    filterset_fields = ('user', 'turma')
 
 class MatriculaApi(viewsets.ModelViewSet):
     queryset = Matricula.objects.all()
     serializer_class = MatriculaSerializer
     filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ('user_id', 'turma_id', )
+    filterset_fields = ('user', 'turma')
