@@ -22,7 +22,7 @@ class AvisoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Aviso
         fields = '__all__'
-        depth = 1
+        depth = 2
 
 class AulaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -32,19 +32,23 @@ class AulaSerializer(serializers.ModelSerializer):
 class PresencaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Presenca
-        fields = '__all__'
+        fields = ('aula', 'user', 'presences', 'is_replacement')
+        depth = 1
 
 class ColaboradorSerializer(serializers.ModelSerializer):
     class Meta:
         model = Colaborador
-        fields = '__all__'
+        fields = ('user', 'turma')
+        depth = 2
 
 class AlunoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Aluno
-        fields = '__all__'
+        fields = ('user', 'turma')
+        depth = 2
 
 class MatriculaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Matricula
-        fields = '__all__'
+        fields = ('user', 'turma')
+        depth = 2
