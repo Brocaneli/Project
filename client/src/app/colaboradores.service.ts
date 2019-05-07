@@ -34,4 +34,8 @@ export class ColaboradoresService {
   deleteColaborador(colaboradorId: number) {
     return this.httpClient.delete(`${this.constService.API_URI}/colaboradores/${colaboradorId}/`)
   }
+
+  getAllClassFromCollaborator(user_id: any) {
+    return this.httpClient.get(`${this.constService.API_URI}/colaboradores/?user=${user_id}`)
+  }
 }
