@@ -34,4 +34,12 @@ export class AlunosService {
   deleteAluno(alunoId: number) {
     return this.httpClient.delete(`${this.constService.API_URI}/alunos/${alunoId}/`)
   }
+
+  getAllClassFromAluno(user_id: any) {
+    return this.httpClient.get(`${this.constService.API_URI}/alunos/?user=${user_id}`)
+  }
+
+  getAllAlunoFromClass(turma_id: any) {
+    return this.httpClient.get(`${this.constService.API_URI}/alunos/?user=${turma_id}`)
+  }
 }
