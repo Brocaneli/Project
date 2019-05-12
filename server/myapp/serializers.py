@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Ciclo, Turma, User, Aviso, Aula, Presenca, Colaborador, Matricula, Aluno
+from .models import Ciclo, Turma, User, Aviso, Aula, Presenca, Colaborador, Matricula
 
 class CicloSerializer(serializers.ModelSerializer):
     class Meta:
@@ -32,7 +32,7 @@ class AulaSerializer(serializers.ModelSerializer):
 class PresencaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Presenca
-        fields = ('aula', 'user', 'presences', 'is_replacement')
+        fields = ('aula', 'user', 'presence', 'is_replacement')
         depth = 1
 
 class ColaboradorSerializer(serializers.ModelSerializer):
@@ -41,14 +41,8 @@ class ColaboradorSerializer(serializers.ModelSerializer):
         fields = ('user', 'turma')
         depth = 2
 
-class AlunoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Aluno
-        fields = ('user', 'turma')
-        depth = 2
-
 class MatriculaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Matricula
-        fields = ('user', 'turma')
+        fields = ('user', 'turma', 'nota', 'approved')
         depth = 2

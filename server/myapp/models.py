@@ -14,6 +14,7 @@ class Turma(models.Model):
     start_date = models.DateTimeField(default=datetime.datetime.today)
     end_date = models.DateTimeField(default=datetime.datetime.today)
     created_at = models.DateTimeField(default=datetime.datetime.today)
+    actual_class = models.IntegerField()
 
     def __str__(self):
         return "Turma: {}".format(self.name)
@@ -41,23 +42,21 @@ class Aviso(models.Model):
 
 class Aula(models.Model):
     turma_id = models.ForeignKey(Turma, on_delete=models.CASCADE)
-    start_date = models.DateTimeField(default=datetime.datetime.today)
-    end_date = models.DateTimeField(default=datetime.datetime.today)
+    date = models.DateTimeField(default=datetime.datetime.today)
     created_at = models.DateTimeField(default=datetime.datetime.today)
-    total_classes = models.IntegerField()
 
     def __str__(self):
-        return "Aula: Turma={}, Start Date={}, End Date={}".format(self.turma_id, self.start_date, self.end_date)
+        return "Aula: Turma={}, Date={}".format(self.turma_id, self.date)
 
 class Presenca(models.Model):
     aula = models.ForeignKey(Aula, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    presences = models.IntegerField()
+    presence = models.BooleanField()
     is_replacement = models.BooleanField()
     created_at = models.DateTimeField(default=datetime.datetime.today)
 
     def __str__(self):
-        return "Presença: Aula={}, User={}, Presences={}".format(self.aula, self.user, self.presences)
+        return "Presença: Aula={}, User={}, Presence={}".format(self.aula, self.user, self.presence)
 
 class Colaborador(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -65,13 +64,6 @@ class Colaborador(models.Model):
 
     def __str__(self):
         return "Colaborador: User={}, Turma={}".format(self.user, self.turma)
-
-class Aluno(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return "Aluno: User={}, Turma={}".format(self.user, self.turma)
 
 class Matricula(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

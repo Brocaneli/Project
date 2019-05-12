@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { UsersService } from '../users.service';
 import { AlunosService } from '../alunos.service';
 import { ColaboradoresService } from '../colaboradores.service';
+import { MatriculasService } from '../matriculas.service';
 
 @Component({
   selector: 'app-permissions-detail',
@@ -19,9 +20,13 @@ export class PermissionsDetailComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, 
               private usersService: UsersService, 
-              public alunoService: AlunosService,
-              public colaboradorService: ColaboradoresService
-              ) { }
+              public colaboradorService: ColaboradoresService,
+              public matriculasService: MatriculasService
+              ) { 
+    this.classes = [];
+    this.colaborators = [];
+    this.registrations = [];
+              }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => { 
@@ -32,13 +37,17 @@ export class PermissionsDetailComponent implements OnInit {
       this.user = data;
     });
 
-    this.alunoService.getAllClassFromAluno(this.id).subscribe((data) => {
+    this.matriculasService.getAllApprovedMatriculasFromUser(this.id).subscribe((data) => {
       this.classes = data;
     });
 
     this.colaboradorService.getAllClassFromCollaborator(this.id).subscribe((data) => {
       this.colaborators = data;
-    })
+    });
+
+    this.matriculasService.getAllUnapprovedMatriculasFromUser(this.id).subscribe((data) => {
+      this.registrations = data;
+    });
   }
 
   updateUser(){
@@ -58,8 +67,8 @@ export class PermissionsDetailComponent implements OnInit {
         break;
       }
     }
+    console.log(this.user)
     this.usersService.updateUser(this.user).subscribe(()=>{
-      console.log(this.user)
       console.log("Updated successfully")
     });
   }

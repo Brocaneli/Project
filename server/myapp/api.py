@@ -2,8 +2,8 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework import viewsets
 from django_filters.rest_framework import DjangoFilterBackend
 
-from .serializers import CicloSerializer, TurmaSerializer, UserSerializer, AvisoSerializer, AulaSerializer, PresencaSerializer, AlunoSerializer, ColaboradorSerializer, MatriculaSerializer
-from .models import Ciclo, Turma, User, Aviso, Aula, Presenca, Colaborador, Matricula, Aluno
+from .serializers import CicloSerializer, TurmaSerializer, UserSerializer, AvisoSerializer, AulaSerializer, PresencaSerializer, ColaboradorSerializer, MatriculaSerializer
+from .models import Ciclo, Turma, User, Aviso, Aula, Presenca, Colaborador, Matricula
 
 class CicloApi(viewsets.ModelViewSet):
     queryset = Ciclo.objects.all()
@@ -43,14 +43,8 @@ class ColaboradorApi(viewsets.ModelViewSet):
     filter_backends = (DjangoFilterBackend,)
     filterset_fields = ('user', 'turma')
 
-class AlunoApi(viewsets.ModelViewSet):
-    queryset = Aluno.objects.all()
-    serializer_class = AlunoSerializer
-    filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ('user', 'turma')
-
 class MatriculaApi(viewsets.ModelViewSet):
     queryset = Matricula.objects.all()
     serializer_class = MatriculaSerializer
     filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ('user', 'turma')
+    filterset_fields = ('user', 'turma', 'approved')
