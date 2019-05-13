@@ -1,25 +1,42 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView
-
+from rest_framework import viewsets
 from django_filters.rest_framework import DjangoFilterBackend
 
-from .serializers import ListSerializer, CardSerializer
-from .models import List, Card
+from .serializers import CicloSerializer, TurmaSerializer, UserSerializer, AvisoSerializer, AulaSerializer, PresencaSerializer, AlunoSerializer, ColaboradorSerializer, MatriculaSerializer
+from .models import Ciclo, Turma, User, Aviso, Aula, Presenca, Colaborador, Matricula, Aluno
 
-class ListApi(ListAPIView):
-    queryset = List.objects.all()
-    serializer_class = ListSerializer
+class CicloApi(viewsets.ModelViewSet):
+    queryset = Ciclo.objects.all()
+    serializer_class = CicloSerializer
 
-class CardApi(ListAPIView):
-    queryset = Card.objects.all()
-    serializer_class = CardSerializer
+class TurmaApi(viewsets.ModelViewSet):
+    queryset = Turma.objects.all()
+    serializer_class = TurmaSerializer
 
-class ListDetailApi(ListAPIView):
-    queryset = Card.objects.all()
-    serializer_class = CardSerializer
-    filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ('list',)
+class UserApi(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    
+class AvisoApi(viewsets.ModelViewSet):
+    queryset = Aviso.objects.all()
+    serializer_class = AvisoSerializer
 
+class AulaApi(viewsets.ModelViewSet):
+    queryset = Aula.objects.all()
+    serializer_class = AulaSerializer
 
-class CardDetailApi(RetrieveAPIView):
-    queryset = Card.objects.all()
-    serializer_class = CardSerializer
+class PresencaApi(viewsets.ModelViewSet):
+    queryset = Presenca.objects.all()
+    serializer_class = PresencaSerializer
+
+class ColaboradorApi(viewsets.ModelViewSet):
+    queryset = Colaborador.objects.all()
+    serializer_class = ColaboradorSerializer
+
+class AlunoApi(viewsets.ModelViewSet):
+    queryset = Aluno.objects.all()
+    serializer_class = AlunoSerializer
+
+class MatriculaApi(viewsets.ModelViewSet):
+    queryset = Matricula.objects.all()
+    serializer_class = MatriculaSerializer
