@@ -4,22 +4,21 @@
   <h4>{{ user.email }}</h4>
   <h4>{{ user.phone }}</h4>
 
-  <!-- TO DO - get all courses, registration and responsible classes from Database -->
-  <div *ngIf="this.classes != null">
+  <div *ngIf="this.classes.length > 0">
     <h2>Turmas matriculados</h2>
     <div class="list-group">
       <li *ngFor="let class of classes" class="list-group-item">{{class.turma.ciclo.name}} - {{class.turma.name}}</li>
     </div>
   </div>
 
-  <div *ngIf="this.registrations != null">
+  <div *ngIf="this.registrations.length > 0">
     <h2>Matrículas Pendentes</h2>
     <div class="list-group">
-      <li *ngFor="let class of classes" class="list-group-item">{{class.turma.ciclo.name}} - {{class.turma.name}}</li>
+      <li *ngFor="let reg of registrations" class="list-group-item">{{reg.turma.ciclo.name}} - {{reg.turma.name}}</li>
     </div>
   </div>
 
-  <div *ngIf="this.colaborators != null">
+  <div *ngIf="this.colaborators.length > 0">
     <h2>Turmas ministradas</h2>
     <div class="list-group">
       <li *ngFor="let colab of colaborators" class="list-group-item">{{colab.turma.ciclo.name}} - {{colab.turma.name}}</li>

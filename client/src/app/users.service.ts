@@ -28,7 +28,7 @@ export class UsersService {
   }
 
   updateUser(user: any) {
-    return this.httpClient.put(`${this.constService.API_URI}/users/${user.id}`, user, this.postOptions)
+    return this.httpClient.put(`${this.constService.API_URI}/users/${user.id}/`, user, this.postOptions)
   }
 
   deleteUser(userId: number) {
