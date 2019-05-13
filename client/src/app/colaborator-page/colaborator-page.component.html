@@ -2,16 +2,18 @@
 
 <div class="container">
   <mat-accordion class="example-headers-align">
-    <mat-expansion-panel class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let curso of cursos"> 
+    <mat-expansion-panel class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let colaborador of colaboradores"> 
       <mat-expansion-panel-header > 
         <mat-panel-title class="cursoTitle"> 
-          {{curso.name}}
+          {{colaborador.turma.name}}
         </mat-panel-title>
         <mat-panel-description class="cursoDescription"> 
-          {{curso.date}} 
+          {{colaborador.start_date}} 
         </mat-panel-description>
+        <mat-panel-description class="cursoDescription"> 
+            {{colaborador.end_date}} 
+          </mat-panel-description>
       </mat-expansion-panel-header>
-        <p> Próxima aula: {{curso.nextClass}}</p>
         <button class="btn btn-primary but" type="submit"> Aulas Cadastradas</button> 
         <button class="btn btn-primary but" type="submit"> Lista de Alunos</button>
         <button class="btn btn-primary but"  type="submit"> Realizar Chamada</button>
@@ -28,10 +30,10 @@
     <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{aviso.title}}</h5>
-        <small class="text-muted">3 days ago</small>
+        <small class="text-muted">{{aviso.created_at | date: "dd/MM/yyyy"}}</small>
       </div>
       <p class="mb-1">{{aviso.description}}</p>
-      <small class="text-muted">{{aviso.author}}</small>
+      <small class="text-muted">{{aviso.user.name}}</small>
     </a>
   </div>
 </div>

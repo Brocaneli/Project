@@ -9,6 +9,7 @@ import { PermissionsComponent } from './permissions/permissions.component';
 import { PermissionsDetailComponent } from './permissions-detail/permissions-detail.component';
 import { ColaboratorPageComponent } from './colaborator-page/colaborator-page.component';
 import { StudentsPageComponent } from './students-page/students-page.component';
+import { AttendanceComponent } from './attendance/attendance.component';
 
 const routes: Routes = [
   {
@@ -23,9 +24,10 @@ const routes: Routes = [
   {path: 'ciclos', component: CiclosPageComponent},
   {path: 'nciclo', component: NovoCicloPageComponent},
   {path: 'users', component: PermissionsComponent},
-  {path: 'permission/:id/:name', component: PermissionsDetailComponent},
+  {path: 'users/:id', component: PermissionsDetailComponent},
   {path: 'colaborators', component: ColaboratorPageComponent},
-  {path: 'students', component: StudentsPageComponent}
+  {path: 'students', component: StudentsPageComponent},
+  {path: 'attendance', component: AttendanceComponent}
 ];
 
 @NgModule({

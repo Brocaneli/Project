@@ -1,0 +1,30 @@
+<div class="container">
+  <h2 class="center">Chamada</h2>
+  <div class="row" *ngFor="let student of students">
+    <div class="col-1">
+        <div class="input-group-prepend">
+            <div class="input-group-text">
+              <input type="checkbox" aria-label="Checkbox for following text input">
+            </div>
+          </div>
+    </div>
+    <div class="col-1">
+        <div class="input-group-prepend">
+            <div class="input-group-text">
+              <input type="checkbox" aria-label="Checkbox for following text input">
+            </div>
+          </div>
+    </div>
+    <div class="col-10">
+        <li class="list-group-item center">{{student.name}}</li>
+    </div>
+  </div>
+</div>
+<div class="row center">
+    <div class="col">
+      <button type="button" class="btn btn-danger">Cancelar</button>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-success">Salvar</button>
+    </div>
+</div>

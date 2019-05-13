@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CicloService } from '../ciclo.service';
+import { CiclosService } from '../ciclos.service';
+import { MatriculasService } from '../matriculas.service';
 
 @Component({
   selector: 'app-ciclos-page',
@@ -11,16 +12,16 @@ export class CiclosPageComponent implements OnInit {
 
   private ciclos: any;
 
-  constructor(private router: Router, private cicloService: CicloService) { }
+  constructor(private router: Router, private ciclosService: CiclosService) { }
 
   ngOnInit() {
-    this.cicloService.getCiclos().subscribe(data => {
+    this.ciclosService.getCiclos().subscribe(data => {
       this.ciclos = data;
     });
   }
 
   deleteCiclo(id: number) {
-    this.cicloService.deleteCiclo(id).subscribe(data => {
+    this.ciclosService.deleteCiclo(id).subscribe(data => {
       // ciclo deleted
     });
 

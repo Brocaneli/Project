@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from '../authentication.service';
+import { AvisoService } from '../aviso.service';
+import { ColaboradoresService } from '../colaboradores.service';
 
 @Component({
   selector: 'app-colaborator-page',
@@ -7,32 +11,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ColaboratorPageComponent implements OnInit {
   panelOpenState = false;
+
+  private avisos : any;
+  private user : any;
+  private colaborador : any;
   
-  cursos =[
-    {name : "Ciclo 1 - T1", date: "Segunda  20:00 - 22:30", nextClass: "Domingo 28/04/2019"},
-    {name : "Ciclo 2 - T2", date: "Terça 20:00 - 22:30", nextClass: "Segunda 29/04/2019"},
-    {name : "Ciclo 3 - T3", date: "Quarta 09:00 - 11:30", nextClass: "Quarta 01/05/2019"},
-  ];
+  constructor(
+    private avisoService: AvisoService, 
+    private matriculasService: ColaboradoresService,
+    private authenticationService: AuthenticationService,
+    private router: Router,
 
-  avisos =[
-    {title : "Ciclo 1 - T1 - Alteração de Sala", 
-     description :  "A próxima aula será na sala 22",
-     author: "Alessandra"
-    },
+  ) {
+    let user = this.authenticationService.currentUserValue;
+    if (!user) { 
+        //this.router.navigate(['login']);
+    } else {
+      this.user= user;
+    }
+   }
 
-    {title : "Ciclo 2 - T2 - Alteração de Hotário", 
-    description :  "A próxima aula começará 30min mais tarde",
-    author: "Ivan"
-    },
+   ngOnInit() {
+    this.avisoService.getAvisos().subscribe(data => {
+      this.avisos = data;
+    });
+    this.matriculasService.getAllClassFromCollaborator(this.user.id).subscribe(data => {
+      this.colaborador = data;
+    });
+  }
 
-  ];
-
-  
-
-
-  constructor() { }
-
-  ngOnInit() {
+  onClick_aulasCadastradas(){
+    this.router.navigate(['login']);
+  }  
+  onClick_listaAlunos(){
+    this.router.navigate(['login']);
+  }  
+  onClick_chamada(){
+    this.router.navigate(['login']);
   }
 
 }
