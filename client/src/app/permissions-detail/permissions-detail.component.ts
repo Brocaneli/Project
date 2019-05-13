@@ -66,7 +66,6 @@ export class PermissionsDetailComponent implements OnInit {
         break;
       }
     }
-    console.log(this.user)
     this.usersService.updateUser(this.user).subscribe(()=>{
       console.log("Updated successfully")
     });
