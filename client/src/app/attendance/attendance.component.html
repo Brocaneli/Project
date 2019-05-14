@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="center">Chamada</h2>
-  <div class="row" *ngFor="let student of students">
+  <div class="row" *ngFor="let matricula of matriculas">
     <div class="col-1">
         <div class="input-group-prepend">
             <div class="input-group-text">
@@ -16,7 +16,7 @@
           </div>
     </div>
     <div class="col-10">
-        <li class="list-group-item center">{{student.name}}</li>
+        <li class="list-group-item center">{{matricula.user.name}}</li>
     </div>
   </div>
 </div>

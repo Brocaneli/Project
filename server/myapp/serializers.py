@@ -44,5 +44,5 @@ class ColaboradorSerializer(serializers.ModelSerializer):
 class MatriculaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Matricula
-        fields = ('user', 'turma', 'nota', 'approved')
+        fields = ('user', 'turma', 'nota', 'approved', 'absences')
         depth = 2
