@@ -1,6 +1,5 @@
 <div class="container">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<<<<<<< HEAD
   <h3 class="col-sm-6 offset-sm-5">Turmas</h3>
   <hr class="my-4">
 
@@ -19,24 +18,6 @@
           <button type="button" class="btn btn-primary btn-block">Editar Cronograma de Aulas</button>
           <a (click)="deleteTurma(turma.id)"><button type="button" class="btn btn-danger"><span
                 class="glyphicon glyphicon-trash"></span></button></a>
-=======
-    <h3 class="col-sm-6 offset-sm-5">Turmas</h3>
-    <hr class="my-4">
-  
-    <div id="accordion"  class="col-sm-6 offset-sm-5" *ngFor="let course of turmas">
-      <div class="card">
-        <div class="card-header">
-          <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            <h4 class="mb-0">{{course.nome}}</h4>
-          </button>
-        </div>
-  
-        <div id="collapseOne" class="collapse show" aria-labelledby="heading" data-parent="#accordion">
-          <div class="card-body">
-           {{course.desc1}}
-           <button type="button" class="btn btn-primary btn-block">Editar Cronograma de Aulas</button>
-         </div>
->>>>>>> 4b53cdb1dd7a1ad5b1fc121a26968db07d4c87a9
         </div>
       </div>
     </div>

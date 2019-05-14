@@ -34,4 +34,16 @@ export class MatriculasService {
   deleteMatricula(matriculaId: number) {
     return this.httpClient.delete(`${this.constService.API_URI}/matriculas/${matriculaId}/`)
   }
+
+  getAllUnapprovedMatriculasFromUser(userId: any) {
+    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?approved=false&user=${userId}`)
+  }
+
+  getAllApprovedMatriculasFromUser(userId: any) {
+    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?approved=true&user=${userId}`)
+  }
+
+  getAllMatriculasFromTurma(turmaId: any) {
+    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?turma=${turmaId}`)
+  }
 }
