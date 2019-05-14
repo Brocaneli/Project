@@ -19,8 +19,8 @@ export class PermissionsDetailComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, 
               private usersService: UsersService, 
-              public colaboradorService: ColaboradoresService,
-              public matriculasService: MatriculasService
+              private colaboradorService: ColaboradoresService,
+              private matriculasService: MatriculasService
               ) { 
     this.classes = [];
     this.colaborators = [];

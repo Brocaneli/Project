@@ -23,28 +23,28 @@ class AvisoApi(viewsets.ModelViewSet):
     queryset = Aviso.objects.all()
     serializer_class = AvisoSerializer
     filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ('user', 'turma', )
+    filterset_fields = ('user', 'turma',)
 
 class AulaApi(viewsets.ModelViewSet):
     queryset = Aula.objects.all()
     serializer_class = AulaSerializer
     filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ('turma_id', )
+    filterset_fields = ('ciclo',)
 
 class PresencaApi(viewsets.ModelViewSet):
     queryset = Presenca.objects.all()
     serializer_class = PresencaSerializer
     filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ('user', 'aula')
+    filterset_fields = ('user', 'aula',)
 
 class ColaboradorApi(viewsets.ModelViewSet):
     queryset = Colaborador.objects.all()
     serializer_class = ColaboradorSerializer
     filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ('user', 'turma')
+    filterset_fields = ('user', 'turma',)
 
 class MatriculaApi(viewsets.ModelViewSet):
     queryset = Matricula.objects.all()
     serializer_class = MatriculaSerializer
     filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ('user', 'turma', 'approved')
+    filterset_fields = ('user', 'turma', 'approved',)

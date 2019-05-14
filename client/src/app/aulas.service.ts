@@ -34,4 +34,8 @@ export class AulasService {
   deleteAula(aulaId: number) {
     return this.httpClient.delete(`${this.constService.API_URI}/aulas/${aulaId}/`)
   }
+
+  getAulasFromTurma(turmaId: number) {
+    return this.httpClient.delete(`${this.constService.API_URI}/aulas/?turma=${turmaId}`)
+  }
 }
