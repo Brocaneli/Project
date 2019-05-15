@@ -1,8 +1,8 @@
 <div class="container">
   <h3>Turmas</h3>
   <ul class="list-group list-group-flush">
-    <li *ngFor="let turma of turmas">
-      <a class="list-group-item">{{turma.name}}</a>
+    <li *ngFor="let matricula of matriculas">
+      <a class="list-group-item">{{matricula.turma.name}}</a>
     </li>
   </ul>
   <br />
@@ -15,6 +15,16 @@
         <small class="text-muted">{{aviso.created_at | date: "dd/MM/yyyy"}}</small>
       </div>
       <p class="mb-1">{{aviso.description}}</p>
+      <small class="text-muted">Responsável: {{aviso.user.name}}</small>
+    </a>
+  </div>
+  <h3>Notas</h3>
+  <div class="Notas"></div>
+  <div *ngFor="let matricula of matriculas">
+    <a href="#" class="list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{matricula.nota}}</h5>
+      </div>
       <small class="text-muted">Responsável: {{aviso.user.name}}</small>
     </a>
   </div>
