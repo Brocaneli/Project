@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CiclosService } from '../ciclos.service';
+import { MatriculasService } from '../matriculas.service';
 
 @Component({
   selector: 'app-ciclos-page',
