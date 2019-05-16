@@ -15,7 +15,7 @@
       <div id="collapseOne" class="collapse show" aria-labelledby="heading" data-parent="#accordion">
         <div class="card-body">
 
-          <button type="button" class="btn btn-primary btn-block">Editar Cronograma de Aulas</button>
+          <button type="button" class="btn btn-primary">Editar Cronograma de Aulas</button> &nbsp;&nbsp;&nbsp;&nbsp;
           <a (click)="deleteTurma(turma.id)"><button type="button" class="btn btn-danger"><span
                 class="glyphicon glyphicon-trash"></span></button></a>
         </div>
@@ -47,21 +47,30 @@
             </div>
 
             <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">Ciclos</label>
-              </div>
-              <select class="custom-select" id="inputGroupSelect01" formControlName="ciclo_id">
-                <option *ngFor="let ciclo of ciclos" [value]="ciclo.id">{{ciclo.name}}</option>
-              </select>
-
               <div class="form-group">
-                <label for="name_start_date">Início: </label>
-                <input type="datetime-local" name="name_start_date" formControlName="start_date">
+                <label for="ciclo">Ciclos</label>
+                <select class="form-control" formControlName="ciclo" [ngClass]="{ 'is-invalid': submitted && f.ciclo.errors }">
+                  <option *ngFor="let c of ciclos" [value]="c.id">{{c.name}}</option>
+                </select>
+                <div *ngIf="submitted && f.ciclo.errors" class="invalid-feedback">
+                  <div *ngIf="f.ciclo.errors.required">O ciclo é obrigatório</div>
+                </div>
               </div>
 
               <div class="form-group">
-                <label for="name_end_date">Fim: </label>
-                <input type="datetime-local" name="name_end_date" formControlName="end_date">
+                <label for="start_date">Início: </label>
+                <input type="datetime-local" class="form-control" formControlName="start_date" [ngClass]="{ 'is-invalid': submitted && f.start_date.errors }">
+                <div *ngIf="submitted && f.start_date.errors" class="invalid-feedback">
+                    <div *ngIf="f.start_date.errors.required">A data de início é obrigatória</div>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <label for="end_date">Fim: </label>
+                <input type="datetime-local" class="form-control" formControlName="end_date" [ngClass]="{ 'is-invalid': submitted && f.end_date.errors }">
+                <div *ngIf="submitted && f.end_date.errors" class="invalid-feedback">
+                    <div *ngIf="f.end_date.errors.required">A data de término é obrigatória</div>
+                  </div>
               </div>
 
             </div>

@@ -34,9 +34,9 @@ class UserApi(viewsets.ModelViewSet):
     def get_serializer_class(self):
         method = self.request.method
         if method == 'PUT' or method == 'POST':
-            return AvisoSerializer
+            return UserSerializer
         else:
-            return GetAvisoSerializer
+            return GetUserSerializer
     
 class AvisoApi(viewsets.ModelViewSet):
     queryset = Aviso.objects.all()

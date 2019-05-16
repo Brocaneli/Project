@@ -27,7 +27,7 @@ export class StudentsPageComponent implements OnInit {
     if (!user) { 
         //this.router.navigate(['login']);
     } else {
-      this.user= user;
+      this.user = user;
     }
    }
 

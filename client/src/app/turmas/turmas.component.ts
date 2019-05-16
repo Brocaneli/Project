@@ -22,6 +22,8 @@ export class TurmasComponent implements OnInit {
   private matriculas: any;
   private alunos: any;
   private alunoMatricula: any;
+  loading = false;
+  submitted = false;
 
   constructor(private router: Router, private cicloService: CiclosService, private fb: FormBuilder, private turmaService: TurmasService, private userService: UsersService, private matriculaService: MatriculasService) { }
 
@@ -45,25 +47,31 @@ export class TurmasComponent implements OnInit {
 
     this.turmaForm = this.fb.group({
       name: ['', Validators.required],
-      ciclo_id: [''],
-      start_date: [''],
-      end_date: ['']
+      ciclo: ['', Validators.required],
+      start_date: ['2019-01-01T12:00', Validators.required],
+      end_date: ['2019-01-01T12:00', Validators.required]
     });
 
     this.matriculaForm = this.fb.group({
       approved: [''],
       nota: [''],
-      user_id: [''],
-      turma_id: ['']
+      user: [''],
+      turma: ['']
     });
-    console.log(this.matriculaForm.getRawValue());
-
-
   }
+
+    // convenience getter for easy access to form fields
+  get f() { return this.turmaForm.controls; }
 
   onSubmit() {
 
-    console.log(this.turmaForm.getRawValue());
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.turmaForm.invalid) {
+      console.log(this.turmaForm)
+      return;
+    }
     this.turmaService.createTurma(this.turmaForm.getRawValue()).subscribe(data => {
     });
 
@@ -73,7 +81,7 @@ export class TurmasComponent implements OnInit {
 
   clickBota(turma) {
     console.log(turma)
-    this.alunos = this.matriculas.filter(matricula => 
+    this.alunos = this.matriculas.filter(matricula =>
       turma === matricula.turma_id
     );
 
@@ -84,7 +92,7 @@ export class TurmasComponent implements OnInit {
 
   aproveMatricula(id: number) {
     console.log(this.matriculaForm.getRawValue());
-    
+
     this.matriculaService.updateMatricula(id).subscribe(data => {
       this.matriculas = data;
     });

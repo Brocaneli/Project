@@ -14,7 +14,7 @@ class Turma(models.Model):
     start_date = models.DateTimeField(default=datetime.datetime.today)
     end_date = models.DateTimeField(default=datetime.datetime.today)
     created_at = models.DateTimeField(default=datetime.datetime.today)
-    actual_class = models.IntegerField()
+    actual_class = models.IntegerField(default=0)
 
     def __str__(self):
         return "Turma: {}".format(self.name)
