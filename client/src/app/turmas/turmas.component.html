@@ -1,0 +1,81 @@
+<div class="container">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <h3 class="col-sm-6 offset-sm-5">Turmas</h3>
+  <hr class="my-4">
+
+  <div id="accordion" class="col-sm-6 offset-sm-5" *ngFor="let turma of turmas">
+    <div class="card">
+      <div class="card-header">
+        <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+          aria-expanded="true" aria-controls="collapseOne">
+          <h4 class="mb-0">{{turma.name}}</h4>
+        </button>
+      </div>
+
+      <div id="collapseOne" class="collapse show" aria-labelledby="heading" data-parent="#accordion">
+        <div class="card-body">
+
+          <button type="button" class="btn btn-primary btn-block">Editar Cronograma de Aulas</button>
+          <a (click)="deleteTurma(turma.id)"><button type="button" class="btn btn-danger"><span
+                class="glyphicon glyphicon-trash"></span></button></a>
+        </div>
+      </div>
+    </div>
+    <br>
+  </div>
+
+
+  <form [formGroup]="turmaForm" (ngSubmit)="onSubmit()">
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Adicionando nova Turma</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="name">Nome da Turma</label>
+              <input type="text" formControlName="name" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">O nome da turma é obrigatório</div>
+              </div>
+            </div>
+
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Ciclos</label>
+              </div>
+              <select class="custom-select" id="inputGroupSelect01" formControlName="ciclo_id">
+                <option *ngFor="let ciclo of ciclos" [value]="ciclo.id">{{ciclo.name}}</option>
+              </select>
+
+              <div class="form-group">
+                <label for="name_start_date">Início: </label>
+                <input type="datetime-local" name="name_start_date" formControlName="start_date">
+              </div>
+
+              <div class="form-group">
+                <label for="name_end_date">Fim: </label>
+                <input type="datetime-local" name="name_end_date" formControlName="end_date">
+              </div>
+
+            </div>
+          </div>
+          <div class="modal-footer form-group col-4 offset-4">
+            <button class="btn btn-primary">Criar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <button type="button" class="btn btn-primary col-6 offset-3" data-toggle="modal" data-target="#myModal">
+    Adicionar Curso
+  </button>
+
+
+</div>
