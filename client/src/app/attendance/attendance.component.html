@@ -3,28 +3,28 @@
   <div class="row" *ngFor="let matricula of matriculas">
     <div class="col-1">
         <div class="input-group-prepend">
-            <div class="input-group-text">
+            <div (click)="selectInput(matricula)" class="input-group-text">
               <input type="checkbox" aria-label="Checkbox for following text input">
             </div>
           </div>
     </div>
-    <div class="col-1">
+    <!-- <div class="col-1">
         <div class="input-group-prepend">
             <div class="input-group-text">
               <input type="checkbox" aria-label="Checkbox for following text input">
             </div>
           </div>
-    </div>
-    <div class="col-10">
+    </div> -->
+    <div class="col-11">
         <li class="list-group-item center">{{matricula.user.name}}</li>
     </div>
   </div>
 </div>
 <div class="row center">
     <div class="col">
-      <button type="button" class="btn btn-danger">Cancelar</button>
+      <button type="button" [routerLink]="['/colaborators']" class="btn btn-danger">Cancelar</button>
     </div>
     <div class="col">
-      <button type="button" class="btn btn-success">Salvar</button>
+      <button type="button" (click)="markPresence()" class="btn btn-success">Salvar</button>
     </div>
 </div>
