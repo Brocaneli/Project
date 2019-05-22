@@ -46,4 +46,8 @@ export class MatriculasService {
   getAllMatriculasFromTurma(turmaId: any) {
     return this.httpClient.get(`${this.constService.API_URI}/matriculas/?turma=${turmaId}`)
   }
+
+  getAllApprovedMatriculasFromTurma(turmaId: any) {
+    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?approved=true&turma=${turmaId}`)
+  }
 }

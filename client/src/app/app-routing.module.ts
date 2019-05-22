@@ -11,6 +11,7 @@ import { ColaboratorPageComponent } from './colaborator-page/colaborator-page.co
 import { StudentsPageComponent } from './students-page/students-page.component';
 import { TurmasComponent } from './turmas/turmas.component';
 import { AttendanceComponent } from './attendance/attendance.component';
+import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
 
 const routes: Routes = [
   {
@@ -29,7 +30,8 @@ const routes: Routes = [
   {path: 'colaborators', component: ColaboratorPageComponent},
   {path: 'students', component: StudentsPageComponent},
   {path: 'turmas', component: TurmasComponent},
-  {path: 'attendance', component: AttendanceComponent}
+  {path: 'attendance', component: AttendanceComponent},
+  {path: 'lista-alunos/:id', component: ListaAlunosComponent}
 ];
 
 @NgModule({
