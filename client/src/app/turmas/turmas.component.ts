@@ -90,15 +90,6 @@ export class TurmasComponent implements OnInit {
 
   }
 
-  aproveMatricula(id: number) {
-    console.log(this.matriculaForm.getRawValue());
-
-    this.matriculaService.updateMatricula(id).subscribe(data => {
-      this.matriculas = data;
-    });
-
-  }
-
   pegarMatricula(id: number) {
     console.log(this.matriculaForm.getRawValue());
     this.matriculaService.getMatricula(id).subscribe(data => {
