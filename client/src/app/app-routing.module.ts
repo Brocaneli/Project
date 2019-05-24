@@ -21,19 +21,19 @@ const routes: Routes = [
     pathMatch: 'full'
   },
 
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'admin', component: AdminPageComponent},
-  {path: 'ciclos', component: CiclosPageComponent},
-  {path: 'nciclo', component: NovoCicloPageComponent},
-  {path: 'users', component: PermissionsComponent},
-  {path: 'users/:id', component: PermissionsDetailComponent},
-  {path: 'colaborators', component: ColaboratorPageComponent},
-  {path: 'students', component: StudentsPageComponent},
-  {path: 'turmas', component: TurmasComponent},
-  {path: 'attendance', component: AttendanceComponent},
-  {path: 'lista-alunos/:id', component: ListaAlunosComponent},
-  {path: 'aprovacao/:id', component: AprovarMatriculaComponent}
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'admin', component: AdminPageComponent },
+  { path: 'ciclos', component: CiclosPageComponent },
+  { path: 'nciclo', component: NovoCicloPageComponent },
+  { path: 'users', component: PermissionsComponent },
+  { path: 'users/:id', component: PermissionsDetailComponent },
+  { path: 'colaborators', component: ColaboratorPageComponent },
+  { path: 'students', component: StudentsPageComponent },
+  { path: 'turmas', component: TurmasComponent },
+  { path: 'attendance', component: AttendanceComponent },
+  { path: 'lista-alunos/:id', component: ListaAlunosComponent },
+  { path: 'aprovacao/:id', component: AprovarMatriculaComponent }
 ];
 
 @NgModule({

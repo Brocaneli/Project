@@ -11,19 +11,35 @@
     </div>
   </div>
 
-  <div *ngIf="this.registrations.length > 0">
+  <!-- <div *ngIf="this.registrations.length > 0">
     <h2>Matrículas Pendentes</h2>
     <div class="list-group">
       <li *ngFor="let reg of registrations" class="list-group-item">{{reg.turma.ciclo.name}} - {{reg.turma.name}}</li>
     </div>
-  </div>
+  </div> -->
 
   <div *ngIf="this.colaborators.length > 0">
     <h2>Turmas ministradas</h2>
     <div class="list-group">
-      <li *ngFor="let colab of colaborators" class="list-group-item">{{colab.turma.ciclo.name}} - {{colab.turma.name}}</li>
+      <li *ngFor="let colab of colaborators" class="list-group-item">
+        {{colab.turma.ciclo.name}} - {{colab.turma.name}}
+        <a (click)="deleteColaborador(colab.id)"><button type="button" style="float: right;" class="btn btn-danger"><span
+          class="glyphicon glyphicon-trash"></span></button></a>
+      </li>
     </div>
   </div>
+
+  <div class="row">
+    <div class="btn-circle-div">
+      <button data-toggle="modal" data-target="#myModal" type="button" class="btn btn-circle btn-xl"><i
+          class="glyphicon glyphicon-plus"></i></button>
+    </div>
+  </div>
+
+  <!-- <button [routerLink]="['/add-colaborador']" type="button" class="btn btn-primary"
+    style="margin-left: calc(100vw - 315px);">
+    Adicionar Colaborador à Turma
+  </button> -->
 
   <h2>Permissões</h2>
   <div class="input-group mb-3">
@@ -44,4 +60,38 @@
       <button (click)="updateUser()" [routerLink]="['/users']" type="button" class="btn btn-success">Salvar</button>
     </div>
   </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <form [formGroup]="colaboradorToTurmaForm" (ngSubmit)="onSubmit()">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">Adicionando nova Turma</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <label *ngIf="user">Colaborador: {{user.name}}</label>
+            <div class="form-group">
+              <label for="turma">Turma</label>
+              <select class="form-control" formControlName="turma"
+                [ngClass]="{ 'is-invalid': submitted && f.turma.errors }">
+                <option *ngFor="let t of possibleTurmas" [value]="t.id">{{t.name}}</option>
+              </select>
+              <div *ngIf="submitted && f.turma.errors" class="invalid-feedback">
+                <div *ngIf="f.turma.errors.required">A turma é obrigatório</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer form-group col-4 offset-4">
+          <button class="btn btn-primary">Criar</button>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
