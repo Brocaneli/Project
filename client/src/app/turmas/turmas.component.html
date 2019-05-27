@@ -6,7 +6,7 @@
   <div id="accordion" class="col-sm-6 offset-sm-5" *ngFor="let turma of turmas">
     <div class="card">
       <div class="card-header">
-        <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+        <button type="button" class="btn btn-link" data-toggle="collapses" data-target="#collapseOne"
           aria-expanded="true" aria-controls="collapseOne">
           <h4 class="mb-0">{{turma.name}}</h4>
         </button>
@@ -15,16 +15,18 @@
       <div id="collapseOne" class="collapse show" aria-labelledby="heading" data-parent="#accordion">
         <div class="card-body">
 
-          <button type="button" class="btn btn-primary">Editar Cronograma de Aulas</button> &nbsp;&nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn btn-primary col-8">Editar Cronograma de Aulas</button> &nbsp;&nbsp;&nbsp;&nbsp;
           <a (click)="deleteTurma(turma.id)"><button type="button" class="btn btn-danger"><span
                 class="glyphicon glyphicon-trash"></span></button></a>
+
+          <button type="button" class="btn btn-secondary col-8">Alunos</button> &nbsp;&nbsp;&nbsp;&nbsp;
         </div>
       </div>
     </div>
     <br>
   </div>
 
-
+  <!-- Modal Turmas -->
   <form [formGroup]="turmaForm" (ngSubmit)="onSubmit()">
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
@@ -49,7 +51,8 @@
             <div class="input-group mb-3">
               <div class="form-group">
                 <label for="ciclo">Ciclos</label>
-                <select class="form-control" formControlName="ciclo" [ngClass]="{ 'is-invalid': submitted && f.ciclo.errors }">
+                <select class="form-control" formControlName="ciclo"
+                  [ngClass]="{ 'is-invalid': submitted && f.ciclo.errors }">
                   <option *ngFor="let c of ciclos" [value]="c.id">{{c.name}}</option>
                 </select>
                 <div *ngIf="submitted && f.ciclo.errors" class="invalid-feedback">
@@ -59,18 +62,20 @@
 
               <div class="form-group">
                 <label for="start_date">Início: </label>
-                <input type="datetime-local" class="form-control" formControlName="start_date" [ngClass]="{ 'is-invalid': submitted && f.start_date.errors }">
+                <input type="datetime-local" class="form-control" formControlName="start_date"
+                  [ngClass]="{ 'is-invalid': submitted && f.start_date.errors }">
                 <div *ngIf="submitted && f.start_date.errors" class="invalid-feedback">
-                    <div *ngIf="f.start_date.errors.required">A data de início é obrigatória</div>
-                  </div>
+                  <div *ngIf="f.start_date.errors.required">A data de início é obrigatória</div>
+                </div>
               </div>
 
               <div class="form-group">
                 <label for="end_date">Fim: </label>
-                <input type="datetime-local" class="form-control" formControlName="end_date" [ngClass]="{ 'is-invalid': submitted && f.end_date.errors }">
+                <input type="datetime-local" class="form-control" formControlName="end_date"
+                  [ngClass]="{ 'is-invalid': submitted && f.end_date.errors }">
                 <div *ngIf="submitted && f.end_date.errors" class="invalid-feedback">
-                    <div *ngIf="f.end_date.errors.required">A data de término é obrigatória</div>
-                  </div>
+                  <div *ngIf="f.end_date.errors.required">A data de término é obrigatória</div>
+                </div>
               </div>
 
             </div>
