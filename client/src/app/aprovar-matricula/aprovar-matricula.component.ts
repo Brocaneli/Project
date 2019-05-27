@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatriculasService } from '../matriculas.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-aprovar-matricula',
@@ -11,8 +12,17 @@ export class AprovarMatriculaComponent implements OnInit {
 
   private id: any;
   private matriculas: any;
+  private user: any;
 
-  constructor(private activatedRoute: ActivatedRoute, private matriculasService: MatriculasService) { }
+  constructor(private activatedRoute: ActivatedRoute, private matriculasService: MatriculasService,
+    private authenticationService: AuthenticationService, private router: Router) { 
+    let user = this.authenticationService.currentUserValue;
+    if (!user || user.role !== 'ADMIN') { 
+        this.router.navigate(['login']);
+    } else {
+      this.user= user;
+    }
+  }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(params => { 

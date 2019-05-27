@@ -24,8 +24,8 @@ export class ColaboratorPageComponent implements OnInit {
 
   ) {
     let user = this.authenticationService.currentUserValue;
-    if (!user) { 
-        //this.router.navigate(['login']);
+    if (!user || user.role === 'ALUNO') { 
+        this.router.navigate(['login']);
     } else {
       this.user= user;
     }

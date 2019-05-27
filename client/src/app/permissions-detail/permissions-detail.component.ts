@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../users.service';
 import { ColaboradoresService } from '../colaboradores.service';
 import { MatriculasService } from '../matriculas.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { TurmasService } from '../turmas.service';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-permissions-detail',
@@ -22,17 +23,27 @@ export class PermissionsDetailComponent implements OnInit {
   private possibleTurmas: any;
   loading = false;
   submitted = false;
+  loggedUser: any;
 
   constructor(private activatedRoute: ActivatedRoute,
     private usersService: UsersService,
     private colaboradorService: ColaboradoresService,
     private matriculasService: MatriculasService,
     private turmasService: TurmasService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private authenticationService: AuthenticationService,
+    private router: Router
   ) {
     this.classes = [];
     this.colaborators = [];
     this.registrations = [];
+
+    let loggedUser = this.authenticationService.currentUserValue;
+    if (!loggedUser || loggedUser.role !== 'ADMIN') { 
+        this.router.navigate(['login']);
+    } else {
+      this.loggedUser = loggedUser;
+    }
   }
 
   ngOnInit() {

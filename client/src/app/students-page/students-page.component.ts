@@ -25,7 +25,7 @@ export class StudentsPageComponent implements OnInit {
   ) {
     let user = this.authenticationService.currentUserValue;
     if (!user) { 
-        //this.router.navigate(['login']);
+        this.router.navigate(['login']);
     } else {
       this.user = user;
     }
