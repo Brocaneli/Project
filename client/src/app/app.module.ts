@@ -22,6 +22,7 @@ import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe, UserPipe } from './search.pipe';
 import { AprovarMatriculaComponent } from './aprovar-matricula/aprovar-matricula.component';
+import { NovaMatriculaComponent } from './nova-matricula/nova-matricula.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { AprovarMatriculaComponent } from './aprovar-matricula/aprovar-matricula
     ListaAlunosComponent,
     SearchPipe,
     UserPipe,
-    AprovarMatriculaComponent
+    AprovarMatriculaComponent,
+    NovaMatriculaComponent
   ],
   imports: [
     BrowserModule,

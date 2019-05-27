@@ -2,12 +2,15 @@
   <h3>Turmas</h3>
   <ul class="list-group list-group-flush">
     <li *ngFor="let matricula of matriculas">
-      <a class="list-group-item">{{matricula.turma.name}}</a>
+      <a class="list-group-item">
+        {{matricula.turma.name}}
+        <h5 class="mb-1">Nota: {{matricula.nota | number:'2.2-2' }}</h5>
+        <h5 class="mb-1">Presenças: {{matricula.absences}}</h5>
+      </a>
     </li>
   </ul>
-  <br />
+
   <h3>Avisos</h3>
-  <div class="Avisos"></div>
   <div *ngFor="let aviso of avisos">
     <a href="#" class="list-group-item list-group-item-action">
       <div class="d-flex w-100 justify-content-between">
@@ -18,14 +21,15 @@
       <small class="text-muted">Responsável: {{aviso.user.name}}</small>
     </a>
   </div>
-  <h3>Notas</h3>
-  <div class="Notas"></div>
-  <div *ngFor="let matricula of matriculas">
-    <a href="#" class="list-group-item list-group-item-action">
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">{{matricula.nota}}</h5>
-      </div>
-      <small class="text-muted">Responsável: {{aviso.user.name}}</small>
-    </a>
-  </div>
+
+  <h3>Matrículas pendentes</h3>
+  <ul class="list-group list-group-flush">
+    <li *ngFor="let matricula of matriculasPendentes">
+      <a class="list-group-item">
+        {{matricula.turma.name}}
+      </a>
+    </li>
+  </ul>
+  Clique <a [routerLink]="['/nova-matricula']">aqui</a> para se solicitar a matrícula em mais uma turma! 
+
 </div>
