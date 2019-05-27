@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TurmaService } from '../turma.service';
 import { MatriculasService } from '../matriculas.service';
 import { AulasService } from '../aulas.service';
+import { AuthenticationService } from '../authentication.service';
+import { Router } from '@angular/router';
 import { PresencasService } from '../presencas.service';
 
 @Component({
@@ -14,34 +16,27 @@ export class AttendanceComponent implements OnInit {
   turma_id = 1;
   turma: any;
   matriculas: any;
+  class: any;
+  private user: any
   classes: any;
   presences: any;
 
-  // class = {id:1, turma_id:2, date: new Date()}
-
-  // students = [
-  //   {id: 3, turma_id:2, name: "João"}, 
-  //   {id: 6, turma_id:2, name: "Julia"}, 
-  //   {id: 5, turma_id:2, name: "Marcus"},
-  //   {id: 10, turma_id:2, name: "Marília"},
-  //   {id: 80, turma_id:2, name: "Matheus"},
-  //   {id: 59, turma_id:2, name: "Pedro"},
-  //   {id: 40, turma_id:2, name: "Adriana"},
-  //   {id: 35, turma_id:2, name: "Bianca"},
-  //   {id: 12, turma_id:2, name: "Vitor"},
-  //   {id: 19, turma_id:2, name: "Rodrigo"}
-  // ]
-
-
-
   constructor(private turmasService: TurmaService,
-              private matriculaService: MatriculasService,
-              private aulaService: AulasService,
-              private presenceService: PresencasService
-              ) {
+    private matriculaService: MatriculasService,
+    private aulaService: AulasService,
+    private presenceService: PresencasService,
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {
 
     this.matriculas = [];
-               }
+    let user = this.authenticationService.currentUserValue;
+    if (!user || user.role === 'ALUNO') {
+      this.router.navigate(['login']);
+    } else {
+      this.user = user;
+    }
+  }
 
   ngOnInit() {
     this.turmasService.getTurma(this.turma_id).subscribe((data) => {
@@ -62,14 +57,14 @@ export class AttendanceComponent implements OnInit {
       });
       this.matriculas.sort((a, b) => (a.user.name > b.user.name) ? 1 : -1)
     });
-    
+
   }
 
-  markPresence(){
-    if(!this.turma.first_attendance){
+  markPresence() {
+    if (!this.turma.first_attendance) {
       this.matriculas.forEach(element => {
         var presence = 0;
-        if(element.presence){
+        if (element.presence) {
           presence = 1;
         }
         var new_presence = {aula: this.classes[this.turma.actual_class].id, 
@@ -112,7 +107,7 @@ export class AttendanceComponent implements OnInit {
   }
 
   selectInput(matricula) {
-    matricula['presence'] = !matricula.presence; 
+    matricula['presence'] = !matricula.presence;
   }
 
 }
