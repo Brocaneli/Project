@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Md5} from 'ts-md5/dist/md5';
 import { UsersService } from '../users.service';
+import { AuthenticationService } from '../authentication.service';
+import { ConstService } from '../const.service';
 
 @Component({templateUrl: 'register.component.html'})
 export class RegisterComponent implements OnInit {
@@ -13,8 +15,16 @@ export class RegisterComponent implements OnInit {
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
-        private usersService: UsersService
-    ) { }
+        private usersService: UsersService,
+        private constService: ConstService,
+        private authenticationService: AuthenticationService
+        ) { 
+            // redirect to home if already logged in
+            let user = this.authenticationService.currentUserValue;
+            if (user) { 
+                this.router.navigate([this.constService.returnUrl[user.role]]);
+            }
+        }
 
     ngOnInit() {
         this.registerForm = this.formBuilder.group({

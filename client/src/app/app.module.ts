@@ -19,6 +19,10 @@ import { StudentsPageComponent } from './students-page/students-page.component';
 import { TurmasComponent } from './turmas/turmas.component';
 import { AttendanceComponent } from './attendance/attendance.component';
 import { NovoAvisoComponent } from './novo-aviso/novo-aviso.component';
+import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
+import { FormsModule } from '@angular/forms';
+import { SearchPipe, UserPipe } from './search.pipe';
+import { AprovarMatriculaComponent } from './aprovar-matricula/aprovar-matricula.component';
 
 
 @NgModule({
@@ -35,7 +39,11 @@ import { NovoAvisoComponent } from './novo-aviso/novo-aviso.component';
     StudentsPageComponent,
     TurmasComponent,
     AttendanceComponent,
-    NovoAvisoComponent
+    NovoAvisoComponent,
+    ListaAlunosComponent,
+    SearchPipe,
+    UserPipe,
+    AprovarMatriculaComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +54,7 @@ import { NovoAvisoComponent } from './novo-aviso/novo-aviso.component';
     MatInputModule,
     MatButtonModule,
     BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent],

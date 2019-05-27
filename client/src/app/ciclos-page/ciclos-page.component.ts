@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { CiclosService } from '../ciclos.service';
-import { MatriculasService } from '../matriculas.service';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-ciclos-page',
@@ -10,9 +10,17 @@ import { MatriculasService } from '../matriculas.service';
 })
 export class CiclosPageComponent implements OnInit {
 
+  private user: any;
   private ciclos: any;
 
-  constructor(private router: Router, private ciclosService: CiclosService) { }
+  constructor(private router: Router, private ciclosService: CiclosService, private authenticationService: AuthenticationService) {
+    let user = this.authenticationService.currentUserValue;
+    if (!user || user.role !== 'ADMIN') {
+      this.router.navigate(['login']);
+    } else {
+      this.user = user;
+    }
+  }
 
   ngOnInit() {
     this.ciclosService.getCiclos().subscribe(data => {
@@ -26,6 +34,5 @@ export class CiclosPageComponent implements OnInit {
     });
 
     window.location.reload();
-    //this.router.navigate(['ciclos']);
   }
 }

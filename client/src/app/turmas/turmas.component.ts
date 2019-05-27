@@ -6,6 +6,7 @@ import { TurmasService } from '../turmas.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../users.service';
 import { MatriculasService } from '../matriculas.service';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-turmas',
@@ -24,8 +25,22 @@ export class TurmasComponent implements OnInit {
   private alunoMatricula: any;
   loading = false;
   submitted = false;
+  user: any;
 
-  constructor(private router: Router, private cicloService: CiclosService, private fb: FormBuilder, private turmaService: TurmasService, private userService: UsersService, private matriculaService: MatriculasService) { }
+  constructor(private router: Router,
+     private cicloService: CiclosService,
+    private fb: FormBuilder, 
+    private turmaService: TurmasService, 
+    private userService: UsersService, 
+    private matriculaService: MatriculasService,
+    private authenticationService: AuthenticationService) { 
+    let user = this.authenticationService.currentUserValue;
+    if (!user || user.role !== 'ADMIN') { 
+        this.router.navigate(['login']);
+    } else {
+      this.user = user;
+    }
+  }
 
   ngOnInit() {
 
@@ -87,15 +102,6 @@ export class TurmasComponent implements OnInit {
 
     console.log(this.alunos);
 
-
-  }
-
-  aproveMatricula(id: number) {
-    console.log(this.matriculaForm.getRawValue());
-
-    this.matriculaService.updateMatricula(id).subscribe(data => {
-      this.matriculas = data;
-    });
 
   }
 

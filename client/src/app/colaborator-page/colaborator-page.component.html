@@ -15,9 +15,9 @@
           </mat-panel-description>
       </mat-expansion-panel-header>
         <button class="btn btn-primary but" type="submit"> Aulas Cadastradas</button> 
-        <button class="btn btn-primary but" type="submit"> Lista de Alunos</button>
-        <button [routerLink]="['/attendance']" class="btn btn-primary but">Realizar Chamada</button>        
-      </mat-expansion-panel>
+        <button type="button" class="btn btn-primary but" [routerLink]="['/lista-alunos', colaborador.turma.id]">Lista de Alunos</button>
+        <button class="btn btn-primary but"  type="submit"> Realizar Chamada</button>
+    </mat-expansion-panel>
   </mat-accordion>
 </div>
 
@@ -26,7 +26,7 @@
 
 <div class="container">
   <div class="list-group" *ngFor="let aviso of avisos">
-    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <a class="list-group-item list-group-item-action flex-column align-items-start">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{aviso.title}}</h5>
         <small class="text-muted">{{aviso.created_at | date: "dd/MM/yyyy"}}</small>

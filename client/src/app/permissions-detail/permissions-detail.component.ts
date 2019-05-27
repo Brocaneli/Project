@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../users.service';
 import { ColaboradoresService } from '../colaboradores.service';
 import { MatriculasService } from '../matriculas.service';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { TurmasService } from '../turmas.service';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-permissions-detail',
@@ -16,19 +19,35 @@ export class PermissionsDetailComponent implements OnInit {
   private classes: any;
   private colaborators: any;
   private registrations: any;
+  colaboradorToTurmaForm: FormGroup;
+  private possibleTurmas: any;
+  loading = false;
+  submitted = false;
+  loggedUser: any;
 
-  constructor(private activatedRoute: ActivatedRoute, 
-              private usersService: UsersService, 
-              private colaboradorService: ColaboradoresService,
-              private matriculasService: MatriculasService
-              ) { 
+  constructor(private activatedRoute: ActivatedRoute,
+    private usersService: UsersService,
+    private colaboradorService: ColaboradoresService,
+    private matriculasService: MatriculasService,
+    private turmasService: TurmasService,
+    private fb: FormBuilder,
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {
     this.classes = [];
     this.colaborators = [];
     this.registrations = [];
-              }
+
+    let loggedUser = this.authenticationService.currentUserValue;
+    if (!loggedUser || loggedUser.role !== 'ADMIN') { 
+        this.router.navigate(['login']);
+    } else {
+      this.loggedUser = loggedUser;
+    }
+  }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(params => { 
+    this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
     })
 
@@ -42,17 +61,32 @@ export class PermissionsDetailComponent implements OnInit {
 
     this.colaboradorService.getAllClassFromCollaborator(this.id).subscribe((data) => {
       this.colaborators = data;
+      let turmaIds = this.colaborators.map((colaborator) => {
+        return colaborator.turma.id
+      })
+
+
+      this.turmasService.getTurma().subscribe(data => {
+        let allTurmas: any = data;
+        this.possibleTurmas = allTurmas.filter((turma) => {
+          return turmaIds.indexOf(turma.id) < 0
+        })
+      });
     });
 
     this.matriculasService.getAllUnapprovedMatriculasFromUser(this.id).subscribe((data) => {
       this.registrations = data;
     });
+
+    this.colaboradorToTurmaForm = this.fb.group({
+      turma: ['', Validators.required]
+    });
   }
 
-  updateUser(){
+  updateUser() {
     var e = (document.getElementById("select")) as HTMLSelectElement;;
     var role = e.options[e.selectedIndex].text;
-    switch(role){
+    switch (role) {
       case "Administrador": {
         this.user.role = "ADMIN";
         break;
@@ -66,8 +100,34 @@ export class PermissionsDetailComponent implements OnInit {
         break;
       }
     }
-    this.usersService.updateUser(this.user).subscribe(()=>{
+    this.usersService.updateUser(this.user).subscribe(() => {
       console.log("Updated successfully")
+    });
+  }
+
+  // convenience getter for easy access to form fields
+  get f() { return this.colaboradorToTurmaForm.controls; }
+
+  onSubmit() {
+
+    this.submitted = true;
+
+    // stop here if form is invalid
+    if (this.colaboradorToTurmaForm.invalid) {
+      return;
+    }
+
+    let colaboradorBody = this.colaboradorToTurmaForm.getRawValue();
+    colaboradorBody.user = this.id;
+
+    this.colaboradorService.createColaborador(colaboradorBody).subscribe(data => {
+      window.location.reload();
+    });
+  }
+
+  deleteColaborador(colaboradorId) {
+    this.colaboradorService.deleteColaborador(colaboradorId).subscribe((data) => {
+      window.location.reload();
     });
   }
 

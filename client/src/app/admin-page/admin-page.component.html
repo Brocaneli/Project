@@ -1,24 +1,30 @@
 <div class="jumbotron">
   <div class="container">
       <div class="row">
-          <div class="col-4 offset-4">
-              <button [routerLink]="['/ciclos']" [disabled]="loading" class="btn btn-secondary btn-sm">Ciclos</button>
+          <div class="col-6 offset-3">
+              <button [routerLink]="['/ciclos']" [disabled]="loading" class="btn btn-info btn-block">Ciclos</button>
           </div>
       </div>
       <div class="row">
-          <div class="col-4 offset-4">
-              <button [routerLink]="['/turmas']" [disabled]="loading" class="btn btn-secondary btn-sm btn-block">Turmas</button>
+          <div class="col-6 offset-3">
+              <button [routerLink]="['/turmas']" [disabled]="loading" class="btn btn-info btn-block">Turmas</button>
           </div>
       </div>
       <div class="row">
-          <div class="col-4 offset-4">
-              <button [routerLink]="['/users']" [disabled]="loading" class="btn btn-secondary btn-sm btn-block">Permissões</button> 
+          <div class="col-6 offset-3">
+              <button [routerLink]="['/users']" [disabled]="loading" class="btn btn-info btn-block">Permissões</button> 
           </div>
       </div>
       <div class="row">
           <div class="col-sm-6 offset-sm-3">
-              <button [routerLink]="['/colaborators']" type="button" class="btn btn-primary btn-lg btn-block">Área Própria</button>
+              <button [routerLink]="['/colaborators']" type="button" class="btn btn-primary btn-lg btn-block">Área do Colaborador</button>
           </div>
       </div>
+
+      <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <button [routerLink]="['/students']" type="button" class="btn btn-primary btn-lg btn-block">Área do Estudante</button>
+        </div>
+    </div>
   </div>
 </div>
