@@ -66,7 +66,7 @@ class AulaApi(viewsets.ModelViewSet):
 class PresencaApi(viewsets.ModelViewSet):
     queryset = Presenca.objects.all()
     filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ('user', 'aula',)
+    filterset_fields = ('user', 'aula', 'turma')
 
     def get_serializer_class(self):
         method = self.request.method

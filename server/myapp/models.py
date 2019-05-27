@@ -53,6 +53,7 @@ class Aula(models.Model):
 class Presenca(models.Model):
     aula = models.ForeignKey(Aula, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
     presences = models.IntegerField()
     is_replacement = models.BooleanField()
     created_at = models.DateTimeField(default=datetime.datetime.today)

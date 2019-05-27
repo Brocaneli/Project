@@ -73,7 +73,7 @@ export class AttendanceComponent implements OnInit {
           presence = 1;
         }
         var new_presence = {aula: this.classes[this.turma.actual_class].id, 
-          user: element.user.id, presences: presence, is_replacement: false};
+          user: element.user.id, presences: presence, is_replacement: false, turma: this.turma.id};
         this.presenceService.createPresence(new_presence).subscribe(() => {
           console.log("Presences added")
         });
@@ -82,19 +82,15 @@ export class AttendanceComponent implements OnInit {
       var turma_up = this.turma
       turma_up.first_attendance = true
       turma_up.ciclo = this.turma.ciclo.id
-      console.log(turma_up)
       this.turmasService.updateTurma(turma_up).subscribe(() => {
         console.log("Turma updated")
       });
     }else{
-      console.log(this.presences)
       var con = 0;
       this.matriculas.forEach(element => {
         var presence_up = this.presences[con]
         if(element.presence){
-          console.log(presence_up.presences)
           presence_up.presences = presence_up.presences + 1;
-          console.log(presence_up.presences)
         }
         presence_up.aula = presence_up.aula.id
         presence_up.user = presence_up.user.id
@@ -108,7 +104,6 @@ export class AttendanceComponent implements OnInit {
       turma_up.first_attendance = false
       turma_up.actual_class = this.turma.actual_class + 1;
       turma_up.ciclo = this.turma.ciclo.id
-      console.log(turma_up)
       this.turmasService.updateTurma(turma_up).subscribe(() => {
         console.log("Turma updated")
       });
