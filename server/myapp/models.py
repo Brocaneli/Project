@@ -71,7 +71,7 @@ class Matricula(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
     nota = models.IntegerField()
-    approved = models.BooleanField(default=False)
+    approved = models.CharField(max_length=50, default = "pending")
     absences = models.IntegerField()
 
     def __str__(self):

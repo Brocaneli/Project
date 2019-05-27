@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>Matrículas Pendentes da Turma</h2>
+  <div class="input-group mb-3">
+    <input id="search" type="text" class="form-control" [(ngModel)]="query" placeholder="Buscar aluno">
+  </div>
+  <div class="list-group">
+    <button type="button" class="list-group-item list-group-item-action"
+      *ngFor="let matricula of matriculas | search: query">
+      {{matricula.user.name}}
+      <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <a (click)="approveMatricula(matricula)"><button style="margin-top: 10px" type="button" class="btn btn-success"><span
+            class="glyphicon glyphicon-ok"></span></button></a>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <a (click)="rejectMatricula(matricula)"><button style="margin-top: 10px" type="button" class="btn btn-danger"><span
+            class="glyphicon glyphicon-remove"></span></button></a>
+    </button>
+  </div>
+</div>

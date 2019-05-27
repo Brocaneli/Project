@@ -2,3 +2,16 @@
     padding-left: 5vw;
     padding-right: 5vw;
 }
+
+.btn-circle-div {
+    padding-left: calc(50vw - 35px);
+  }
+  
+  .btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 35px;
+  }
+  

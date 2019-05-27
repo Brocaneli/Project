@@ -9,7 +9,7 @@ import { UsersService } from '../users.service';
 export class PermissionsComponent implements OnInit, OnChanges {
 
   private users: any;
-
+  private query: any
 
   constructor(private usersService: UsersService) { }
 

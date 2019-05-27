@@ -18,6 +18,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentsPageComponent } from './students-page/students-page.component';
 import { TurmasComponent } from './turmas/turmas.component';
 import { AttendanceComponent } from './attendance/attendance.component';
+import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
+import { FormsModule } from '@angular/forms';
+import { SearchPipe, UserPipe } from './search.pipe';
+import { AprovarMatriculaComponent } from './aprovar-matricula/aprovar-matricula.component';
 
 
 @NgModule({
@@ -33,7 +37,11 @@ import { AttendanceComponent } from './attendance/attendance.component';
     ColaboratorPageComponent,
     StudentsPageComponent,
     TurmasComponent,
-    AttendanceComponent
+    AttendanceComponent,
+    ListaAlunosComponent,
+    SearchPipe,
+    UserPipe,
+    AprovarMatriculaComponent
   ],
   imports: [
     BrowserModule,
@@ -44,6 +52,7 @@ import { AttendanceComponent } from './attendance/attendance.component';
     MatInputModule,
     MatButtonModule,
     BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent],

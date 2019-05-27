@@ -14,7 +14,7 @@ export class ColaboratorPageComponent implements OnInit {
 
   private avisos : any;
   private user : any;
-  private colaborador : any;
+  private colaboradores : any;
   
   constructor(
     private avisoService: AvisoService, 
@@ -35,19 +35,9 @@ export class ColaboratorPageComponent implements OnInit {
     this.avisoService.getAvisos().subscribe(data => {
       this.avisos = data;
     });
+
     this.matriculasService.getAllClassFromCollaborator(this.user.id).subscribe(data => {
-      this.colaborador = data;
+      this.colaboradores = data;
     });
   }
-
-  onClick_aulasCadastradas(){
-    this.router.navigate(['login']);
-  }  
-  onClick_listaAlunos(){
-    this.router.navigate(['login']);
-  }  
-  onClick_chamada(){
-    this.router.navigate(['login']);
-  }
-
 }
