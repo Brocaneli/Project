@@ -47,7 +47,9 @@ export class ColaboratorPageComponent implements OnInit {
     this.router.navigate(['login']);
   }  
   onClick_chamada(){
-    this.router.navigate(['login']);
+    this.router.navigate(['attendance']);
   }
+
+
 
 }

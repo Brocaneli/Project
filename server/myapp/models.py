@@ -14,7 +14,7 @@ class Turma(models.Model):
     start_date = models.DateTimeField(default=datetime.datetime.today)
     end_date = models.DateTimeField(default=datetime.datetime.today)
     created_at = models.DateTimeField(default=datetime.datetime.today)
-    actual_class = models.IntegerField()
+    actual_class = models.IntegerField(default=0)
 
     def __str__(self):
         return "Turma: {}".format(self.name)
@@ -41,12 +41,13 @@ class Aviso(models.Model):
         return "Aviso: {}".format(self.title)
 
 class Aula(models.Model):
-    turma_id = models.ForeignKey(Turma, on_delete=models.CASCADE)
+    ciclo = models.ForeignKey(Ciclo, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50)
     date = models.DateTimeField(default=datetime.datetime.today)
     created_at = models.DateTimeField(default=datetime.datetime.today)
 
     def __str__(self):
-        return "Aula: Turma={}, Date={}".format(self.turma_id, self.date)
+        return "Aula: Ciclo={}, Date={}".format(self.ciclo, self.date)
 
 class Presenca(models.Model):
     aula = models.ForeignKey(Aula, on_delete=models.CASCADE)
@@ -70,6 +71,7 @@ class Matricula(models.Model):
     turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
     nota = models.IntegerField()
     approved = models.BooleanField(default=False)
+    absences = models.IntegerField()
 
     def __str__(self):
-        return "Matricula: User={}, Turma={}, Nota={}, Approved={}".format(self.user, self.turma, self.nota, self.approved)
+        return "Matricula: User={}, Turma={}, Nota={}, Approved={}, Absences={}".format(self.user, self.turma, self.nota, self.approved, self.absences)

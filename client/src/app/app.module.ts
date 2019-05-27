@@ -16,7 +16,9 @@ import { ColaboratorPageComponent } from './colaborator-page/colaborator-page.co
 import { MatExpansionModule, MatInputModule, MatButtonModule } from '@angular/material'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentsPageComponent } from './students-page/students-page.component';
+import { TurmasComponent } from './turmas/turmas.component';
 import { AttendanceComponent } from './attendance/attendance.component';
+import { NovoAvisoComponent } from './novo-aviso/novo-aviso.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { AttendanceComponent } from './attendance/attendance.component';
     PermissionsDetailComponent,
     ColaboratorPageComponent,
     StudentsPageComponent,
-    AttendanceComponent
+    TurmasComponent,
+    AttendanceComponent,
+    NovoAvisoComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,7 @@ import { AttendanceComponent } from './attendance/attendance.component';
     MatExpansionModule,
     MatInputModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent],

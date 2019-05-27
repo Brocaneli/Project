@@ -3,6 +3,8 @@ import { AvisoService } from '../aviso.service';
 import { MatriculasService } from '../matriculas.service';
 import { AuthenticationService } from '../authentication.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import {Location} from '@angular/common';
+
 
 
 @Component({
@@ -21,13 +23,14 @@ export class StudentsPageComponent implements OnInit {
     private matriculasService: MatriculasService,
     private authenticationService: AuthenticationService,
     private router: Router,
+    private _location: Location
 
   ) {
     let user = this.authenticationService.currentUserValue;
     if (!user) { 
         //this.router.navigate(['login']);
     } else {
-      this.user= user;
+      this.user = user;
     }
    }
 
@@ -40,5 +43,10 @@ export class StudentsPageComponent implements OnInit {
       this.matriculas = data;
     });
   }
+
+  onClick_back() {
+    this._location.back();
+  }
+
 
 }

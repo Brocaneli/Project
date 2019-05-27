@@ -16,14 +16,13 @@
       </mat-expansion-panel-header>
         <button class="btn btn-primary but" type="submit"> Aulas Cadastradas</button> 
         <button class="btn btn-primary but" type="submit"> Lista de Alunos</button>
-        <button class="btn btn-primary but"  type="submit"> Realizar Chamada</button>
-    </mat-expansion-panel>
+        <button [routerLink]="['/attendance']" class="btn btn-primary but">Realizar Chamada</button>        
+      </mat-expansion-panel>
   </mat-accordion>
 </div>
 
-
-
 <h4 class="text"> Avisos </h4>
+
 
 <div class="container">
   <div class="list-group" *ngFor="let aviso of avisos">
@@ -37,3 +36,13 @@
     </a>
   </div>
 </div>
+
+
+
+<button [routerLink]="['/students']" class="btn btn-primary but">Minhas Aulas</button>        
+<button [routerLink]="['/attendance']" class="btn btn-primary but">Realizar Chamada</button>        
+<button [routerLink]="['/naviso']" class="btn btn-primary but">Novo Aviso</button>        
+
+
+
+
