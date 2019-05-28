@@ -32,11 +32,17 @@ export class StudentsPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.avisoService.getAvisos().subscribe(data => {
-      this.avisos = data;
-    });
     this.matriculasService.getAllApprovedMatriculasFromUser(this.user.id).subscribe(data => {
       this.matriculas = data;
+
+      let turmaIds = this.matriculas.map((mat) => mat.turma.id)
+
+      this.avisoService.getAvisos().subscribe(data => {
+        let allAvisos: any = data;
+        this.avisos = allAvisos.filter((aviso) => {
+          return turmaIds.indexOf(aviso.turma.id) < 0
+        });
+      });
     });
 
     this.matriculasService.getAllPendingMatriculasFromUser(this.user.id).subscribe(data => {
