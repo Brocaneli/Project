@@ -123,7 +123,8 @@ export class AttendanceComponent implements OnInit {
           is_replacement = false;
         }
         var new_presence = {aula: this.classes[this.turma.actual_class].id, 
-          user: element.user.id, presences: presence, is_replacement: is_replacement, turma: this.turma.id};
+          user: element.user.id, presences: presence, is_replacement: is_replacement, 
+          turma: this.turma.id, original_turma: element.turma.id};
         this.presenceService.createPresence(new_presence).subscribe(() => {
           console.log("Presences added")
         });
