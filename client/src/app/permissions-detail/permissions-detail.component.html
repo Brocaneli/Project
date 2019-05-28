@@ -4,11 +4,14 @@
   <h4>{{ user.email }}</h4>
   <h4>{{ user.phone }}</h4>
 
+  <h2>Turmas matriculados</h2>
   <div *ngIf="this.classes.length > 0">
-    <h2>Turmas matriculados</h2>
     <div class="list-group">
       <li *ngFor="let class of classes" class="list-group-item">{{class.turma.ciclo.name}} - {{class.turma.name}}</li>
     </div>
+  </div>
+  <div *ngIf="this.classes.length == 0">
+    Você ainda não está matriculado em nenhuma turma!
   </div>
 
   <!-- <div *ngIf="this.registrations.length > 0">
@@ -18,8 +21,9 @@
     </div>
   </div> -->
 
+
+  <h2>Turmas ministradas</h2>
   <div *ngIf="this.colaborators.length > 0">
-    <h2>Turmas ministradas</h2>
     <div class="list-group">
       <li *ngFor="let colab of colaborators" class="list-group-item">
         {{colab.turma.ciclo.name}} - {{colab.turma.name}}
@@ -27,6 +31,9 @@
           class="glyphicon glyphicon-trash"></span></button></a>
       </li>
     </div>
+  </div>
+  <div *ngIf="this.colaborators.length == 0">
+    Você ainda não está ministrando nenhuma turma!
   </div>
 
   <div class="row">
@@ -54,7 +61,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <button [routerLink]="['/users']" type="button" class="btn btn-danger">Cancelar</button>
+      <button [routerLink]="['/users']" type="button" class="btn btn-danger">Voltar</button>
     </div>
     <div class="col">
       <button (click)="updateUser()" [routerLink]="['/users']" type="button" class="btn btn-success">Salvar</button>

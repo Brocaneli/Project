@@ -25,6 +25,7 @@ import { AprovarMatriculaComponent } from './aprovar-matricula/aprovar-matricula
 import { CicloqueryComponent } from './cicloquery/cicloquery.component';
 import { TurmaqueryComponent } from './turmaquery/turmaquery.component';
 import { StudentqueryComponent } from './studentquery/studentquery.component';
+import { NovaMatriculaComponent } from './nova-matricula/nova-matricula.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { StudentqueryComponent } from './studentquery/studentquery.component';
     AprovarMatriculaComponent,
     CicloqueryComponent,
     TurmaqueryComponent,
-    StudentqueryComponent
+    StudentqueryComponent,
+    NovaMatriculaComponent
   ],
   imports: [
     BrowserModule,
