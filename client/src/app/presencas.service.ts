@@ -38,4 +38,8 @@ export class PresencasService {
   getAllPresencesFromClass(classId: any){
     return this.httpClient.get(`${this.constService.API_URI}/presencas/?aula=${classId}`)
   }
+
+  getAllReplacementFromAula(classId: any, turmaId: any){
+    return this.httpClient.get(`${this.constService.API_URI}/presencas/?aula=${classId}&turma=${turmaId}&is_replacement=true`)
+  } 
 }

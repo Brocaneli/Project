@@ -1,0 +1,4 @@
+<div class="list-group">
+  <button *ngFor="let turma of turmas" (click)=chooseTurma(turma.id) 
+  type="button" class="list-group-item list-group-item-action">{{turma.name}}</button>
+</div>

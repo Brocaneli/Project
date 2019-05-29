@@ -35,5 +35,8 @@ export class TurmaService {
     return this.httpClient.delete(`${this.constService.API_URI}/turmas/${turmaId}/`)
   }
 
+  getAllTurmaFromCiclo(cicloId: any) {
+    return this.httpClient.get(`${this.constService.API_URI}/turmas/?ciclo=${cicloId}`)
+  }
 
 }

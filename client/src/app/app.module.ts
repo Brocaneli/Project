@@ -22,6 +22,9 @@ import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe, UserPipe } from './search.pipe';
 import { AprovarMatriculaComponent } from './aprovar-matricula/aprovar-matricula.component';
+import { CicloqueryComponent } from './cicloquery/cicloquery.component';
+import { TurmaqueryComponent } from './turmaquery/turmaquery.component';
+import { StudentqueryComponent } from './studentquery/studentquery.component';
 import { NovaMatriculaComponent } from './nova-matricula/nova-matricula.component';
 
 
@@ -43,6 +46,9 @@ import { NovaMatriculaComponent } from './nova-matricula/nova-matricula.componen
     SearchPipe,
     UserPipe,
     AprovarMatriculaComponent,
+    CicloqueryComponent,
+    TurmaqueryComponent,
+    StudentqueryComponent,
     NovaMatriculaComponent
   ],
   imports: [
