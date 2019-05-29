@@ -24,7 +24,7 @@ export class ColaboradoresService {
   }
 
   createColaborador(colaborador: any) {
-    return this.httpClient.post(`${this.constService.API_URI}/colaboradores/`, colaborador)
+    return this.httpClient.post(`${this.constService.API_URI}/colaboradores/`, colaborador, this.postOptions)
   }
 
   updateColaborador(colaborador: any) {

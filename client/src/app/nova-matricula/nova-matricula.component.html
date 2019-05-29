@@ -1,0 +1,25 @@
+<div class="container">
+  <form [formGroup]="matriculaForm" (ngSubmit)="onSubmit()">
+    <h5 class="modal-title" id="exampleModalLabel">Adicionando nova Turma</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+      <span aria-hidden="true">&times;</span>
+    </button>
+
+    <div class="input-group mb-3">
+      <div class="form-group">
+        <label for="turma">Turma</label>
+        <select class="form-control" formControlName="turma" [ngClass]="{ 'is-invalid': submitted && f.turma.errors }">
+          <option *ngFor="let t of turmas" [value]="t.id">{{t.name}}</option>
+        </select>
+        <div *ngIf="submitted && f.turma.errors" class="invalid-feedback">
+          <div *ngIf="f.turma.errors.required">A turma é obrigatória</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="modal-footer form-group col-4 offset-4">
+      <button class="btn btn-primary">Criar</button>
+    </div>
+  </form>
+</div>

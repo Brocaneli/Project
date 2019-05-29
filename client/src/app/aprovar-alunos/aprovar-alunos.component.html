@@ -1,0 +1,22 @@
+<div class="container">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <h3 class="col-sm-6 offset-sm-5">Alunos</h3>
+  <hr class="my-4">
+  <div class="input-group mb-3">
+      <input id="search" type="text" class="form-control" [(ngModel)]="query" placeholder="Buscar aluno">
+    </div>
+  <div class="list-group" *ngFor="let aluno of alunos | search: query">
+    <div *ngIf= "aluno.graduated == 'aguardando'">
+      <button name="note" [disabled]="loading" class=" list-group-item list-group-item-action">{{aluno.user.name}}
+        <label for="note">NOTA: {{aluno.nota}}</label>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a (click)="approveAluno(aluno)" style="margin-top: 10px" type="button" class="btn btn-primary">APROVAR</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a (click)="reproveAluno(aluno)" style="margin-top: 10px" type="button" class="btn btn-danger">REJEITAR</a>
+      </button>
+    </div>
+  </div>
+
+
+</div>

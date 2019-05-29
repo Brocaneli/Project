@@ -1,10 +1,10 @@
 <div class="container">
   <h2>Usuários</h2>
   <div class="input-group mb-3">
-    <input id="search" type="text" class="form-control" placeholder="Buscar pessoa">
+    <input id="search" type="text" class="form-control" [(ngModel)]="query" placeholder="Buscar pessoa">
   </div>
   <div class="list-group">
     <button [routerLink]="['/users', user.id]" type="button"
-      class="list-group-item list-group-item-action" *ngFor="let user of users">{{user.name}}</button>
+      class="list-group-item list-group-item-action" *ngFor="let user of users | search_user: query">{{user.name}}</button>
   </div>
 </div>

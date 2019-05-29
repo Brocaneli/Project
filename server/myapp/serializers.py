@@ -32,7 +32,7 @@ class GetAulaSerializer(serializers.ModelSerializer):
 class GetPresencaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Presenca
-        fields = ('id', 'aula', 'user', 'presence', 'is_replacement')
+        fields = ('id', 'aula', 'user', 'presences', 'is_replacement')
         depth = 1
 
 class GetColaboradorSerializer(serializers.ModelSerializer):
@@ -68,7 +68,6 @@ class AvisoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Aviso
         fields = '__all__'
-        depth = 2
 
 class AulaSerializer(serializers.ModelSerializer):
     class Meta:

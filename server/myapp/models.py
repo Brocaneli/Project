@@ -15,6 +15,7 @@ class Turma(models.Model):
     end_date = models.DateTimeField(default=datetime.datetime.today)
     created_at = models.DateTimeField(default=datetime.datetime.today)
     actual_class = models.IntegerField(default=0)
+    first_attendance = models.BooleanField(default=False)
 
     def __str__(self):
         return "Turma: {}".format(self.name)
@@ -52,12 +53,12 @@ class Aula(models.Model):
 class Presenca(models.Model):
     aula = models.ForeignKey(Aula, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    presence = models.BooleanField()
+    presences = models.IntegerField()
     is_replacement = models.BooleanField()
     created_at = models.DateTimeField(default=datetime.datetime.today)
 
     def __str__(self):
-        return "Presença: Aula={}, User={}, Presence={}".format(self.aula, self.user, self.presence)
+        return "Presença: Aula={}, User={}, Presences={}".format(self.aula, self.user, self.presences)
 
 class Colaborador(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -70,7 +71,7 @@ class Matricula(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
     nota = models.IntegerField()
-    approved = models.BooleanField(default=False)
+    approved = models.CharField(max_length=50, default = "pending")
     absences = models.IntegerField()
 
     def __str__(self):
