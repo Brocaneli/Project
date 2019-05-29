@@ -90,7 +90,7 @@ class ColaboradorApi(viewsets.ModelViewSet):
 class MatriculaApi(viewsets.ModelViewSet):
     queryset = Matricula.objects.all()
     filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ('user', 'turma', 'approved',)
+    filterset_fields = ('user', 'turma', 'approved', 'graduated')
 
     def get_serializer_class(self):
         method = self.request.method

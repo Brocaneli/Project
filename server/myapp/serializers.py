@@ -44,7 +44,7 @@ class GetColaboradorSerializer(serializers.ModelSerializer):
 class GetMatriculaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Matricula
-        fields = ('id', 'user', 'turma', 'nota', 'approved', 'absences')
+        fields = ('id', 'user', 'turma', 'nota', 'approved', 'absences', 'graduated')
         depth = 2
 
 ## Write Serializers

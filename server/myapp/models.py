@@ -73,6 +73,7 @@ class Matricula(models.Model):
     nota = models.IntegerField()
     approved = models.CharField(max_length=50, default = "pending")
     absences = models.IntegerField()
+    graduated = models.CharField(max_length=50, default = "aguardando")
 
     def __str__(self):
         return "Matricula: User={}, Turma={}, Nota={}, Approved={}, Absences={}".format(self.user, self.turma, self.nota, self.approved, self.absences)
