@@ -13,6 +13,11 @@ import { PresencasService } from '../presencas.service';
 })
 export class AttendanceComponent implements OnInit {
 
+  // query itens
+  cicloQuery: any
+  turmaQuery: any
+  queryAllowed = false
+
   turma_id = 1;
   turma: any;
   matriculas: any;
@@ -20,6 +25,8 @@ export class AttendanceComponent implements OnInit {
   private user: any
   classes: any;
   presences: any;
+  class_registered = true;
+  replacement: any;
 
   constructor(private turmasService: TurmaService,
     private matriculaService: MatriculasService,
@@ -43,21 +50,62 @@ export class AttendanceComponent implements OnInit {
       this.turma = data;
       this.aulaService.getAllAulasFromCiclo(this.turma.ciclo.id).subscribe((data) => {
         this.classes = data;
-        var actual_class_id = this.classes[this.turma.actual_class].id;
-        this.presenceService.getAllPresencesFromClass(actual_class_id).subscribe((data) => {
-          this.presences = data;
-        });
+
+        if(this.turma.actual_class < this.classes.length){
+          var actual_class_id = this.classes[this.turma.actual_class].id;
+          this.presenceService.getAllPresencesFromClass(actual_class_id).subscribe((data) => {
+            this.presences = data;
+          });
+  
+          this.matriculaService.getAllMatriculasFromTurma(this.turma_id).subscribe((data) => {
+            this.matriculas = data;
+            this.matriculas.forEach(element => {
+              element['presence'] = false
+            });
+            this.matriculas.sort((a, b) => (a.user.name > b.user.name) ? 1 : -1)
+            this.presenceService.getAllReplacementFromAula(actual_class_id, this.turma_id).subscribe((data) => {
+              this.replacement = data
+              this.replacement.forEach(element => {
+                this.matriculaService.getMatriculaBetweenUserAndTurma(element.original_turma, element.user.id).subscribe((data) => {
+                  var new_matricula = data[0];
+                  new_matricula['presence'] = false
+                  this.matriculas.push(new_matricula)
+                });
+              });
+            });
+          });
+
+        }else{
+          this.class_registered = false;
+        }
+
       });
     });
 
-    this.matriculaService.getAllMatriculasFromTurma(this.turma_id).subscribe((data) => {
-      this.matriculas = data;
-      this.matriculas.forEach(element => {
-        element['presence'] = false
-      });
-      this.matriculas.sort((a, b) => (a.user.name > b.user.name) ? 1 : -1)
-    });
+  }
 
+  allowQuery(){
+    this.queryAllowed = !this.queryAllowed
+    this.cicloQuery = null;
+    this.turmaQuery = null;
+  }
+
+  cicloChose(cicloId: any) {
+    this.cicloQuery = cicloId;
+  }
+
+  turmaChose(turmaId: any) {
+    this.turmaQuery = turmaId;
+  }
+
+  studentsChose(matriculaId: any) {
+    var new_matricula;
+    this.matriculaService.getMatricula(matriculaId).subscribe((data) => {
+      new_matricula = data;
+      new_matricula['presence'] = false
+      this.matriculas.push(new_matricula)
+      this.allowQuery();
+    });
   }
 
   markPresence() {
@@ -67,10 +115,16 @@ export class AttendanceComponent implements OnInit {
         if (element.presence) {
           presence = 1;
         }
-        var new_presence = {
-          aula: this.classes[this.turma.actual_class].id,
-          user: element.user.id, presences: presence, is_replacement: false
-        };
+
+        var is_replacement
+        if(element.turma.id != this.turma.id){
+          is_replacement = true;
+        }else{
+          is_replacement = false;
+        }
+        var new_presence = {aula: this.classes[this.turma.actual_class].id, 
+          user: element.user.id, presences: presence, is_replacement: is_replacement, 
+          turma: this.turma.id, original_turma: element.turma.id};
         this.presenceService.createPresence(new_presence).subscribe(() => {
           console.log("Presences added")
         });
@@ -79,20 +133,17 @@ export class AttendanceComponent implements OnInit {
       var turma_up = this.turma
       turma_up.first_attendance = true
       turma_up.ciclo = this.turma.ciclo.id
-      console.log(turma_up)
       this.turmasService.updateTurma(turma_up).subscribe(() => {
         console.log("Turma updated")
       });
-    } else {
-      console.log(this.presences)
+    }else{
       var con = 0;
       this.matriculas.forEach(element => {
         var presence_up = this.presences[con]
-        if (element.presence) {
-          console.log(presence_up.presences)
+        if(element.presence){
           presence_up.presences = presence_up.presences + 1;
-          console.log(presence_up.presences)
         }
+        presence_up.turma = presence_up.turma.id
         presence_up.aula = presence_up.aula.id
         presence_up.user = presence_up.user.id
         console.log(presence_up)
@@ -105,7 +156,6 @@ export class AttendanceComponent implements OnInit {
       turma_up.first_attendance = false
       turma_up.actual_class = this.turma.actual_class + 1;
       turma_up.ciclo = this.turma.ciclo.id
-      console.log(turma_up)
       this.turmasService.updateTurma(turma_up).subscribe(() => {
         console.log("Turma updated")
       });

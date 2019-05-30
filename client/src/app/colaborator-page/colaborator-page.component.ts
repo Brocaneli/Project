@@ -32,12 +32,18 @@ export class ColaboratorPageComponent implements OnInit {
    }
 
    ngOnInit() {
-    this.avisoService.getAvisos().subscribe(data => {
-      this.avisos = data;
-    });
 
     this.matriculasService.getAllClassFromCollaborator(this.user.id).subscribe(data => {
       this.colaboradores = data;
+    
+      let turmaIds = this.colaboradores.map((mat) => mat.turma.id)
+
+      this.avisoService.getAvisos().subscribe(data => {
+        let allAvisos: any = data;
+        this.avisos = allAvisos.filter((aviso) => {
+          return turmaIds.indexOf(aviso.turma.id) >= 0
+        });
+      });
     });
   }
 }
