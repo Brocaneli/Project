@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
 import { MatriculasService } from '../matriculas.service';
+import { TurmaService } from '../turma.service';
 
 @Component({
   selector: 'app-aprovar-alunos',
@@ -11,12 +12,19 @@ export class AprovarAlunosComponent implements OnInit {
 
   private alunos: any
   private filtro: any;
+  private turmas: any;
+  private selectedTurma: any;
+  private alert: any;
 
-  constructor(private alunosService: MatriculasService) { }
+  constructor(private alunosService: MatriculasService, private turmaService: TurmaService) { }
 
   ngOnInit() {
-    this.alunosService.getAllMatriculas().subscribe(data => {
-      this.alunos = data;
+    // this.alunosService.getAllMatriculas().subscribe(data => {
+    //   this.alunos = data;
+    // })
+
+    this.turmaService.getAllTurmas().subscribe(data => {
+      this.turmas = data;
     })
 
     // this.filtro = this.alunos.filter(aluns => {
@@ -32,6 +40,14 @@ export class AprovarAlunosComponent implements OnInit {
   reproveAluno(aluno: any) {
     this.updateApprovedAluno(aluno, false, false);
     window.location.reload();
+  }
+
+  getAlunos(turmaID: any, selectedTurma: any) {
+    this.alunosService.getIsGraduatedMatriculas(turmaID).subscribe(data => {
+      this.alunos = data;
+    })
+    this.selectedTurma = selectedTurma;  
+    
   }
 
   updateApprovedAluno(aluno: any, nota: boolean, graduated: boolean) {

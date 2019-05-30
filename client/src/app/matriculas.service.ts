@@ -58,4 +58,9 @@ export class MatriculasService {
   getAllPendingMatriculasFromTurma(turmaId: any) {
     return this.httpClient.get(`${this.constService.API_URI}/matriculas/?approved=pending&turma=${turmaId}`)
   }
+
+  getIsGraduatedMatriculas(turmaId: any) {
+    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?graduates=aguardando&turma=${turmaId}`)
+  }
+
 }
