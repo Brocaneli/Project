@@ -47,15 +47,11 @@ import { AprovarAlunosComponent } from './aprovar-alunos/aprovar-alunos.componen
     SearchPipe,
     UserPipe,
     AprovarMatriculaComponent,
-<<<<<<< HEAD
-    NovaMatriculaComponent,
-    AprovarAlunosComponent
-=======
+    AprovarAlunosComponent,
     CicloqueryComponent,
     TurmaqueryComponent,
     StudentqueryComponent,
     NovaMatriculaComponent
->>>>>>> 2f092a41e1f32bb3385a35fd3a1cc18a3b50f87d
   ],
   imports: [
     BrowserModule,

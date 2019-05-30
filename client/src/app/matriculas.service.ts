@@ -59,14 +59,11 @@ export class MatriculasService {
     return this.httpClient.get(`${this.constService.API_URI}/matriculas/?approved=pending&turma=${turmaId}`)
   }
 
-<<<<<<< HEAD
   getIsGraduatedMatriculas(turmaId: any) {
     return this.httpClient.get(`${this.constService.API_URI}/matriculas/?graduates=aguardando&turma=${turmaId}`)
   }
 
-=======
   getMatriculaBetweenUserAndTurma(turmaId: any, userId: any) {
     return this.httpClient.get(`${this.constService.API_URI}/matriculas/?user=${userId}&turma=${turmaId}`)
   }
->>>>>>> 2f092a41e1f32bb3385a35fd3a1cc18a3b50f87d
 }
