@@ -23,6 +23,8 @@ import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe, UserPipe } from './search.pipe';
 import { AprovarMatriculaComponent } from './aprovar-matricula/aprovar-matricula.component';
+import { AulaPageComponent } from './aula-page/aula-page.component';
+import { NovaAulaComponent } from './nova-aula/nova-aula.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { AprovarMatriculaComponent } from './aprovar-matricula/aprovar-matricula
     ListaAlunosComponent,
     SearchPipe,
     UserPipe,
-    AprovarMatriculaComponent
+    AprovarMatriculaComponent,
+    AulaPageComponent,
+    NovaAulaComponent
   ],
   imports: [
     BrowserModule,

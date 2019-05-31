@@ -14,10 +14,10 @@
             {{colaborador.end_date}} 
           </mat-panel-description>
       </mat-expansion-panel-header>
-        <button class="btn btn-primary but" type="submit"> Aulas Cadastradas</button> 
-        <button type="button" class="btn btn-primary but" [routerLink]="['/lista-alunos', colaborador.turma.id]">Lista de Alunos</button>
-        <button class="btn btn-primary but"  type="submit"> Realizar Chamada</button>
-    </mat-expansion-panel>
+      <button type="button" class="btn btn-primary but" [routerLink]="['/aula', colaborador.turma.id]">Aulas Cadastradas</button>
+      <button type="button" class="btn btn-primary but" [routerLink]="['/lista-alunos', colaborador.turma.id]">Lista de Alunos</button>
+        <button type="button"[routerLink]="['/attendance']" class="btn btn-primary but">Realizar Chamada</button>        
+      </mat-expansion-panel>
   </mat-accordion>
 </div>
 
@@ -39,8 +39,7 @@
 
 
 
-<button [routerLink]="['/students']" class="btn btn-primary but">Minhas Aulas</button>        
-<button [routerLink]="['/attendance']" class="btn btn-primary but">Realizar Chamada</button>        
+<button [routerLink]="['/students']" class="btn btn-primary but">Aulas que sou Aluno</button>        
 <button [routerLink]="['/naviso']" class="btn btn-primary but">Novo Aviso</button>        
 
 

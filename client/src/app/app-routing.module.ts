@@ -14,6 +14,10 @@ import { AttendanceComponent } from './attendance/attendance.component';
 import { NovoAvisoComponent } from './novo-aviso/novo-aviso.component';
 import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
 import { AprovarMatriculaComponent } from './aprovar-matricula/aprovar-matricula.component';
+import { AulaPageComponent } from './aula-page/aula-page.component';
+import { NovaAulaComponent } from './nova-aula/nova-aula.component';
+
+
 
 const routes: Routes = [
   {
@@ -34,8 +38,11 @@ const routes: Routes = [
   { path: 'turmas', component: TurmasComponent },
   { path: 'attendance', component: AttendanceComponent },
   { path: 'lista-alunos/:id', component: ListaAlunosComponent },
+  { path: 'aula/:id', component: AulaPageComponent },
   { path: 'aprovacao/:id', component: AprovarMatriculaComponent },
-  {path: 'naviso', component: NovoAvisoComponent}
+  {path: 'naviso', component: NovoAvisoComponent},
+  {path: 'naula', component: NovaAulaComponent}
+
 ];
 
 @NgModule({

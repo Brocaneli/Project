@@ -17,7 +17,7 @@
       <input type="text" formControlName="description" class="form-control"
         [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
       <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
-        <div *ngIf="f.description.errors.required">O nome do aviso é obrigatório</div>
+        <div *ngIf="f.description.errors.required">A descrição do aviso é obrigatório</div>
       </div>
     </div>
 
