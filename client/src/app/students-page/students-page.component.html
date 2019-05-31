@@ -2,34 +2,51 @@
 
 <div class="container">
   <h3>Turmas</h3>
-  <ul class="list-group list-group-flush">
+  <ul style="list-style: none;" class="list-group list-group-flush">
     <li *ngFor="let matricula of matriculas">
-      <a class="list-group-item">{{matricula.turma.name}}</a>
+      <a class="list-group-item">
+        {{matricula.turma.name}}
+        <h5 class="mb-1">Nota: {{matricula.nota | number:'2.2-2' }}</h5>
+        <h5 class="mb-1">Presenças: {{matricula.absences}}</h5>
+      </a>
+    </li>
+    <li *ngIf="this.matriculas && this.matriculas.length == 0">
+      Você não está matriculado em nenhuma turma!
     </li>
   </ul>
-  <br />
+
   <h3>Avisos</h3>
-  <div class="Avisos"></div>
   <div *ngFor="let aviso of avisos">
-    <a href="#" class="list-group-item list-group-item-action">
+    <a class="list-group-item list-group-item-action">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{aviso.title}}</h5>
         <small class="text-muted">{{aviso.created_at | date: "dd/MM/yyyy"}}</small>
       </div>
       <p class="mb-1">{{aviso.description}}</p>
-      <small class="text-muted">Responsável: {{aviso.user.name}}</small>
+      <small class="text-muted">Responsável: {{aviso.user.name}}</small>  
     </a>
   </div>
-  <h3>Notas</h3>
-  <div class="Notas"></div>
-  <div *ngFor="let matricula of matriculas">
-    <a href="#" class="list-group-item list-group-item-action">
-      <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">{{matricula.nota}}</h5>
-      </div>
-      <small class="text-muted">Responsável: {{aviso.user.name}}</small>
-    </a>
+  <div *ngIf="this.avisos && this.avisos.length == 0">
+    Você não tem nenhum aviso!
   </div>
+<<<<<<< HEAD
 </div>
 
 
+=======
+
+  <h3>Matrículas pendentes</h3>
+  <ul style="list-style: none;" class="list-group list-group-flush">
+    <li *ngFor="let matricula of matriculasPendentes">
+      <a class="list-group-item">
+        {{matricula.turma.name}}
+      </a>
+    </li>
+    <li *ngIf="this.matriculasPendentes && this.matriculasPendentes.length == 0">
+        Você não tem nenhuma matrícula pendente!
+      </li>
+  </ul>
+  Clique <a [routerLink]="['/nova-matricula']">aqui</a> para se solicitar a matrícula em mais uma turma! 
+
+</div>
+>>>>>>> 2f092a41e1f32bb3385a35fd3a1cc18a3b50f87d

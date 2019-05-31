@@ -16,8 +16,7 @@ import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
 import { AprovarMatriculaComponent } from './aprovar-matricula/aprovar-matricula.component';
 import { AulaPageComponent } from './aula-page/aula-page.component';
 import { NovaAulaComponent } from './nova-aula/nova-aula.component';
-
-
+import { NovaMatriculaComponent } from './nova-matricula/nova-matricula.component';
 
 const routes: Routes = [
   {
@@ -41,8 +40,10 @@ const routes: Routes = [
   { path: 'aula/:id', component: AulaPageComponent },
   { path: 'aprovacao/:id', component: AprovarMatriculaComponent },
   {path: 'naviso', component: NovoAvisoComponent},
-  {path: 'naula', component: NovaAulaComponent}
+  {path: 'naula', component: NovaAulaComponent},
 
+  { path: 'aprovacao/:id', component: AprovarMatriculaComponent },
+  { path: 'nova-matricula', component: NovaMatriculaComponent }
 ];
 
 @NgModule({

@@ -1,0 +1,4 @@
+<div class="list-group">
+  <button *ngFor="let ciclo of ciclos" (click)=chooseCiclo(ciclo.id) 
+  type="button" class="list-group-item list-group-item-action">{{ciclo.name}}</button>
+</div>

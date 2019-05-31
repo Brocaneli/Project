@@ -43,6 +43,10 @@ export class MatriculasService {
     return this.httpClient.get(`${this.constService.API_URI}/matriculas/?approved=approved&user=${userId}`)
   }
 
+  getAllPendingMatriculasFromUser(userId: any) {
+    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?approved=pending&user=${userId}`)
+  }
+
   getAllMatriculasFromTurma(turmaId: any) {
     return this.httpClient.get(`${this.constService.API_URI}/matriculas/?turma=${turmaId}`)
   }
@@ -53,5 +57,9 @@ export class MatriculasService {
 
   getAllPendingMatriculasFromTurma(turmaId: any) {
     return this.httpClient.get(`${this.constService.API_URI}/matriculas/?approved=pending&turma=${turmaId}`)
+  }
+
+  getMatriculaBetweenUserAndTurma(turmaId: any, userId: any) {
+    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?user=${userId}&turma=${turmaId}`)
   }
 }

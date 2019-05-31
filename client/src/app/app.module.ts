@@ -23,8 +23,15 @@ import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe, UserPipe } from './search.pipe';
 import { AprovarMatriculaComponent } from './aprovar-matricula/aprovar-matricula.component';
+<<<<<<< HEAD
 import { AulaPageComponent } from './aula-page/aula-page.component';
 import { NovaAulaComponent } from './nova-aula/nova-aula.component';
+=======
+import { CicloqueryComponent } from './cicloquery/cicloquery.component';
+import { TurmaqueryComponent } from './turmaquery/turmaquery.component';
+import { StudentqueryComponent } from './studentquery/studentquery.component';
+import { NovaMatriculaComponent } from './nova-matricula/nova-matricula.component';
+>>>>>>> 2f092a41e1f32bb3385a35fd3a1cc18a3b50f87d
 
 
 @NgModule({
@@ -46,8 +53,15 @@ import { NovaAulaComponent } from './nova-aula/nova-aula.component';
     SearchPipe,
     UserPipe,
     AprovarMatriculaComponent,
+<<<<<<< HEAD
     AulaPageComponent,
     NovaAulaComponent
+=======
+    CicloqueryComponent,
+    TurmaqueryComponent,
+    StudentqueryComponent,
+    NovaMatriculaComponent
+>>>>>>> 2f092a41e1f32bb3385a35fd3a1cc18a3b50f87d
   ],
   imports: [
     BrowserModule,
