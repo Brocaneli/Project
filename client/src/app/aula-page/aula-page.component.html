@@ -21,9 +21,18 @@
     <br>
   </div>
 
-  <div class="row">
+  <!-- <div class="row">
     <div class="btn-circle-div">
       <button [routerLink]="['/naula']" type="button" class="btn btn-circle btn-xl"><i
+          class="glyphicon glyphicon-plus"></i></button>
+    </div>
+    <div class="modal-footer form-group col-4 offset-4">
+      <button class="btn btn-primary">Criar</button>
+    </div>
+  </div> -->
+  <div class="row" *ngIf="allowCreate">
+    <div class="btn-circle-div col-4 offset-4">
+      <button [routerLink]="['/naula', this.ciclo.id]" type="button" class="btn btn-circle btn-xl"><i
           class="glyphicon glyphicon-plus"></i></button>
     </div>
   </div>

@@ -40,8 +40,7 @@ const routes: Routes = [
   { path: 'aula/:id', component: AulaPageComponent },
   { path: 'aprovacao/:id', component: AprovarMatriculaComponent },
   {path: 'naviso', component: NovoAvisoComponent},
-  {path: 'naula', component: NovaAulaComponent},
-
+  {path: 'naula/:id', component: NovaAulaComponent},
   { path: 'aprovacao/:id', component: AprovarMatriculaComponent },
   { path: 'nova-matricula', component: NovaMatriculaComponent }
 ];

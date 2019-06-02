@@ -23,13 +23,9 @@ export class StudentsPageComponent implements OnInit {
     private avisoService: AvisoService,
     private matriculasService: MatriculasService,
     private authenticationService: AuthenticationService,
-<<<<<<< HEAD
     private router: Router,
     private _location: Location
 
-=======
-    private router: Router
->>>>>>> 2f092a41e1f32bb3385a35fd3a1cc18a3b50f87d
   ) {
     let user = this.authenticationService.currentUserValue;
     if (!user) {

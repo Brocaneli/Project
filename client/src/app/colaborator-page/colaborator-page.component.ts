@@ -35,6 +35,7 @@ export class ColaboratorPageComponent implements OnInit {
 
     this.colaboradoresService.getAllClassFromCollaborator(this.user.id).subscribe(data => {
       this.colaboradores = data;
+      console.log(this.colaboradores)
     
       let turmaIds = this.colaboradores.map((mat) => mat.turma.id)
 

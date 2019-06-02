@@ -15,7 +15,7 @@
           {{colaborador.end_date}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <button class="btn btn-primary but" type="submit">Aulas Cadastradas</button>
+      <button type="button" class="btn btn-primary but" [routerLink]="['/aula', colaborador.turma.ciclo.id]">Aulas Cadastradas</button>
       <button type="button" class="btn btn-primary but" [routerLink]="['/lista-alunos', colaborador.turma.id]">Lista de
         Alunos</button>
       <button class="btn btn-primary but" type="submit">Realizar Chamada</button>
@@ -25,23 +25,15 @@
       <mat-expansion-panel-header>
           Você ainda não ministra nenhuma turma!
       </mat-expansion-panel-header>
-<<<<<<< HEAD
-      <button type="button" class="btn btn-primary but" [routerLink]="['/aula', colaborador.turma.id]">Aulas Cadastradas</button>
+      <!-- 
       <button type="button" class="btn btn-primary but" [routerLink]="['/lista-alunos', colaborador.turma.id]">Lista de Alunos</button>
-        <button type="button"[routerLink]="['/attendance']" class="btn btn-primary but">Realizar Chamada</button>        
+      <button type="button"[routerLink]="['/attendance']" class="btn btn-primary but">Realizar Chamada</button>         -->
       </mat-expansion-panel>
-=======
-    </mat-expansion-panel>
->>>>>>> 2f092a41e1f32bb3385a35fd3a1cc18a3b50f87d
   </mat-accordion>
 </div>
 
 <h4 class="text"> Avisos </h4>
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 2f092a41e1f32bb3385a35fd3a1cc18a3b50f87d
 <div class="container">
   <div class="list-group" *ngFor="let aviso of avisos">
     <a class="list-group-item list-group-item-action flex-column align-items-start">
@@ -53,20 +45,10 @@
       <small class="text-muted">{{aviso.user.name}}</small>
     </a>
   </div>
-<<<<<<< HEAD
-</div>
-
-
-
-<button [routerLink]="['/students']" class="btn btn-primary but">Aulas que sou Aluno</button>        
-<button [routerLink]="['/naviso']" class="btn btn-primary but">Novo Aviso</button>        
-
-
-
-
-=======
   <h5 class="text2" *ngIf="this.avisos && this.avisos.length == 0">
     Você não tem nenhum aviso!
   </h5>
 </div>
->>>>>>> 2f092a41e1f32bb3385a35fd3a1cc18a3b50f87d
+
+<button [routerLink]="['/students']" class="btn btn-primary but">Aulas que sou Aluno</button>        
+<button [routerLink]="['/naviso']" class="btn btn-primary but">Novo Aviso</button>   

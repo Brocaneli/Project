@@ -19,6 +19,10 @@ export class CiclosService {
     return this.httpClient.get(`${this.constService.API_URI}/ciclos/`)
   }
 
+  getCiclo(cicloId: any) {
+    return this.httpClient.get(`${this.constService.API_URI}/ciclos/${cicloId}/`)
+  }
+
   createCiclo(ciclo: any) {
     return this.httpClient.post(`${this.constService.API_URI}/ciclos/`, ciclo)
   }

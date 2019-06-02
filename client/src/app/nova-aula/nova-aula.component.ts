@@ -17,10 +17,11 @@ export class NovaAulaComponent implements OnInit {
   loading = false;
   submitted = false;
   private user: any;
-  private ciclos : any;
+  private ciclo : any;
 
 
   constructor(private fb: FormBuilder, private router: Router, private AulasService: AulasService,
+    private activatedRoute: ActivatedRoute,
     private authenticationService: AuthenticationService, private CiclosService: CiclosService) { 
     let user = this.authenticationService.currentUserValue;
     if (false) { 
@@ -34,12 +35,16 @@ export class NovaAulaComponent implements OnInit {
     
     this.aulaForm = this.fb.group({
       ciclo: ['', Validators.required],
-      name: ['', Validators.required],
-      date: ['', Validators.required]
+      name: ['', Validators.required]
+      // ,
+      // date: ['', Validators.required]
     });
 
-    this.CiclosService.getCiclos().subscribe(data => {
-      this.ciclos = data;
+    this.activatedRoute.params.subscribe(data => {
+      this.CiclosService.getCiclo(data['id']).subscribe(data2=>{
+        this.ciclo = data2;
+        console.log(data2)
+      });
     });
 
   }
@@ -57,7 +62,7 @@ export class NovaAulaComponent implements OnInit {
     }
     console.log(this.aulaForm)
     this.AulasService.createAula(this.aulaForm.getRawValue()).subscribe(data => {
-      this.router.navigate(['aula']);
+      this.router.navigate([`aula/${this.ciclo.id}`]);
     });
   }
 }
