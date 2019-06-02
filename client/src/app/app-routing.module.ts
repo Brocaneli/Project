@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'colaborators', component: ColaboratorPageComponent },
   { path: 'students', component: StudentsPageComponent },
   { path: 'turmas', component: TurmasComponent },
-  { path: 'attendance', component: AttendanceComponent },
+  { path: 'attendance/:id', component: AttendanceComponent },
   { path: 'lista-alunos/:id', component: ListaAlunosComponent },
   { path: 'aula/:id', component: AulaPageComponent },
   { path: 'aprovacao/:id', component: AprovarMatriculaComponent },

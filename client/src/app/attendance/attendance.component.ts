@@ -3,7 +3,7 @@ import { TurmaService } from '../turma.service';
 import { MatriculasService } from '../matriculas.service';
 import { AulasService } from '../aulas.service';
 import { AuthenticationService } from '../authentication.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PresencasService } from '../presencas.service';
 
 @Component({
@@ -33,7 +33,8 @@ export class AttendanceComponent implements OnInit {
     private aulaService: AulasService,
     private presenceService: PresencasService,
     private authenticationService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
 
     this.matriculas = [];
@@ -46,41 +47,47 @@ export class AttendanceComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.turmasService.getTurma(this.turma_id).subscribe((data) => {
-      this.turma = data;
-      this.aulaService.getAllAulasFromCiclo(this.turma.ciclo.id).subscribe((data) => {
-        this.classes = data;
 
-        if(this.turma.actual_class < this.classes.length){
-          var actual_class_id = this.classes[this.turma.actual_class].id;
-          this.presenceService.getAllPresencesFromClass(actual_class_id).subscribe((data) => {
-            this.presences = data;
-          });
+    this.activatedRoute.params.subscribe(data => {
+      this.turma_id = data['id'];
+      this.turmasService.getTurma(this.turma_id).subscribe((data) => {
+        this.turma = data;
+        this.aulaService.getAllAulasFromCiclo(this.turma.ciclo.id).subscribe((data) => {
+          this.classes = data;
   
-          this.matriculaService.getAllMatriculasFromTurma(this.turma_id).subscribe((data) => {
-            this.matriculas = data;
-            this.matriculas.forEach(element => {
-              element['presence'] = false
+          if(this.turma.actual_class < this.classes.length){
+            var actual_class_id = this.classes[this.turma.actual_class].id;
+            this.presenceService.getAllPresencesFromClass(actual_class_id).subscribe((data) => {
+              this.presences = data;
             });
-            this.matriculas.sort((a, b) => (a.user.name > b.user.name) ? 1 : -1)
-            this.presenceService.getAllReplacementFromAula(actual_class_id, this.turma_id).subscribe((data) => {
-              this.replacement = data
-              this.replacement.forEach(element => {
-                this.matriculaService.getMatriculaBetweenUserAndTurma(element.original_turma, element.user.id).subscribe((data) => {
-                  var new_matricula = data[0];
-                  new_matricula['presence'] = false
-                  this.matriculas.push(new_matricula)
+    
+            this.matriculaService.getAllMatriculasFromTurma(this.turma_id).subscribe((data) => {
+              this.matriculas = data;
+              this.matriculas.forEach(element => {
+                element['presence'] = false
+              });
+              this.matriculas.sort((a, b) => (a.user.name > b.user.name) ? 1 : -1)
+              this.presenceService.getAllReplacementFromAula(actual_class_id, this.turma_id).subscribe((data) => {
+                this.replacement = data
+                this.replacement.forEach(element => {
+                  this.matriculaService.getMatriculaBetweenUserAndTurma(element.original_turma, element.user.id).subscribe((data) => {
+                    var new_matricula = data[0];
+                    new_matricula['presence'] = false
+                    this.matriculas.push(new_matricula)
+                  });
                 });
               });
             });
-          });
-
-        }else{
-          this.class_registered = false;
-        }
-
-      });
+  
+          }else{
+            this.class_registered = false;
+          }
+  
+        });
+      });    
     });
+
+
 
   }
 
@@ -133,6 +140,7 @@ export class AttendanceComponent implements OnInit {
       var turma_up = this.turma
       turma_up.first_attendance = true
       turma_up.ciclo = this.turma.ciclo.id
+      console.log(turma_up)
       this.turmasService.updateTurma(turma_up).subscribe(() => {
         console.log("Turma updated")
       });

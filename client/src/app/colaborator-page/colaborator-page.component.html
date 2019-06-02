@@ -18,16 +18,14 @@
       <button type="button" class="btn btn-primary but" [routerLink]="['/aula', colaborador.turma.ciclo.id]">Aulas Cadastradas</button>
       <button type="button" class="btn btn-primary but" [routerLink]="['/lista-alunos', colaborador.turma.id]">Lista de
         Alunos</button>
-      <button class="btn btn-primary but" type="submit">Realizar Chamada</button>
+      <button type="button"[routerLink]="['/attendance', colaborador.turma.id]" class="btn btn-primary but">Realizar Chamada</button>
     </mat-expansion-panel>
     <mat-expansion-panel class="list-group-item list-group-item-action flex-column align-items-start"
       *ngIf="this.colaboradores && this.colaboradores.length == 0">
       <mat-expansion-panel-header>
           Você ainda não ministra nenhuma turma!
       </mat-expansion-panel-header>
-      <!-- 
-      <button type="button" class="btn btn-primary but" [routerLink]="['/lista-alunos', colaborador.turma.id]">Lista de Alunos</button>
-      <button type="button"[routerLink]="['/attendance']" class="btn btn-primary but">Realizar Chamada</button>         -->
+      <!--          -->
       </mat-expansion-panel>
   </mat-accordion>
 </div>
