@@ -15,23 +15,31 @@ export class PresencasService {
 
   constructor(private httpClient: HttpClient, private constService: ConstService) { }
 
-  getAllPresencas() {
+  getAllPresences() {
     return this.httpClient.get(`${this.constService.API_URI}/presencas/`)
   }
 
-  getColaborador(presencaId: any) {
+  getPresence(presencaId: any) {
     return this.httpClient.get(`${this.constService.API_URI}/presencas/${presencaId}/`)
   }
 
-  createColaborador(presenca: any) {
+  createPresence(presenca: any) {
     return this.httpClient.post(`${this.constService.API_URI}/presencas/`, presenca)
   }
 
-  updateColaborador(presenca: any) {
-    return this.httpClient.put(`${this.constService.API_URI}/presencas/${presenca.id}`, presenca, this.postOptions)
+  updatePresence(presenca: any) {
+    return this.httpClient.put(`${this.constService.API_URI}/presencas/${presenca.id}/`, presenca, this.postOptions)
   }
 
-  deleteColaborador(presencaId: number) {
+  deletePresence(presencaId: number) {
     return this.httpClient.delete(`${this.constService.API_URI}/presencas/${presencaId}/`)
   }
+
+  getAllPresencesFromClass(classId: any){
+    return this.httpClient.get(`${this.constService.API_URI}/presencas/?aula=${classId}`)
+  }
+
+  getAllReplacementFromAula(classId: any, turmaId: any){
+    return this.httpClient.get(`${this.constService.API_URI}/presencas/?aula=${classId}&turma=${turmaId}&is_replacement=true`)
+  } 
 }

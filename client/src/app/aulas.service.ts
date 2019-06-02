@@ -34,4 +34,8 @@ export class AulasService {
   deleteAula(aulaId: number) {
     return this.httpClient.delete(`${this.constService.API_URI}/aulas/${aulaId}/`)
   }
+
+  getAllAulasFromCiclo(cicloId: number) {
+    return this.httpClient.get(`${this.constService.API_URI}/aulas/?ciclo=${cicloId}`)
+  }
 }

@@ -16,7 +16,22 @@ import { ColaboratorPageComponent } from './colaborator-page/colaborator-page.co
 import { MatExpansionModule, MatInputModule, MatButtonModule } from '@angular/material'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentsPageComponent } from './students-page/students-page.component';
+import { TurmasComponent } from './turmas/turmas.component';
 import { AttendanceComponent } from './attendance/attendance.component';
+import { NovoAvisoComponent } from './novo-aviso/novo-aviso.component';
+import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
+import { FormsModule } from '@angular/forms';
+import { SearchPipe, UserPipe } from './search.pipe';
+import { AprovarMatriculaComponent } from './aprovar-matricula/aprovar-matricula.component';
+<<<<<<< HEAD
+import { AulaPageComponent } from './aula-page/aula-page.component';
+import { NovaAulaComponent } from './nova-aula/nova-aula.component';
+=======
+import { CicloqueryComponent } from './cicloquery/cicloquery.component';
+import { TurmaqueryComponent } from './turmaquery/turmaquery.component';
+import { StudentqueryComponent } from './studentquery/studentquery.component';
+import { NovaMatriculaComponent } from './nova-matricula/nova-matricula.component';
+>>>>>>> 2f092a41e1f32bb3385a35fd3a1cc18a3b50f87d
 
 
 @NgModule({
@@ -31,7 +46,22 @@ import { AttendanceComponent } from './attendance/attendance.component';
     PermissionsDetailComponent,
     ColaboratorPageComponent,
     StudentsPageComponent,
-    AttendanceComponent
+    TurmasComponent,
+    AttendanceComponent,
+    NovoAvisoComponent,
+    ListaAlunosComponent,
+    SearchPipe,
+    UserPipe,
+    AprovarMatriculaComponent,
+<<<<<<< HEAD
+    AulaPageComponent,
+    NovaAulaComponent
+=======
+    CicloqueryComponent,
+    TurmaqueryComponent,
+    StudentqueryComponent,
+    NovaMatriculaComponent
+>>>>>>> 2f092a41e1f32bb3385a35fd3a1cc18a3b50f87d
   ],
   imports: [
     BrowserModule,
@@ -41,7 +71,8 @@ import { AttendanceComponent } from './attendance/attendance.component';
     MatExpansionModule,
     MatInputModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent],

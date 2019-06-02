@@ -1,0 +1,14 @@
+<div class="container">
+  <h2>Alunos da Turma</h2>
+  <div class="input-group mb-3">
+    <input id="search" type="text" class="form-control" [(ngModel)]="query" placeholder="Buscar aluno">
+  </div>
+  <div class="list-group">
+    <button [routerLink]="['/users', aluno.user.id]" type="button" class="list-group-item list-group-item-action"
+      *ngFor="let aluno of alunos | search: query">
+      {{aluno.user.name}}
+      <br>
+      Ausências: {{aluno.absences}}
+    </button>
+  </div>
+</div>

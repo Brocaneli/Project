@@ -14,40 +14,36 @@ export class ColaboratorPageComponent implements OnInit {
 
   private avisos : any;
   private user : any;
-  private colaborador : any;
+  private colaboradores : any;
   
   constructor(
     private avisoService: AvisoService, 
-    private matriculasService: ColaboradoresService,
+    private colaboradoresService: ColaboradoresService,
     private authenticationService: AuthenticationService,
     private router: Router,
 
   ) {
     let user = this.authenticationService.currentUserValue;
-    if (!user) { 
-        //this.router.navigate(['login']);
+    if (!user || user.role === 'ALUNO') { 
+        this.router.navigate(['login']);
     } else {
       this.user= user;
     }
    }
 
    ngOnInit() {
-    this.avisoService.getAvisos().subscribe(data => {
-      this.avisos = data;
-    });
-    this.matriculasService.getAllClassFromCollaborator(this.user.id).subscribe(data => {
-      this.colaborador = data;
+
+    this.colaboradoresService.getAllClassFromCollaborator(this.user.id).subscribe(data => {
+      this.colaboradores = data;
+    
+      let turmaIds = this.colaboradores.map((mat) => mat.turma.id)
+
+      this.avisoService.getAvisos().subscribe(data => {
+        let allAvisos: any = data;
+        this.avisos = allAvisos.filter((aviso) => {
+          return turmaIds.indexOf(aviso.turma.id) >= 0
+        });
+      });
     });
   }
-
-  onClick_aulasCadastradas(){
-    this.router.navigate(['login']);
-  }  
-  onClick_listaAlunos(){
-    this.router.navigate(['login']);
-  }  
-  onClick_chamada(){
-    this.router.navigate(['login']);
-  }
-
 }

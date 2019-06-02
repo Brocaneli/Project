@@ -28,7 +28,7 @@ export class MatriculasService {
   }
 
   updateMatricula(matricula: any) {
-    return this.httpClient.put(`${this.constService.API_URI}/matriculas/${matricula.id}`, matricula, this.postOptions)
+    return this.httpClient.put(`${this.constService.API_URI}/matriculas/${matricula.id}/`, matricula, this.postOptions)
   }
 
   deleteMatricula(matriculaId: number) {
@@ -36,10 +36,30 @@ export class MatriculasService {
   }
 
   getAllUnapprovedMatriculasFromUser(userId: any) {
-    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?approved=false&user=${userId}`)
+    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?approved=rejected&user=${userId}`)
   }
 
   getAllApprovedMatriculasFromUser(userId: any) {
-    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?approved=true&user=${userId}`)
+    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?approved=approved&user=${userId}`)
+  }
+
+  getAllPendingMatriculasFromUser(userId: any) {
+    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?approved=pending&user=${userId}`)
+  }
+
+  getAllMatriculasFromTurma(turmaId: any) {
+    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?turma=${turmaId}`)
+  }
+
+  getAllApprovedMatriculasFromTurma(turmaId: any) {
+    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?approved=approved&turma=${turmaId}`)
+  }
+
+  getAllPendingMatriculasFromTurma(turmaId: any) {
+    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?approved=pending&turma=${turmaId}`)
+  }
+
+  getMatriculaBetweenUserAndTurma(turmaId: any, userId: any) {
+    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?user=${userId}&turma=${turmaId}`)
   }
 }

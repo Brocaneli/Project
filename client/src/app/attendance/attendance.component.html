@@ -1,30 +1,58 @@
-<div class="container">
-  <h2 class="center">Chamada</h2>
-  <div class="row" *ngFor="let student of students">
-    <div class="col-1">
-        <div class="input-group-prepend">
-            <div class="input-group-text">
-              <input type="checkbox" aria-label="Checkbox for following text input">
+<div *ngIf="class_registered">
+  <div class="container">
+    <h2 class="center">Chamada</h2>
+    <div class="row" *ngFor="let matricula of matriculas">
+      <div class="col-1">
+          <div class="input-group-prepend">
+              <div (click)="selectInput(matricula)" class="input-group-text">
+                <input type="checkbox" aria-label="Checkbox for following text input">
+              </div>
             </div>
-          </div>
-    </div>
-    <div class="col-1">
-        <div class="input-group-prepend">
-            <div class="input-group-text">
-              <input type="checkbox" aria-label="Checkbox for following text input">
+      </div>
+      <!-- <div class="col-1">
+          <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="checkbox" aria-label="Checkbox for following text input">
+              </div>
             </div>
-          </div>
+      </div> -->
+      <div class="col-11">
+          <li class="list-group-item center">{{matricula.user.name}}</li>
+      </div>
     </div>
-    <div class="col-10">
-        <li class="list-group-item center">{{student.name}}</li>
+    <div class="row center">
+      <div class="col-12">
+        <button type="button" (click)="allowQuery()" class="btn btn-primary" [disabled]="turma.first_attendance">Adicionar Aluno</button>
+      </div>
     </div>
   </div>
-</div>
-<div class="row center">
-    <div class="col">
-      <button type="button" class="btn btn-danger">Cancelar</button>
-    </div>
-    <div class="col">
-      <button type="button" class="btn btn-success">Salvar</button>
-    </div>
+
+  <div class="container" *ngIf="queryAllowed && cicloQuery == null">
+    <app-cicloquery
+      (choosed)="cicloChose($event)">
+    </app-cicloquery>
+  </div>
+
+  <div *ngIf="cicloQuery != null && queryAllowed && turmaQuery == null" class="container">
+    <app-turmaquery
+      [cicloId]="cicloQuery"
+      (choosed)="turmaChose($event)">
+    </app-turmaquery>
+  </div>
+
+  <div *ngIf="turmaQuery != null && queryAllowed" class="container">
+    <app-studentquery
+      [turmaId]="turmaQuery"
+      (choosed)="studentsChose($event)">
+    </app-studentquery>
+  </div>
+
+  <div class="row center">
+      <div class="col">
+        <button type="button" [routerLink]="['/colaborators']" class="btn btn-danger">Cancelar</button>
+      </div>
+      <div class="col">
+        <button type="button" (click)="markPresence()" [routerLink]="['/colaborators']" class="btn btn-success">Salvar</button>
+      </div>
+  </div>
 </div>
