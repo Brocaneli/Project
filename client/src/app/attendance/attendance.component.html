@@ -56,3 +56,9 @@
       </div>
   </div>
 </div>
+
+<div *ngIf="!class_registered" class="container">
+  <p class="mb-1">Não existem mais aulas cadastradas para este ciclo</p>
+  <p class="mb-1">Peça a um administrador para adicionar mais</p>
+  <button style="margin-top: 10px" type="button" [routerLink]="['/colaborators']" class="btn btn-danger col-4 offset-4">Voltar</button>
+</div>
