@@ -28,6 +28,8 @@ class GetAulaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Aula
         fields = '__all__'
+        depth = 2
+
 
 class GetPresencaSerializer(serializers.ModelSerializer):
     class Meta:
