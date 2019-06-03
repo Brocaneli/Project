@@ -39,7 +39,7 @@ class UserApi(viewsets.ModelViewSet):
             return GetUserSerializer
     
 class AvisoApi(viewsets.ModelViewSet):
-    queryset = Aviso.objects.all()
+    queryset = Aviso.objects.all().order_by('-created_at')
     filter_backends = (DjangoFilterBackend,)
     filterset_fields = ('user', 'turma',)
 

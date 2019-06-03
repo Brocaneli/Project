@@ -28,12 +28,21 @@ export class PermissionsComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.usersService.getAllUsers().subscribe((data) => {
       this.users = data;
-      this.users.sort((a, b) => (a.name > b.name) ? 1 : -1);
+      this.users.sort((a, b) => {
+        if (a.name.toUpperCase() > b.name.toUpperCase()) {
+          return 1;
+        }
+        if (a.name.toUpperCase() < b.name.toUpperCase()) {
+          return -1;
+        }
+        // a must be equal to b
+        return 0;
+      });
     });
-  }
+}
 
-  ngOnChanges() {
+ngOnChanges() {
 
-  }
+}
 
 }

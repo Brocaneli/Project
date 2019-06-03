@@ -36,6 +36,16 @@ export class ListaAlunosComponent implements OnInit {
 
     this.matriculasService.getAllApprovedMatriculasFromTurma(this.id).subscribe((data) => {
       this.alunos = data;
+      this.alunos.sort((a, b) => {
+        if (a.user.name.toUpperCase() > b.user.name.toUpperCase()) {
+          return 1;
+        }
+        if (a.user.name.toUpperCase() < b.user.name.toUpperCase()) {
+          return -1;
+        }
+        // a must be equal to b
+        return 0;
+      });
     });
   }
 }

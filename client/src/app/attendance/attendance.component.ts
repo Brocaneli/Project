@@ -54,13 +54,13 @@ export class AttendanceComponent implements OnInit {
         this.turma = data;
         this.aulaService.getAllAulasFromCiclo(this.turma.ciclo.id).subscribe((data) => {
           this.classes = data;
-  
-          if(this.turma.actual_class < this.classes.length){
+
+          if (this.turma.actual_class < this.classes.length) {
             var actual_class_id = this.classes[this.turma.actual_class].id;
             this.presenceService.getAllPresencesFromClass(actual_class_id).subscribe((data) => {
               this.presences = data;
             });
-    
+
             this.matriculaService.getAllMatriculasFromTurma(this.turma_id).subscribe((data) => {
               this.matriculas = data;
               this.matriculas.forEach(element => {
@@ -78,20 +78,20 @@ export class AttendanceComponent implements OnInit {
                 });
               });
             });
-  
-          }else{
+
+          } else {
             this.class_registered = false;
           }
-  
+
         });
-      });    
+      });
     });
 
 
 
   }
 
-  allowQuery(){
+  allowQuery() {
     this.queryAllowed = !this.queryAllowed
     this.cicloQuery = null;
     this.turmaQuery = null;
@@ -124,14 +124,16 @@ export class AttendanceComponent implements OnInit {
         }
 
         var is_replacement
-        if(element.turma.id != this.turma.id){
+        if (element.turma.id != this.turma.id) {
           is_replacement = true;
-        }else{
+        } else {
           is_replacement = false;
         }
-        var new_presence = {aula: this.classes[this.turma.actual_class].id, 
-          user: element.user.id, presences: presence, is_replacement: is_replacement, 
-          turma: this.turma.id, original_turma: element.turma.id};
+        var new_presence = {
+          aula: this.classes[this.turma.actual_class].id,
+          user: element.user.id, presences: presence, is_replacement: is_replacement,
+          turma: this.turma.id, original_turma: element.turma.id
+        };
         this.presenceService.createPresence(new_presence).subscribe(() => {
           console.log("Presences added")
         });
@@ -144,11 +146,11 @@ export class AttendanceComponent implements OnInit {
       this.turmasService.updateTurma(turma_up).subscribe(() => {
         console.log("Turma updated")
       });
-    }else{
+    } else {
       var con = 0;
       this.matriculas.forEach(element => {
         var presence_up = this.presences[con]
-        if(element.presence){
+        if (element.presence) {
           presence_up.presences = presence_up.presences + 1;
         }
         presence_up.turma = presence_up.turma.id
