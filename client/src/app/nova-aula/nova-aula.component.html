@@ -11,7 +11,7 @@
             [ngClass]="{ 'is-invalid': submitted && f.ciclo.errors }" [value]="ciclo.id" disabled/> -->
             <select class="form-control" formControlName="ciclo" [ngClass]="{ 'is-invalid': submitted && f.ciclo.errors }" size=1>
               <!-- <option *ngFor="let c of ciclos" [value]="c.id">{{c.name}}</option> -->
-              <option [value]="ciclo.id" selected>{{ciclo.name}}</option>
+              <option *ngIf="ciclo" [value]="ciclo.id" selected>{{ciclo.name}}</option>
             </select>
             <div *ngIf="submitted && f.ciclo.errors" class="invalid-feedback">
               <div *ngIf="f.ciclo.errors.required">A turma é obrigatório</div>

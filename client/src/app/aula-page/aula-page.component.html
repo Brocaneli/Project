@@ -20,6 +20,11 @@
     </div>
     <br>
   </div>
+  <div *ngIf="this.aulas && this.aulas.length == 0">
+    Você ainda não tem aulas cadastradas!
+  </div>
+  
+  <br/>
 
   <!-- <div class="row">
     <div class="btn-circle-div">
@@ -31,9 +36,11 @@
     </div>
   </div> -->
   <div class="row" *ngIf="allowCreate">
-    <div class="btn-circle-div col-4 offset-4">
-      <button [routerLink]="['/naula', this.ciclo.id]" type="button" class="btn btn-circle btn-xl"><i
-          class="glyphicon glyphicon-plus"></i></button>
-    </div>
+      <div *ngIf="this.ciclo" class="row">
+          <div class="btn-circle-div">
+            <button [routerLink]="['/naula', this.ciclo.id]" type="button" class="btn btn-circle btn-xl"><i
+                class="glyphicon glyphicon-plus"></i></button>
+          </div>
+        </div>
   </div>
 </div>

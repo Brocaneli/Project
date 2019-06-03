@@ -1,7 +1,8 @@
 <div class="container">
   <h2>Usuários</h2>
+  <br/>
   <div class="input-group mb-3">
-    <input id="search" type="text" class="form-control" [(ngModel)]="query" placeholder="Buscar pessoa">
+    <input id="search" type="text" class="form-control" [(ngModel)]="query" placeholder="Buscar pessoa" style="border-radius: 5px;">
   </div>
   <div class="list-group">
     <button [routerLink]="['/users', user.id]" type="button"

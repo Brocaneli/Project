@@ -43,7 +43,6 @@ export class NovaAulaComponent implements OnInit {
     this.activatedRoute.params.subscribe(data => {
       this.CiclosService.getCiclo(data['id']).subscribe(data2=>{
         this.ciclo = data2;
-        console.log(data2)
       });
     });
 
@@ -60,7 +59,7 @@ export class NovaAulaComponent implements OnInit {
     if (this.aulaForm.invalid) {
       return;
     }
-    console.log(this.aulaForm)
+    
     this.AulasService.createAula(this.aulaForm.getRawValue()).subscribe(data => {
       this.router.navigate([`aula/${this.ciclo.id}`]);
     });

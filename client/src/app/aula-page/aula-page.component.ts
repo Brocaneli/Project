@@ -35,8 +35,6 @@ export class AulaPageComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    
       this.activatedRoute.params.subscribe(params => {
         this.id = params['id'];
 
@@ -48,15 +46,11 @@ export class AulaPageComponent implements OnInit {
           });
         });
       });
-
-
-
-
   }
 
   deleteAula(id: number) {
     this.aulasService.deleteAula(id).subscribe(data => {
-      // ciclo deleted
+      // aula deleted
     });
 
     window.location.reload();
