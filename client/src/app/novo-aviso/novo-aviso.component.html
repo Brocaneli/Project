@@ -1,0 +1,41 @@
+<div class="container">
+  <h3>Criar novo aviso</h3>
+  <hr class="my-4">
+
+  <form [formGroup]="avisoForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="title">Título do Aviso</label>
+      <input type="text" formControlName="title" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.title.errors }" />
+      <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+        <div *ngIf="f.title.errors.required">O nome do aviso é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Descrição do Aviso</label>
+      <input type="text" formControlName="description" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
+      <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+        <div *ngIf="f.description.errors.required">A descrição do aviso é obrigatório</div>
+      </div>
+    </div>
+
+    <div class="input-group mb-3">
+      <div class="form-group">
+        <label for="turma">Turma</label>
+        <select class="form-control" formControlName="turma" [ngClass]="{ 'is-invalid': submitted && f.turma.errors }">
+          <option *ngFor="let t of turmas" [value]="t.id">{{t.name}}</option>
+        </select>
+        <div *ngIf="submitted && f.turma.errors" class="invalid-feedback">
+          <div *ngIf="f.turma.errors.required">A turma é obrigatório</div>
+        </div>
+      </div>
+    </div>
+  
+
+    <div class="form-group">
+      <button class="btn btn-primary">Criar</button>
+    </div>
+  </form>
+</div>

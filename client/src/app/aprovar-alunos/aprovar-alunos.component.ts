@@ -19,17 +19,10 @@ export class AprovarAlunosComponent implements OnInit {
   constructor(private alunosService: MatriculasService, private turmaService: TurmaService) { }
 
   ngOnInit() {
-    // this.alunosService.getAllMatriculas().subscribe(data => {
-    //   this.alunos = data;
-    // })
 
     this.turmaService.getAllTurmas().subscribe(data => {
       this.turmas = data;
     })
-
-    // this.filtro = this.alunos.filter(aluns => {
-    //   aluns.nota === "0"
-    // });
   }
 
   approveAluno(aluno: any) {

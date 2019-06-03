@@ -1,0 +1,12 @@
+.btn-circle-div {
+    padding-left: calc(50vw - 10px);
+  }
+  
+  .btn-circle.btn-xl {
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 35px;
+  }
+  

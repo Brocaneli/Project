@@ -1,40 +1,37 @@
-<h4 class="text"> Turmas Ministradas </h4>
-
 <div class="container">
-  <mat-accordion class="example-headers-align">
+  <h3>Turmas Ministradas</h3>
+
     <mat-expansion-panel class="list-group-item list-group-item-action flex-column align-items-start"
-      *ngFor="let colaborador of colaboradores">
+      *ngFor="let colaborador of colaboradores" style="box-sizing: inherit; border: 1px solid #ddd;">
       <mat-expansion-panel-header>
         <mat-panel-title class="cursoTitle">
           {{colaborador.turma.name}}
         </mat-panel-title>
         <mat-panel-description class="cursoDescription">
-          {{colaborador.start_date}}
-        </mat-panel-description>
-        <mat-panel-description class="cursoDescription">
-          {{colaborador.end_date}}
+          {{colaborador.turma.start_date  | date: "dd/MM/yyyy"}} - {{colaborador.turma.end_date | date: "dd/MM/yyyy"}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <button class="btn btn-primary but" type="submit">Aulas Cadastradas</button>
+      <button type="button" class="btn btn-primary but" [routerLink]="['/aula', colaborador.turma.ciclo.id]">Aulas
+        Cadastradas</button>
       <button type="button" class="btn btn-primary but" [routerLink]="['/lista-alunos', colaborador.turma.id]">Lista de
         Alunos</button>
-      <button class="btn btn-primary but" type="submit">Realizar Chamada</button>
+      <button type="button" [routerLink]="['/attendance', colaborador.turma.id]" class="btn btn-primary but">Realizar
+        Chamada</button>
     </mat-expansion-panel>
     <mat-expansion-panel class="list-group-item list-group-item-action flex-column align-items-start"
       *ngIf="this.colaboradores && this.colaboradores.length == 0">
       <mat-expansion-panel-header>
-          Você ainda não ministra nenhuma turma!
+        Você ainda não ministra nenhuma turma!
       </mat-expansion-panel-header>
     </mat-expansion-panel>
-  </mat-accordion>
-</div>
 
+  <button [routerLink]="['/students']" class="btn btn-primary but" style="margin-top: 20px">Área do Aluno</button>
 
+  <br />
 
-<h4 class="text"> Avisos </h4>
-<div class="container">
-  <div class="list-group" *ngFor="let aviso of avisos">
-    <a class="list-group-item list-group-item-action flex-column align-items-start">
+  <h3> Avisos </h3>
+  <div class="list-group" *ngFor="let aviso of avisos" style="border: 1px solid #ddd;">
+    <a class="list-group-item list-group-item-action flex-column align-items-start" style="border: 0 !important">
       <div class="d-flex w-100 justify-content-between">
         <h5 class="mb-1">{{aviso.title}}</h5>
         <small class="text-muted">{{aviso.created_at | date: "dd/MM/yyyy"}}</small>
@@ -43,11 +40,15 @@
       <small class="text-muted">{{aviso.user.name}}</small>
     </a>
   </div>
-  <h5 class="text2" *ngIf="this.avisos && this.avisos.length == 0">
+  <h5 *ngIf="this.avisos && this.avisos.length == 0">
     Você não tem nenhum aviso!
   </h5>
 </div>
 
 <div>
   <button class="btn btn-info btn-block" [routerLink]="['/aprova-aluno']">Lista de alunos</button>
+
+  
+  <button [routerLink]="['/naviso']" class="btn btn-primary but" style="margin-top: 20px">Novo Aviso</button>
+
 </div>

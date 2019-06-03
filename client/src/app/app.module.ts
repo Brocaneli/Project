@@ -18,10 +18,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StudentsPageComponent } from './students-page/students-page.component';
 import { TurmasComponent } from './turmas/turmas.component';
 import { AttendanceComponent } from './attendance/attendance.component';
+import { NovoAvisoComponent } from './novo-aviso/novo-aviso.component';
 import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe, UserPipe } from './search.pipe';
 import { AprovarMatriculaComponent } from './aprovar-matricula/aprovar-matricula.component';
+import { AulaPageComponent } from './aula-page/aula-page.component';
+import { NovaAulaComponent } from './nova-aula/nova-aula.component';
 import { CicloqueryComponent } from './cicloquery/cicloquery.component';
 import { TurmaqueryComponent } from './turmaquery/turmaquery.component';
 import { StudentqueryComponent } from './studentquery/studentquery.component';
@@ -43,11 +46,14 @@ import { AprovarAlunosComponent } from './aprovar-alunos/aprovar-alunos.componen
     StudentsPageComponent,
     TurmasComponent,
     AttendanceComponent,
+    NovoAvisoComponent,
     ListaAlunosComponent,
     SearchPipe,
     UserPipe,
     AprovarMatriculaComponent,
     AprovarAlunosComponent,
+    AulaPageComponent,
+    NovaAulaComponent,
     CicloqueryComponent,
     TurmaqueryComponent,
     StudentqueryComponent,

@@ -18,7 +18,7 @@ export class ColaboratorPageComponent implements OnInit {
   
   constructor(
     private avisoService: AvisoService, 
-    private matriculasService: ColaboradoresService,
+    private colaboradoresService: ColaboradoresService,
     private authenticationService: AuthenticationService,
     private router: Router,
 
@@ -33,7 +33,7 @@ export class ColaboratorPageComponent implements OnInit {
 
    ngOnInit() {
 
-    this.matriculasService.getAllClassFromCollaborator(this.user.id).subscribe(data => {
+    this.colaboradoresService.getAllClassFromCollaborator(this.user.id).subscribe(data => {
       this.colaboradores = data;
     
       let turmaIds = this.colaboradores.map((mat) => mat.turma.id)

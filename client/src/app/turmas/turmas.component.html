@@ -15,27 +15,26 @@
       <div id="collapseOne" class="collapse show" aria-labelledby="heading" data-parent="#accordion">
         <div class="card-body">
 
-          <button type="button" class="btn btn-primary">Editar Cronograma de Aulas</button>
-          <button style="margin-top: 10px" [routerLink]="['/aprovacao', turma.id]" type="button"
-            class="btn btn-primary">Aprovar Matrículas</button> &nbsp;&nbsp;&nbsp;&nbsp;
-          <a (click)="deleteTurma(turma.id)"><button style="margin-top: 10px" type="button" class="btn btn-danger"><span
-                class="glyphicon glyphicon-trash"></span></button></a>
-
-          <button type="button" class="btn btn-secondary col-8">Alunos</button> &nbsp;&nbsp;&nbsp;&nbsp;
+          <button style="margin-top: 10px;" [routerLink]="['/aprovacao', turma.id]" type="button"
+            class="btn btn-primary">Aprovar Matrículas</button>
+          <a (click)="deleteTurma(turma.id)">
+            <button style="margin-top: 10px; float: right" type="button" class="btn btn-danger">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
+          </a>
         </div>
       </div>
     </div>
     <br>
   </div>
 
-  <!-- Modal Turmas -->
   <form [formGroup]="turmaForm" (ngSubmit)="onSubmit()">
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Adicionando nova Turma</h5>
+            <h3 class="modal-title" id="exampleModalLabel">Adicionando nova Turma</h3>
             <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -82,8 +81,8 @@
 
             </div>
           </div>
-          <div class="modal-footer form-group col-4 offset-4">
-            <button class="btn btn-primary">Criar</button>
+          <div class="modal-footer form-group col-6 offset-3">
+            <button class="btn btn-block btn-primary">Criar</button>
           </div>
         </div>
       </div>

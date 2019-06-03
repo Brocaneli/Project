@@ -1,3 +1,5 @@
+
+
 <div class="container">
   <h3>Turmas</h3>
   <ul style="list-style: none;" class="list-group list-group-flush">
@@ -13,6 +15,8 @@
     </li>
   </ul>
 
+  <br/>
+  
   <h3>Avisos</h3>
   <div *ngFor="let aviso of avisos">
     <a class="list-group-item list-group-item-action">
@@ -27,6 +31,8 @@
   <div *ngIf="this.avisos && this.avisos.length == 0">
     Você não tem nenhum aviso!
   </div>
+
+  <br/>
 
   <h3>Matrículas pendentes</h3>
   <ul style="list-style: none;" class="list-group list-group-flush">

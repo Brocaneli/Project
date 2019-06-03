@@ -11,8 +11,11 @@ import { ColaboratorPageComponent } from './colaborator-page/colaborator-page.co
 import { StudentsPageComponent } from './students-page/students-page.component';
 import { TurmasComponent } from './turmas/turmas.component';
 import { AttendanceComponent } from './attendance/attendance.component';
+import { NovoAvisoComponent } from './novo-aviso/novo-aviso.component';
 import { ListaAlunosComponent } from './lista-alunos/lista-alunos.component';
 import { AprovarMatriculaComponent } from './aprovar-matricula/aprovar-matricula.component';
+import { AulaPageComponent } from './aula-page/aula-page.component';
+import { NovaAulaComponent } from './nova-aula/nova-aula.component';
 import { NovaMatriculaComponent } from './nova-matricula/nova-matricula.component';
 import { AprovarAlunosComponent } from './aprovar-alunos/aprovar-alunos.component';
 
@@ -33,8 +36,12 @@ const routes: Routes = [
   { path: 'colaborators', component: ColaboratorPageComponent },
   { path: 'students', component: StudentsPageComponent },
   { path: 'turmas', component: TurmasComponent },
-  { path: 'attendance', component: AttendanceComponent },
+  { path: 'attendance/:id', component: AttendanceComponent },
   { path: 'lista-alunos/:id', component: ListaAlunosComponent },
+  { path: 'aula/:id', component: AulaPageComponent },
+  { path: 'aprovacao/:id', component: AprovarMatriculaComponent },
+  {path: 'naviso', component: NovoAvisoComponent},
+  {path: 'naula/:id', component: NovaAulaComponent},
   { path: 'aprovacao/:id', component: AprovarMatriculaComponent },
   { path: 'nova-matricula', component: NovaMatriculaComponent },
   { path: 'aprova-aluno', component: AprovarAlunosComponent }

@@ -1,0 +1,46 @@
+
+
+
+<div class="container">
+  <h3 class="col-sm-6 offset-sm-5">Aulas</h3>
+  <hr class="my-4">
+
+  <div id="accordion" class="col-sm-6 offset-sm-5" *ngFor="let aula of aulas">
+    <div class="card">
+      <div class="card-header">
+        <button type="button" class="btn btn-link">
+          <h4 class="mb-0">{{aula.name}}</h4>
+        </button>
+      </div>
+
+      <div class="card-body">
+        Criado em: {{aula.created_at | date: "dd/MM/yyyy"}}
+      </div>
+
+    </div>
+    <br>
+  </div>
+  <div *ngIf="this.aulas && this.aulas.length == 0">
+    Você ainda não tem aulas cadastradas!
+  </div>
+  
+  <br/>
+
+  <!-- <div class="row">
+    <div class="btn-circle-div">
+      <button [routerLink]="['/naula']" type="button" class="btn btn-circle btn-xl"><i
+          class="glyphicon glyphicon-plus"></i></button>
+    </div>
+    <div class="modal-footer form-group col-4 offset-4">
+      <button class="btn btn-primary">Criar</button>
+    </div>
+  </div> -->
+  <div class="row" *ngIf="allowCreate">
+      <div *ngIf="this.ciclo" class="row">
+          <div class="btn-circle-div">
+            <button [routerLink]="['/naula', this.ciclo.id]" type="button" class="btn btn-circle btn-xl"><i
+                class="glyphicon glyphicon-plus"></i></button>
+          </div>
+        </div>
+  </div>
+</div>
