@@ -30,6 +30,7 @@ import { TurmaqueryComponent } from './turmaquery/turmaquery.component';
 import { StudentqueryComponent } from './studentquery/studentquery.component';
 import { NovaMatriculaComponent } from './nova-matricula/nova-matricula.component';
 import { AprovarAlunosComponent } from './aprovar-alunos/aprovar-alunos.component';
+import { TransferStudentComponent } from './transfer-student/transfer-student.component';
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import { AprovarAlunosComponent } from './aprovar-alunos/aprovar-alunos.componen
     CicloqueryComponent,
     TurmaqueryComponent,
     StudentqueryComponent,
-    NovaMatriculaComponent
+    NovaMatriculaComponent,
+    TransferStudentComponent
   ],
   imports: [
     BrowserModule,

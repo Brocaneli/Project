@@ -26,12 +26,12 @@ export class AprovarAlunosComponent implements OnInit {
   }
 
   approveAluno(aluno: any) {
-    this.updateApprovedAluno(aluno, true, true);
+    this.updateApprovedAluno(aluno, true, true, false);
     window.location.reload();
   }
 
   reproveAluno(aluno: any) {
-    this.updateApprovedAluno(aluno, false, false);
+    this.updateApprovedAluno(aluno, false, false, true);
     window.location.reload();
   }
 
@@ -43,7 +43,7 @@ export class AprovarAlunosComponent implements OnInit {
     
   }
 
-  updateApprovedAluno(aluno: any, nota: boolean, graduated: boolean) {
+  updateApprovedAluno(aluno: any, nota: boolean, graduated: boolean, new_ciclo: boolean) {
     let novoCorpo = {
       id: aluno.id,
       nota: nota ? aluno.nota : aluno.nota,
@@ -52,6 +52,7 @@ export class AprovarAlunosComponent implements OnInit {
       user: aluno.user.id,
       turma: aluno.turma.id,
       graduated: graduated ? "isGraduated" : "isNotGraduated",
+      new_ciclo: new_ciclo ? "Approved" : "needApprove",
     }
 
     this.alunosService.updateMatricula(novoCorpo).subscribe((data) => {

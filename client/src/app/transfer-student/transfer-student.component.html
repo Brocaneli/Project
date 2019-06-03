@@ -5,7 +5,6 @@
   <div class="input-group mb-3">
     <input id="search" type="text" class="form-control" [(ngModel)]="query" placeholder="Buscar aluno">
   </div>
-
   <div class="btn-group dropright">
     <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
       aria-haspopup="true" aria-expanded="false">
@@ -18,15 +17,26 @@
   </div>
   <label>{{selectedTurma}}</label>
 
-  <div class="list-group" *ngFor="let aluno of alunos | search: query">
-    <div *ngIf="aluno.graduated == 'aguardando'; else elseBlock">
-      <button name="note" [disabled]="loading" class=" list-group-item list-group-item-action">{{aluno.user.name}}
-        <label for="note">NOTA: {{aluno.nota}}</label>
+  <div class="list-group" *ngFor="let matricula of matriculas | search: query">
+    <div *ngIf="matricula.new_ciclo == 'needApprove'; else elseBlock">
+      <button name="note" [disabled]="loading" class=" list-group-item list-group-item-action">{{matricula.user.name}}
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <label for="note">Ciclo atual: {{matricula.turma.ciclo.name}}</label>
         <br>
+        <div class="btn-group dropright">
+          <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Ciclos
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a *ngFor="let ciclo of ciclos" class="dropdown-item"
+              (click)="getCiclos(ciclo.name, ciclo.id)">{{ciclo.name}}
+            </a>
+          </div>
+        </div>
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <a (click)="approveAluno(aluno)" style="margin-top: 10px" type="button" class="btn btn-primary">APROVAR</a>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <a (click)="reproveAluno(aluno)" style="margin-top: 10px" type="button" class="btn btn-danger">REJEITAR</a>
+        <a (click)="approveAluno(matricula, this.cicloId)" style="margin-top: 10px" type="button"
+          class="btn btn-primary btn-block">APROVAR</a>
       </button>
     </div>
     <ng-template #elseBlock>
@@ -35,4 +45,5 @@
       </div>
     </ng-template>
   </div>
+
 </div>
