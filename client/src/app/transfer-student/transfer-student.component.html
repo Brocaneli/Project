@@ -15,7 +15,7 @@
       </a>
     </div>
   </div>
-  <label>{{selectedTurma}}</label>
+  <label>{{oldTurma}}</label>
 
   <div class="list-group" *ngFor="let matricula of matriculas | search: query">
     <div *ngIf="matricula.new_ciclo == 'needApprove'; else elseBlock">
@@ -26,17 +26,15 @@
         <div class="btn-group dropright">
           <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Ciclos
+            Turma
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a *ngFor="let ciclo of ciclos" class="dropdown-item"
-              (click)="getCiclos(ciclo.name, ciclo.id)">{{ciclo.name}}
+            <a *ngFor="let turma of turmas" class="dropdown-item"
+              (click)="getNewTurma(turma.name, turma.id)">{{turma.name}}
             </a>
           </div>
         </div>
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <a (click)="approveAluno(matricula, this.cicloId)" style="margin-top: 10px" type="button"
-          class="btn btn-primary btn-block">APROVAR</a>
       </button>
     </div>
     <ng-template #elseBlock>
@@ -45,5 +43,7 @@
       </div>
     </ng-template>
   </div>
+  <a (click)="approveAluno()" style="margin-top: 10px" type="button"
+    class="btn btn-primary btn-block">APROVAR</a>
 
 </div>

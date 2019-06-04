@@ -12,10 +12,10 @@ export class TransferStudentComponent implements OnInit {
 
   private matriculas: any;
   private turmas: any;
-  private selectedTurma: any;
-  private selectedCiclo: any;
+  private oldTurma: any;
+  private newTurma: any;
   private ciclos: any;
-  private cicloId: any;
+  private turmaId: any;
 
   constructor(private matriculaService: MatriculasService, private turmaService: TurmaService, private cicloService: CiclosService) { }
 
@@ -30,27 +30,19 @@ export class TransferStudentComponent implements OnInit {
   }
 
 
-  getCiclos(selectedCiclo: any, cicloId: any) {
-    this.cicloId = cicloId;
-    this.selectedCiclo = selectedCiclo;
+  getNewTurma(selectedCiclo: any, turmaId: any) {
+    this.turmaId = turmaId;
+    this.newTurma = selectedCiclo;
   }
 
-  getAlunos(turmaID: any, selectedTurma: any) {
+  getAlunos(turmaID: any, newTurma: any) {
     this.matriculaService.getAvailableForNewCiclo(turmaID).subscribe(data => {
       this.matriculas = data;
     })
-    this.selectedTurma = selectedTurma;
+    this.newTurma = newTurma;
   }
 
-  approveAluno(aluno: any, cicloId: any) {
-    this.updateAluno(aluno, cicloId);
-    window.location.reload();
-  }
-
-
-
-
-  updateAluno(matricula: any, cicloId: any) {
+  approveAluno(matricula: any, turmaId: any) {
     let novoCorpo = {
       id: matricula.id,
       nota: matricula.nota,
@@ -65,10 +57,10 @@ export class TransferStudentComponent implements OnInit {
     let novaMatricula = {
       id: matricula.id,
       nota: matricula.nota,
-      approved: matricula.approved,
+      approved: "approved",
       absences: matricula.absences,
       user: matricula.user.id,
-      turma: matricula.turma.id,
+      turma: this.turmaId,
       graduated: "aguardando",
       new_ciclo: "Approved",
     }
@@ -77,6 +69,15 @@ export class TransferStudentComponent implements OnInit {
     })
     this.matriculaService.updateMatricula(novoCorpo).subscribe((data) => {
     })
+
+    window.location.reload();
+  }
+
+
+
+
+  updateAluno(matricula: any, cicloId: any) {
+    
   }
 
 }
