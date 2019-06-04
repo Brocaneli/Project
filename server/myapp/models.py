@@ -44,7 +44,6 @@ class Aviso(models.Model):
 class Aula(models.Model):
     ciclo = models.ForeignKey(Ciclo, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
-    date = models.DateTimeField(default=datetime.datetime.today)
     created_at = models.DateTimeField(default=datetime.datetime.today)
 
     def __str__(self):

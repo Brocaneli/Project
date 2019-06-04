@@ -44,7 +44,11 @@ export class StudentsPageComponent implements OnInit {
       this.avisoService.getAvisos().subscribe(data => {
         let allAvisos: any = data;
         this.avisos = allAvisos.filter((aviso) => {
-          return turmaIds.indexOf(aviso.turma.id) >= 0
+          let now = new Date().valueOf()
+          let createdAt = new Date(aviso.created_at).valueOf()
+          let duration: number = now - createdAt
+
+          return turmaIds.indexOf(aviso.turma.id) >= 0 && duration < 604800000
         });
       });
     });
