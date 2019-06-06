@@ -17,33 +17,28 @@
   </div>
   <label>{{oldTurma}}</label>
 
-  <div class="list-group" *ngFor="let matricula of matriculas | search: query">
-    <div *ngIf="matricula.new_ciclo == 'needApprove'; else elseBlock">
-      <button name="note" [disabled]="loading" class=" list-group-item list-group-item-action">{{matricula.user.name}}
+  <br>
+  <div class="btn-group dropdown">
+    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false"><label>Próxima turma: {{newTurma}}</label>
+
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a *ngFor="let turma of turmas" class="dropdown-item" (click)="getNewTurma(turma.name, turma.id)">{{turma.name}}
+      </a>
+    </div>
+  </div>
+
+  <div class="list-group" *ngFor="let matricula of matriculaFilter | search: query">
+    <div >
+      <button name="note" [disabled]="loading" class="list-group-item list-group-item-action">{{matricula.user.name}}
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <label for="note">Ciclo atual: {{matricula.turma.ciclo.name}}</label>
+        <label for="note">Turma atual: {{matricula.turma.name}}</label>
         <br>
-        <div class="btn-group dropright">
-          <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Turma
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a *ngFor="let turma of turmas" class="dropdown-item"
-              (click)="getNewTurma(turma.name, turma.id)">{{turma.name}}
-            </a>
-          </div>
-        </div>
         &nbsp;&nbsp;&nbsp;&nbsp;
       </button>
     </div>
-    <ng-template #elseBlock>
-      <div class="alert alert-warning" role="alert">
-        Não há alunos ou todos ja foram aprovados/reprovados!!!
-      </div>
-    </ng-template>
   </div>
-  <a (click)="approveAluno()" style="margin-top: 10px" type="button"
-    class="btn btn-primary btn-block">APROVAR</a>
+  <a (click)="approveAll()" style="margin-top: 10px" type="button" class="btn btn-primary btn-block">APROVAR</a>
 
 </div>

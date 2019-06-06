@@ -55,13 +55,13 @@
 
             <div class="input-group mb-3">
               <div class="form-group">
-                <label for="ciclo">Ciclos</label>
+                <label for="ciclo">Cursos</label>
                 <select class="form-control" formControlName="ciclo"
                   [ngClass]="{ 'is-invalid': submitted && f.ciclo.errors }">
                   <option *ngFor="let c of ciclos" [value]="c.id">{{c.name}}</option>
                 </select>
                 <div *ngIf="submitted && f.ciclo.errors" class="invalid-feedback">
-                  <div *ngIf="f.ciclo.errors.required">O ciclo é obrigatório</div>
+                  <div *ngIf="f.ciclo.errors.required">O curso é obrigatório</div>
                 </div>
               </div>
 

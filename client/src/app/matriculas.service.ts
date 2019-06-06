@@ -64,7 +64,7 @@ export class MatriculasService {
   }
 
   getAvailableForNewCiclo(turmaId: any) {
-    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?new_ciclo=needApprove&turma=${turmaId}`)
+    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?turma=${turmaId}`)
   }
 
   getMatriculaBetweenUserAndTurma(turmaId: any, userId: any) {

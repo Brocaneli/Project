@@ -16,6 +16,9 @@ export class TransferStudentComponent implements OnInit {
   private newTurma: any;
   private ciclos: any;
   private turmaId: any;
+  private novoCorpo = {}
+  private novaMatricula = {}
+  private matriculaFilter: any;
 
   constructor(private matriculaService: MatriculasService, private turmaService: TurmaService, private cicloService: CiclosService) { }
 
@@ -30,54 +33,58 @@ export class TransferStudentComponent implements OnInit {
   }
 
 
-  getNewTurma(selectedCiclo: any, turmaId: any) {
+  getNewTurma(newTurma: any, turmaId: any) {
     this.turmaId = turmaId;
-    this.newTurma = selectedCiclo;
-  }
-
-  getAlunos(turmaID: any, newTurma: any) {
-    this.matriculaService.getAvailableForNewCiclo(turmaID).subscribe(data => {
-      this.matriculas = data;
-    })
     this.newTurma = newTurma;
   }
 
-  approveAluno(matricula: any, turmaId: any) {
-    let novoCorpo = {
-      id: matricula.id,
-      nota: matricula.nota,
-      approved: matricula.approved,
-      absences: matricula.absences,
-      user: matricula.user.id,
-      turma: matricula.turma.id,
-      graduated: matricula.graduated,
-      new_ciclo: "Approved",
-    }
-
-    let novaMatricula = {
-      id: matricula.id,
-      nota: matricula.nota,
-      approved: "approved",
-      absences: matricula.absences,
-      user: matricula.user.id,
-      turma: this.turmaId,
-      graduated: "aguardando",
-      new_ciclo: "Approved",
-    }
-
-    this.matriculaService.createMatricula(novaMatricula).subscribe((data) => {
+  getAlunos(turmaID: any, oldTurma: any) {
+    this.matriculaService.getAvailableForNewCiclo(turmaID).subscribe(data => {
+      this.matriculas = data;
+      console.log(data)
+      this.matriculaFilter = this.matriculas.filter(c => {
+        return c.nota > 0 && c.absences <= 5
+      })
+      console.log(this.matriculaFilter)
     })
-    this.matriculaService.updateMatricula(novoCorpo).subscribe((data) => {
-    })
+    this.oldTurma = oldTurma;
 
+
+  }
+
+  approveAluno() {
+    this.approveAll();
     window.location.reload();
   }
 
+  approveAll() {
+    for (let matricula of this.matriculas) {
 
+      this.novoCorpo = {
+        id: matricula.id,
+        nota: matricula.nota,
+        approved: matricula.approved,
+        absences: matricula.absences,
+        user: matricula.user.id,
+        turma: matricula.turma.id,
+        graduated: matricula.graduated,
+      }
 
+      this.novaMatricula = {
+        id: matricula.id,
+        nota: 0,
+        approved: "approved",
+        absences: 0,
+        user: matricula.user.id,
+        turma: this.turmaId,
+        graduated: "aguardando",
+      }
 
-  updateAluno(matricula: any, cicloId: any) {
-    
+      this.matriculaService.createMatricula(this.novaMatricula).subscribe((data) => {
+      })
+      this.matriculaService.updateMatricula(this.novoCorpo).subscribe((data) => {
+      })
+    }
   }
 
 }
