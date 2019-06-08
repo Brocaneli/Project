@@ -1,0 +1,44 @@
+<div class="container">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <h3 class="col-sm-6 offset-sm-5">Alunos</h3>
+  <hr class="my-4">
+  <div class="input-group mb-3">
+    <input id="search" type="text" class="form-control" [(ngModel)]="query" placeholder="Buscar aluno">
+  </div>
+  <div class="btn-group dropright">
+    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+      Turmas
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a *ngFor="let turma of turmas" class="dropdown-item" (click)="getAlunos(turma.id, turma.name)">{{turma.name}}
+      </a>
+    </div>
+  </div>
+  <label>{{oldTurma}}</label>
+
+  <br>
+  <div class="btn-group dropdown">
+    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false"><label>Próxima turma: {{newTurma}}</label>
+
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a *ngFor="let turma of turmas" class="dropdown-item" (click)="getNewTurma(turma.name, turma.id)">{{turma.name}}
+      </a>
+    </div>
+  </div>
+
+  <div class="list-group" *ngFor="let matricula of matriculaFilter | search: query">
+    <div >
+      <button name="note" [disabled]="loading" class="list-group-item list-group-item-action">{{matricula.user.name}}
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <label for="note">Turma atual: {{matricula.turma.name}}</label>
+        <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+      </button>
+    </div>
+  </div>
+  <a (click)="approveAll()" style="margin-top: 10px" type="button" class="btn btn-primary btn-block">APROVAR</a>
+
+</div>

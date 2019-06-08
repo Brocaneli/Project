@@ -6,7 +6,7 @@
   <div id="accordion" class="col-sm-6 offset-sm-5" *ngFor="let turma of turmas">
     <div class="card">
       <div class="card-header">
-        <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+        <button type="button" class="btn btn-link" data-toggle="collapses" data-target="#collapseOne"
           aria-expanded="true" aria-controls="collapseOne">
           <h4 class="mb-0">{{turma.name}}</h4>
         </button>
@@ -14,6 +14,10 @@
 
       <div id="collapseOne" class="collapse show" aria-labelledby="heading" data-parent="#accordion">
         <div class="card-body">
+          <div>
+            <button type="button" class="btn btn-primary but" [routerLink]="['/lista-alunos', turma.id]">Lista de
+              Alunos</button>
+          </div>
 
           <button style="margin-top: 10px;" [routerLink]="['/aprovacao', turma.id]" type="button"
             class="btn btn-primary">Aprovar Matrículas</button>

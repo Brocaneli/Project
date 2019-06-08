@@ -59,6 +59,14 @@ export class MatriculasService {
     return this.httpClient.get(`${this.constService.API_URI}/matriculas/?approved=pending&turma=${turmaId}`)
   }
 
+  getIsGraduatedMatriculas(turmaId: any) {
+    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?graduated=aguardando&turma=${turmaId}`)
+  }
+
+  getAvailableForNewCiclo(turmaId: any) {
+    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?turma=${turmaId}`)
+  }
+
   getMatriculaBetweenUserAndTurma(turmaId: any, userId: any) {
     return this.httpClient.get(`${this.constService.API_URI}/matriculas/?user=${userId}&turma=${turmaId}`)
   }

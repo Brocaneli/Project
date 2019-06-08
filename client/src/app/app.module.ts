@@ -29,6 +29,8 @@ import { CicloqueryComponent } from './cicloquery/cicloquery.component';
 import { TurmaqueryComponent } from './turmaquery/turmaquery.component';
 import { StudentqueryComponent } from './studentquery/studentquery.component';
 import { NovaMatriculaComponent } from './nova-matricula/nova-matricula.component';
+import { AprovarAlunosComponent } from './aprovar-alunos/aprovar-alunos.component';
+import { TransferStudentComponent } from './transfer-student/transfer-student.component';
 
 
 @NgModule({
@@ -50,12 +52,14 @@ import { NovaMatriculaComponent } from './nova-matricula/nova-matricula.componen
     SearchPipe,
     UserPipe,
     AprovarMatriculaComponent,
+    AprovarAlunosComponent,
     AulaPageComponent,
     NovaAulaComponent,
     CicloqueryComponent,
     TurmaqueryComponent,
     StudentqueryComponent,
-    NovaMatriculaComponent
+    NovaMatriculaComponent,
+    TransferStudentComponent
   ],
   imports: [
     BrowserModule,

@@ -1,30 +1,39 @@
 <div class="jumbotron">
-  <div class="container">
-      <div class="row">
-          <div class="col-6 offset-3">
-              <button [routerLink]="['/cursos']" [disabled]="loading" class="btn btn-info btn-block">Cursos</button>
-          </div>
-      </div>
-      <div class="row">
-          <div class="col-6 offset-3">
-              <button [routerLink]="['/turmas']" [disabled]="loading" class="btn btn-info btn-block">Turmas</button>
-          </div>
-      </div>
-      <div class="row">
-          <div class="col-6 offset-3">
-              <button [routerLink]="['/users']" [disabled]="loading" class="btn btn-info btn-block">Permissões</button> 
-          </div>
-      </div>
-      <div class="row">
-          <div class="col-sm-6 offset-sm-3">
-              <button [routerLink]="['/colaborators']" type="button" class="btn btn-primary btn-lg btn-block">Área do Colaborador</button>
-          </div>
-      </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 offset-3">
+                <button [routerLink]="['/cursos']" [disabled]="loading" class="btn btn-info btn-block">Cursos</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <button [routerLink]="['/users']" [disabled]="loading"
+                    class="btn btn-info btn-block">Permissões</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <button [routerLink]="['/transfer-student']" [disabled]="loading"
+                    class="btn btn-info btn-block">Transferência</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <button [routerLink]="['/turmas']" [disabled]="loading" class="btn btn-info btn-block">Turmas</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                <button [routerLink]="['/colaborators']" type="button" class="btn btn-primary btn-lg btn-block">Área do
+                    Colaborador</button>
+            </div>
+        </div>
 
-      <div class="row">
-        <div class="col-sm-6 offset-sm-3">
-            <button [routerLink]="['/students']" type="button" class="btn btn-primary btn-lg btn-block">Área do Estudante</button>
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                <button [routerLink]="['/students']" type="button" class="btn btn-primary btn-lg btn-block">Área do
+                    Estudante</button>
+            </div>
         </div>
     </div>
-  </div>
 </div>
