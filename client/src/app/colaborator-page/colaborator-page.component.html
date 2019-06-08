@@ -11,11 +11,16 @@
           {{colaborador.turma.start_date  | date: "dd/MM/yyyy"}} - {{colaborador.turma.end_date | date: "dd/MM/yyyy"}}
         </mat-panel-description>
       </mat-expansion-panel-header>
+      <div>
+        <h4 class="center">Aula {{colaborador.turma.actual_class+1}}</h4>
+      </div>
       <button type="button" class="btn btn-primary but" [routerLink]="['/aula', colaborador.turma.ciclo.id]">Aulas
         Cadastradas</button>
       <button type="button" class="btn btn-primary but" [routerLink]="['/lista-alunos', colaborador.turma.id]">Lista de
         Alunos</button>
-      <button type="button" [routerLink]="['/attendance', colaborador.turma.id]" class="btn btn-primary but">Realizar
+      <button *ngIf="!colaborador.turma.first_attendance" type="button" [routerLink]="['/attendance', colaborador.turma.id]" class="btn btn-primary but">Realizar 1º 
+        Chamada</button>
+      <button *ngIf="colaborador.turma.first_attendance" type="button" [routerLink]="['/attendance', colaborador.turma.id]" class="btn btn-primary but">Realizar 2º 
         Chamada</button>
     </mat-expansion-panel>
     <mat-expansion-panel class="list-group-item list-group-item-action flex-column align-items-start"

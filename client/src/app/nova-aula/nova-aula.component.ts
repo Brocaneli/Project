@@ -54,12 +54,11 @@ export class NovaAulaComponent implements OnInit {
   onSubmit() {
     console.log;
     this.submitted = true;
-
     // stop here if form is invalid
     if (this.aulaForm.invalid) {
       return;
     }
-    
+    console.log(this.aulaForm.getRawValue())
     this.AulasService.createAula(this.aulaForm.getRawValue()).subscribe(data => {
       this.router.navigate([`aula/${this.ciclo.id}`]);
     });

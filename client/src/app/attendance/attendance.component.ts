@@ -44,6 +44,7 @@ export class AttendanceComponent implements OnInit {
     } else {
       this.user = user;
     }
+
   }
 
   ngOnInit() {
@@ -57,6 +58,9 @@ export class AttendanceComponent implements OnInit {
 
           if (this.turma.actual_class < this.classes.length) {
             var actual_class_id = this.classes[this.turma.actual_class].id;
+            this.aulaService.getAula(actual_class_id).subscribe(data => {
+              this.class = data
+            });
             this.presenceService.getAllPresencesFromClass(actual_class_id).subscribe((data) => {
               this.presences = data;
             });
@@ -66,7 +70,16 @@ export class AttendanceComponent implements OnInit {
               this.matriculas.forEach(element => {
                 element['presence'] = false
               });
-              this.matriculas.sort((a, b) => (a.user.name > b.user.name) ? 1 : -1)
+              this.matriculas.sort((a, b) => {
+                if (a.name.toUpperCase() > b.name.toUpperCase()) {
+                  return 1;
+                }
+                if (a.name.toUpperCase() < b.name.toUpperCase()) {
+                  return -1;
+                }
+                // a must be equal to b
+                return 0;
+              });
               this.presenceService.getAllReplacementFromAula(actual_class_id, this.turma_id).subscribe((data) => {
                 this.replacement = data
                 this.replacement.forEach(element => {
