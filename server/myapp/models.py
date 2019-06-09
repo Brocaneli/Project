@@ -71,7 +71,7 @@ class Colaborador(models.Model):
 class Matricula(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     turma = models.ForeignKey(Turma, on_delete=models.CASCADE)
-    nota = models.IntegerField()
+    nota = models.FloatField()
     approved = models.CharField(max_length=50, default = "pending")
     absences = models.IntegerField()
     graduated = models.CharField(max_length=50, default = "aguardando")
