@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TurmaService } from '../turma.service';
 import { MatriculasService } from '../matriculas.service';
-import { AulasService } from '../aulas.service';
 import { AuthenticationService } from '../authentication.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -14,30 +12,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class NotasComponent implements OnInit {
 
-    // query itens
-    cicloQuery: any
-    turmaQuery: any
-    queryAllowed = false
-    turma_id = 1;
-    turma: any;
-    matriculas: any;
-    private user: any
-    nota: any;
-    notaForm: FormGroup;
-    loading = false;
-    submitted = false;
-    private ciclo : any;
-  
+  private user: any
+  matriculas: any
+  turma_id: any
+  element: any
 
-  constructor(private turmasService: TurmaService,
+  constructor(
     private matriculaService: MatriculasService,
-    private aulaService: AulasService,
-    private fb: FormBuilder,
     private authenticationService: AuthenticationService,
     private router: Router,
     private activatedRoute: ActivatedRoute) { 
 
-      this.matriculas = [];
       let user = this.authenticationService.currentUserValue;
       if (!user || user.role === 'ALUNO') {
         this.router.navigate(['login']);
@@ -48,65 +33,38 @@ export class NotasComponent implements OnInit {
     }
 
   ngOnInit() {
-
-    this.notaForm = this.fb.group({
-      turma: ['', Validators.required],
-      name: ['', Validators.required]
-      // ,
-      // date: ['', Validators.required]
-    });
-
     this.activatedRoute.params.subscribe(data => {
-      this.turmasService.getTurma(this.turma_id).subscribe((data) => {
-        this.turma = data;
+      this.turma_id = data['id']
+      this.matriculaService.getAllApprovedMatriculasFromTurma(this.turma_id).subscribe(data => {
+        this.matriculas = data
+        this.matriculas.sort((a, b) => {
+          if (a.user.name.toUpperCase() > b.user.name.toUpperCase()) {
+            return 1;
+          }
+          if (a.user.name.toUpperCase() < b.user.name.toUpperCase()) {
+            return -1;
+          }
+          return 0;
+        });
       });
     });
-  
-  }
- 
-  allowQuery() {
-    this.queryAllowed = !this.queryAllowed
-    this.cicloQuery = null;
-    this.turmaQuery = null;
   }
 
-  cicloChose(cicloId: any) {
-    this.cicloQuery = cicloId;
+  updateNota(matricula, $event) {
+    matricula.nota = $event.target.value
+    console.log(matricula.nota)
   }
 
-  turmaChose(turmaId: any) {
-    this.turmaQuery = turmaId;
-  }
-
-  studentsChose(matriculaId: any) {
-    var new_matricula;
-    this.matriculaService.getMatricula(matriculaId).subscribe((data) => {
-      new_matricula = data;
-      new_matricula['nota'] = false
-      this.matriculas.push(new_matricula)
-      this.allowQuery();
+  saveGrades() {
+    this.matriculas.forEach(element => {
+      element.user = element.user.id
+      element.turma = element.turma.id
+      this.matriculaService.updateMatricula(element).subscribe(data => {
+        console.log(data)
+      })
     });
   }
 
-  
-
-
-  get f() { return this.notaForm.controls; }
-
-
-  onSubmit() {
-    console.log;
-    this.submitted = true;
-
-    // stop here if form is invalid
-    if (this.notaForm.invalid) {
-      return;
-    }
-    
-    this.matriculaService.getAllMatriculasFromTurma(this.notaForm.getRawValue()).subscribe(data => {
-      this.router.navigate([`nota/${this.turma.id}`]);
-    });
-  }
 
 
 }

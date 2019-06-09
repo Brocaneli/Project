@@ -50,7 +50,7 @@ const routes: Routes = [
   { path: 'nova-matricula', component: NovaMatriculaComponent },
   { path: 'aprova-aluno', component: AprovarAlunosComponent },
   { path: 'transfer-student', component: TransferStudentComponent },
-  { path: 'notas', component: NotasComponent }
+  { path: 'notas/:id', component: NotasComponent }
 
 ];
 
