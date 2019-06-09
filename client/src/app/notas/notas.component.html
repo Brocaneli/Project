@@ -1,0 +1,48 @@
+<div *ngIf="class_registered">
+  <div class="container">
+    <h2 class="center">Notas</h2>
+    
+    <div class="row" *ngFor="let nota of notas">
+      <div class="col-1">
+        <div class="input-group-prepend">
+          <div (click)="selectInput(matricula)" class="input-group-text">
+              <div class="form-group">
+                  <label for="nota">Nota</label>
+                  <input type="nota" formControlName="nota" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.nota.errors }" />
+                  <div *ngIf="submitted && f.nota.errors" class="invalid-feedback">
+                    <div *ngIf="f.nota.errors.required">Nota é obrigatória</div>
+                  </div>
+                </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-11">
+        <li class="list-group-item center">{{matricula.user.name}}</li>
+      </div>
+    </div>
+
+    <br />
+
+
+
+  <div class="container" *ngIf="queryAllowed && cicloQuery == null">
+    <app-cicloquery (choosed)="cicloChose($event)">
+    </app-cicloquery>
+  </div>
+
+  <div *ngIf="cicloQuery != null && queryAllowed && turmaQuery == null" class="container">
+    <app-turmaquery [cicloId]="cicloQuery" (choosed)="turmaChose($event)">
+    </app-turmaquery>
+  </div>
+
+  <div *ngIf="turmaQuery != null && queryAllowed" class="container">
+    <app-studentquery [turmaId]="turmaQuery" (choosed)="studentsChose($event)">
+    </app-studentquery>
+  </div>
+
+  
+  <button style="margin-top: 10px" type="button" [routerLink]="['/colaborators']"
+    class="btn btn-danger col-4 offset-4">Voltar</button>
+</div>

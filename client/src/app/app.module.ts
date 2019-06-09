@@ -31,6 +31,7 @@ import { StudentqueryComponent } from './studentquery/studentquery.component';
 import { NovaMatriculaComponent } from './nova-matricula/nova-matricula.component';
 import { AprovarAlunosComponent } from './aprovar-alunos/aprovar-alunos.component';
 import { TransferStudentComponent } from './transfer-student/transfer-student.component';
+import { NotasComponent } from './notas/notas.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { TransferStudentComponent } from './transfer-student/transfer-student.co
     TurmaqueryComponent,
     StudentqueryComponent,
     NovaMatriculaComponent,
-    TransferStudentComponent
+    TransferStudentComponent,
+    NotasComponent
   ],
   imports: [
     BrowserModule,
