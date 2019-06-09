@@ -1,6 +1,12 @@
-<div *ngIf="class_registered">
+<div *ngIf="class_registered && class != undefined">
   <div class="container">
-    <h2 class="center">Chamada</h2>
+    <h2 class="center">{{class.name}}</h2>
+    <div *ngIf="!turma.first_attendance">
+      <h2 class="center">1º Chamada</h2>
+    </div>
+    <div *ngIf="turma.first_attendance">
+      <h2 class="center">2º Chamada</h2>
+    </div>
     
     <div class="row" *ngFor="let matricula of matriculas">
       <div class="col-1">

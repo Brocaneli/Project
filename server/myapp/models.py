@@ -47,7 +47,7 @@ class Aula(models.Model):
     created_at = models.DateTimeField(default=datetime.datetime.today)
 
     def __str__(self):
-        return "Aula: Ciclo={}, Date={}".format(self.ciclo, self.date)
+        return "Aula: Ciclo={}, Name={}".format(self.ciclo, self.name)
 
 class Presenca(models.Model):
     aula = models.ForeignKey(Aula, on_delete=models.CASCADE)
