@@ -71,10 +71,10 @@ export class AttendanceComponent implements OnInit {
                 element['presence'] = false
               });
               this.matriculas.sort((a, b) => {
-                if (a.name.toUpperCase() > b.name.toUpperCase()) {
+                if (a.user.name.toUpperCase() > b.user.name.toUpperCase()) {
                   return 1;
                 }
-                if (a.name.toUpperCase() < b.name.toUpperCase()) {
+                if (a.user.name.toUpperCase() < b.user.name.toUpperCase()) {
                   return -1;
                 }
                 // a must be equal to b
