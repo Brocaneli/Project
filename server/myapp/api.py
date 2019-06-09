@@ -19,7 +19,7 @@ class CicloApi(viewsets.ModelViewSet):
 class TurmaApi(viewsets.ModelViewSet):
     queryset = Turma.objects.all()
     filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ('ciclo', )
+    filterset_fields = ('ciclo', 'name')
 
     def get_serializer_class(self):
         method = self.request.method
