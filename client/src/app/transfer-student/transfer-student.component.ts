@@ -85,6 +85,7 @@ export class TransferStudentComponent implements OnInit {
       this.matriculaService.updateMatricula(this.novoCorpo).subscribe((data) => {
       })
     }
+    window.location.reload();
   }
 
 }
