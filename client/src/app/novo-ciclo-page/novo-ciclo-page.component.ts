@@ -46,7 +46,7 @@ export class NovoCicloPageComponent implements OnInit {
     }
 
     this.ciclosService.createCiclo(this.cicloForm.getRawValue()).subscribe(data => {
-      this.router.navigate(['ciclos']);
+      this.router.navigate(['cursos']);
     });
   }
 }

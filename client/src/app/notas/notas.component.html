@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row" *ngFor="let matricula of matriculas">
+    <li class="list-group-item center col-9">{{matricula.user.name}}</li>
+    <input (change)="updateNota(matricula, $event)" class ="col-2" type="number" value="{{matricula.nota}}" data-decimals="2" min="0" max="10" step="0.1"/>
+  </div>
+
+  <div class="container" *ngIf="matriculas">
+      <button *ngIf="matriculas.length > 0" type="button" (click)="saveGrades()" [routerLink]="['/colaborators']"
+        class="btn btn-block btn-success">Salvar</button>
+      <h4 class="mb-1" *ngIf="matriculas.length == 0">Nenhum aluno matriculado</h4>
+      <button type="button" [routerLink]="['/colaborators']" class="btn btn-block btn-danger">Voltar</button>
+  </div>
+</div>
