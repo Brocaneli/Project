@@ -52,7 +52,7 @@ export class MatriculasService {
   }
 
   getAllApprovedMatriculasFromTurma(turmaId: any) {
-    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?approved=approved&turma=${turmaId}`)
+    return this.httpClient.get(`${this.constService.API_URI}/matriculas/?approved=approved&turma=${turmaId}&graduated=aguardando`)
   }
 
   getAllPendingMatriculasFromTurma(turmaId: any) {

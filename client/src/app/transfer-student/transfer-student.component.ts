@@ -43,7 +43,7 @@ export class TransferStudentComponent implements OnInit {
       this.matriculas = data;
       console.log(data)
       this.matriculaFilter = this.matriculas.filter(c => {
-        return c.nota > 0 && c.absences <= 5
+        return c.nota > 0 && c.absences <= 5 && c.graduated == "aguardando"
       })
       console.log(this.matriculaFilter)
     })
@@ -59,31 +59,32 @@ export class TransferStudentComponent implements OnInit {
 
   approveAll() {
     for (let matricula of this.matriculas) {
-
-      this.novoCorpo = {
-        id: matricula.id,
-        nota: matricula.nota,
-        approved: matricula.approved,
-        absences: matricula.absences,
-        user: matricula.user.id,
-        turma: matricula.turma.id,
-        graduated: matricula.graduated,
+      if (matricula.nota > 0 && matricula.absences <=5) {
+        this.novoCorpo = {
+          id: matricula.id,
+          nota: matricula.nota,
+          approved: matricula.approved,
+          absences: matricula.absences,
+          user: matricula.user.id,
+          turma: matricula.turma.id,
+          graduated: "isGraduated",
+        }
+  
+        this.novaMatricula = {
+          id: matricula.id,
+          nota: 0,
+          approved: "approved",
+          absences: 0,
+          user: matricula.user.id,
+          turma: this.turmaId,
+          graduated: "aguardando",
+        }
+  
+        this.matriculaService.createMatricula(this.novaMatricula).subscribe((data) => {
+        })
+        this.matriculaService.updateMatricula(this.novoCorpo).subscribe((data) => {
+        })
       }
-
-      this.novaMatricula = {
-        id: matricula.id,
-        nota: 0,
-        approved: "approved",
-        absences: 0,
-        user: matricula.user.id,
-        turma: this.turmaId,
-        graduated: "aguardando",
-      }
-
-      this.matriculaService.createMatricula(this.novaMatricula).subscribe((data) => {
-      })
-      this.matriculaService.updateMatricula(this.novoCorpo).subscribe((data) => {
-      })
     }
     window.location.reload();
   }
